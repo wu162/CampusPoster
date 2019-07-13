@@ -86,7 +86,8 @@
 
 ---
 
-* 官方给的[视觉规范]([https://developers.weixin.qq.com/miniprogram/design/#%E8%A7%86%E8%A7%89%E8%A7%84%E8%8C%83](https://developers.weixin.qq.com/miniprogram/design/#视觉规范))
-* 官方给的[组件库]([https://developers.weixin.qq.com/miniprogram/design/#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD](https://developers.weixin.qq.com/miniprogram/design/#资源下载))
+* 官方给的[视觉规范](https://developers.weixin.qq.com/miniprogram/design/#%E5%AD%97%E4%BD%93)
+* 官方给的[组件库](https://developers.weixin.qq.com/miniprogram/design/#%E5%9B%BE%E6%A0%87)
 * [小程序UI设计的一些坑](https://www.uisdc.com/7-traps-in-mini-program-design)
 * [自动切图工具和标注工具](http://www.wxapp-union.com/article-1977-1.html)
+

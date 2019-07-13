@@ -38,7 +38,7 @@
 
 ---
 
-* 每个页面的UI图设计
+* 每个页面的UI图设计([UI设计图注意事项](#UItips))
 
 * 各个页面的跳转逻辑分析
 
@@ -79,3 +79,14 @@
 - [ ] 展示每个帖子里的内容（暂时不添加回复功能）
 - [ ] 用户可查看自己发过的帖子
 - [ ] 贴吧相关数据管理（名字，关注的人，关注数，包含的帖子，帖子数）
+
+
+
+#### <span id="UItips">UI设计图注意事项</span>
+
+---
+
+* 官方给的[视觉规范]([https://developers.weixin.qq.com/miniprogram/design/#%E8%A7%86%E8%A7%89%E8%A7%84%E8%8C%83](https://developers.weixin.qq.com/miniprogram/design/#视觉规范))
+* 官方给的[组件库]([https://developers.weixin.qq.com/miniprogram/design/#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD](https://developers.weixin.qq.com/miniprogram/design/#资源下载))
+* [小程序UI设计的一些坑](https://www.uisdc.com/7-traps-in-mini-program-design)
+* [自动切图工具和标注工具](http://www.wxapp-union.com/article-1977-1.html)

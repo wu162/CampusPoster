@@ -90,4 +90,5 @@
 * 官方给的[组件库](https://developers.weixin.qq.com/miniprogram/design/#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD)
 * [小程序UI设计的一些坑](https://www.uisdc.com/7-traps-in-mini-program-design)
 * [自动切图工具和标注工具](http://www.wxapp-union.com/article-1977-1.html)
+* 设计图存放在[这里](https://lanhuapp.com/web/#/item?fid=all&commonly=)
 

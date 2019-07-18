@@ -1,6 +1,13 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/me/me",
+    "pages/meInfo/meInfo",
+    "pages/mefollow/mefollow",
+    "pages/mefans/mefans",
+    "pages/mePoster/mePoster",
+    "pages/meCollect/meCollect",
+    "pages/meHistory/meHistory"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

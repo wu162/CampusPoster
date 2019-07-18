@@ -1,5 +1,15 @@
 [TOC]
 
+### 更新日志
+
+---
+
+(把添加新文件，删除新文件，某个页面完成编写需要测试等其他重要信息放在这)
+
+1. 2019.7.18 添加第一批需要编写的页面（me, meInfo, mefollow, mefans, mePoster, meCollect, meHistory)
+
+
+
 ### 计划
 
 ------

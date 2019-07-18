@@ -62,7 +62,7 @@
 
 ---
 
-* 可以考虑使用[有赞的UI 组件库](https://github.com/youzan/vant-weapp),  [CplorUI](https://github.com/weilanwl/ColorUI), [iView](https://github.com/TalkingData/iview-weapp)
+* 可以考虑使用[有赞的UI 组件库](https://github.com/youzan/vant-weapp),   [CplorUI](https://github.com/weilanwl/ColorUI),   [iView](https://github.com/TalkingData/iview-weapp),   [WuxUI](https://github.com/wux-weapp/wux-weapp/)
 * 尽量模块化，方便自己以后修改
 * 每个人尽量独立负责自己所编写页面的前端展示代码，只留下js的部分函数由负责云数据库的云函数的人完成
 

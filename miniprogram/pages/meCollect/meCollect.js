@@ -1,11 +1,14 @@
-// pages/meCollect/meCollect.js
+const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    page:0,
+collects:{},
+topics:[],
   },
 
   /**
@@ -16,51 +19,46 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData(this.data.page);
   },
-
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+     * 获取列表数据
+     * 
+     */
+  getData: function (page) {
+    db.collection('collect')
+      .where({
+        _openid: app.globalData.openid, // 填入当前用户 openid
+      })
+      .get({
+        success: function (res) {
+          // res.data 是包含以上定义的两条记录的数组
+          this.data.collects = res.data;
+          this.getTopicFromCollects();
+        },
+      })
   },
-
   /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    * 获取收藏中的 id 的话题
+    */
+  getTopicFromCollects: function (event) {
+    var tempTopics = {};
+    for (var i in this.data.collects) {
+      var topicId = this.data.collects[i]._id;
+      db.collection('topic')
+        .doc(topicId)
+        .get({
+          success: function (res) {
+            this.data.topics.push(res.data);
+           this.setData({
+              topics: this.data.topics,
+            })
+          },
+          fail: console.log
+        })
+    }
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

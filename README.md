@@ -7,7 +7,7 @@
 (把添加新文件，删除新文件，某个页面完成编写需要测试等其他重要信息放在这)
 
 1. 2019.7.18 添加第一批需要编写的页面（me, meInfo, mefollow, mefans, mePoster, meCollect, meHistory)
-
+2. 2019.7.19 基本完善一些界面（me,meCollect,meHistory），在数据库里添加了几个集合
 
 
 ### 计划
@@ -118,3 +118,12 @@
 | 未完成                                 | 浏览历史（meHistory） |        |
 | 未完成                                 | 主页（index） |      田仁杰  |
 | 未完成                                 | 发帖（publish） |      田仁杰  |
+
+### 数据库
+集合topic，存放所有帖子
+|  属性  |        功能        |    
+|   title |         帖子标题       | 
+|  content|           帖子内容    | 
+| images |         帖子内图片      | 
+| user |         发帖用户      | 
+|  date|        发帖日期       | 

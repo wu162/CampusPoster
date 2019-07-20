@@ -132,3 +132,7 @@
 | images |         帖子内图片      | 
 | user |         发帖用户      | 
 |  date|        发帖日期       | 
+|  iscollection|       收藏状态     | 
+
+ * 集合collection，存放收藏帖子信息
+ |  date|        收藏日期       | 

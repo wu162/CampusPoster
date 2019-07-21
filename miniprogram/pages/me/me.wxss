@@ -6,7 +6,7 @@
   align-items: center;
 }
 .user-item {
-  width: 25%;
+  width: 33%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -14,7 +14,8 @@
 }
 
 .text{
-  font-size:10px
+  font-size:10px;
+  color: #7F8389;
 }
 .userBg2 {
   display: flex;
@@ -56,7 +57,7 @@
 }
 
 .line {
-  height: 10px;
+  height: 15px;
 }
 
 .item {
@@ -69,8 +70,7 @@
 
 .itemName {
   width: 40%;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 17px;
 }
 
 .icon {
@@ -81,7 +81,13 @@
 .right {
   width: 40%;
   text-align: right;
-}
+  color: #C7C7CC;
+  }
+ .right_ {
+  width: 34%;
+  text-align: right;
+  color: #C7C7CC;
+  } 
 .hr {
   height: 1px;
   background-color: #ccc;

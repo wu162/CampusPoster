@@ -8,6 +8,7 @@
 
 1. 2019.7.18 添加第一批需要编写的页面（me, meInfo, mefollow, mefans, mePoster, meCollect, meHistory)
 2. 2019.7.19 基本完善一些界面（me,meCollect,meHistory），在数据库里添加了几个集合
+3. 2019.7.21 第一次合并代码
 
 
 ### 计划

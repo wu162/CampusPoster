@@ -1,34 +1,27 @@
-<van-search
-  value="{{ value }}"
-  placeholder="请输入搜索关键词"
-  show-action
-  bind:search="onSearch"
-  bind:cancel="onCancel"
-/>
- <view class='container-line'></view>
+<view class='container-line'></view>
 <!--miniprogram/pages/collect/collect.wxml-->
-<block wx:for='{{topics}}' wx:for-index="idx">
+<block wx:for='{{test}}' wx:for-index="idx">
   <view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
     <view class='container-content'>
+    <image class='head'src='{{item.head}}'></image>
       <view class='content'>
+      <view class='name'>{{item.name}}</view>
+      <view class='bar'>{{item.barname}}</view>
+      </view>
+      <image class='collect' src='{{item.collect}}'></image>
+      </view>
+<view class='topic'>
        <!-- 显示图片 -->
-        <block wx:if="{{item.images.length > 0}}">
-              <image class='content-img' src='{{item.images[0]}}' mode='aspectFill'></image>
+        <block wx:if="{{item.images!=null}}">
+              <image class='content-img' src='{{item.images}}' mode='aspectFill'></image>
                 <!-- 显示文本 -->
-        <view class='time-content'>
-        <view class='user-publish-time'>{{item.date}}</view>
-        <text class='content-text'>{{item.content}}</text>
-        </view>
+        <text class='title'>{{item.title}}</text>
            </block>
  <block wx:else>
          <!-- 显示文本 -->
-        <view class='time-content'>
-        <view class='user-publish-time2'>{{item.date}}</view>
-        <text class='content-text'>{{item.content}}</text>
-        </view>
+        <text class='title'>{{item.title}}</text>
               </block>
-      </view>
-    </view>
+        </view>
     <view class='container-line'></view>
   </view>
 </block>

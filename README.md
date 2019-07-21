@@ -118,13 +118,8 @@
 | 未完成                                 | 粉丝（mefans）        |  吴佩津      |
 | 未完成                                 | 我的帖子（mePoster）  |     田仁杰   |
 | 未完成                                 | 我的收藏（meCollect） |     田仁杰   |
-<<<<<<< HEAD
-| 未完成                                 | 浏览历史（meHistory） |        |
-| 未完成                                 | 主页（index） |      田仁杰  |
-=======
 | 未完成                                 | 浏览历史（meHistory） |   田仁杰     |
 | 未完成                                 | 主页（index） |      吴佩津  |
->>>>>>> acb17c776427cfd8d7d3bf1e7d2cca381d4df4ef
 | 未完成                                 | 发帖（publish） |      田仁杰  |
 
 ### 数据库

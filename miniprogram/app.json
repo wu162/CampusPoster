@@ -11,7 +11,12 @@
     "pages/meHistory/meHistory",
     "pages/message/message",
     "pages/enter/enter",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/post/post",
+    "pages/postIndex/postIndex",
+    "pages/search/search",
+    "pages/postContent/postContent",
+    "pages/reply/reply"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

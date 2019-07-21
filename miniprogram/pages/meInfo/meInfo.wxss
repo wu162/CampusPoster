@@ -1,1 +1,57 @@
-/* pages/meInfo/meInfo.wxss */
+.bg{
+  width: 100%;
+  height:430rpx;
+}
+
+.line-wide{
+  width: 100%;
+  margin-bottom: 26rpx;
+}
+
+.avatar{
+  margin-left: 48rpx;
+  margin-top: -66rpx;
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.edit{
+  float: right;
+  margin-right: 30rpx;
+}
+
+.line-left{
+  margin-left: 78rpx;
+}
+
+.font-big{
+  font-size: 38rpx;
+}
+
+.font-medium{
+  font-size: 30rpx;
+}
+
+.sex{
+  display: inline-block;
+  margin-left: 32rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.sep{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  width: 2rpx;
+  color: #E5E5E5;
+}
+.blank-line{
+  width: 100%;
+  height: 50rpx;
+}
+
+.br{
+  border-top: 1rpx solid #eeeeee;
+  width: 100%;
+  height: 54rpx;
+}

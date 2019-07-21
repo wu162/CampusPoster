@@ -1,1 +1,5 @@
-/* pages/mefollow/mefollow.wxss */
+.follow-count{
+  padding: 20rpx 14rpx;
+  color: #dddddd;
+  font-size: 26rpx;
+}

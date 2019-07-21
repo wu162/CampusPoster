@@ -1,0 +1,16 @@
+.avatar{
+  display: block;
+  margin: 48rpx auto 80rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+
+.br{
+  height: 32rpx;
+}
+
+.save-btn{
+  width: 90%;
+  margin-top: 60rpx;
+}

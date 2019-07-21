@@ -30,12 +30,40 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
 					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"pathName": "pages/databaseGuide/databaseGuide",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mefollow",
+					"pathName": "pages/mefollow/mefollow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "mefans",
+					"pathName": "pages/mefans/mefans",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "meInfoEdit",
+					"pathName": "pages/meInfoEdit/meInfoEdit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "meInfo",
+					"pathName": "pages/meInfo/meInfo",
+					"scene": null
 				}
 			]
 		}

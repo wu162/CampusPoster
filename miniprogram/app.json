@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/me/me",
     "pages/meInfo/meInfo",
+    "pages/meInfoEdit/meInfoEdit",
     "pages/mefollow/mefollow",
     "pages/mefans/mefans",
     "pages/mePoster/mePoster",

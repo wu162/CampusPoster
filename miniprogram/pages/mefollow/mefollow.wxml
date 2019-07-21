@@ -1,2 +1,10 @@
-<!--pages/mefollow/mefollow.wxml-->
-<text>pages/mefollow/mefollow.wxml</text>
+<view class='follow-count'>全部关注{{follow_num}}人</view>
+<block wx:for="{{follower}}">
+    <btnCard thumb='{{item.thumb}}' 
+             thumb_link='{{item.thumb_link}}'
+             title='{{item.title}}' 
+             desc='{{item.desc}}' 
+             btn_text_unpressed='{{btn_text_unpressed}}' 
+             btn_text_pressed='{{btn_text_pressed}}'
+             btn_state='{{item.btn_state}}'/>
+</block>

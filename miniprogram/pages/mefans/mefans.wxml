@@ -1,2 +1,10 @@
-<!--pages/mefans/mefans.wxml-->
-<text>pages/mefans/mefans.wxml</text>
+<view class='fans-count'>全部粉丝{{fans_num}}人</view>
+<block wx:for="{{fans}}">
+    <btnCard thumb='{{item.thumb}}' 
+             thumb_link='{{item.thumb_link}}'
+             title='{{item.title}}' 
+             desc='{{item.desc}}' 
+             btn_text_unpressed='{{btn_text_unpressed}}' 
+             btn_text_pressed='{{btn_text_pressed}}'
+             btn_state='{{item.btn_state}}'/>
+</block>

@@ -65,7 +65,7 @@ Page({
   onItemClick: function (event) {
     var id = event.currentTarget.dataset.topicid;
     wx.navigateTo({
-     
+
     })
   },
 

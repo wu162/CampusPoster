@@ -5,7 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    btn_text_unpressed:'十 关注',
+    btn_text_pressed: ' 已关注',
+    follow_num:3,
+    follower:[
+      {
+        thumb:'../../images/follow/thumb.jpg',
+        thumb_link: '../meInfo/meInfo',
+        title: '物162',
+        desc: '软件学院学生',
+        btn_state: 1
+      },
+      {
+        thumb: '../../images/follow/thumb.jpg',
+        thumb_link: '../meInfo/meInfo',
+        title: '物172',
+        desc: '软件学院学生',
+        btn_state: 0
+      },
+      {
+        thumb: '../../images/follow/thumb.jpg',
+        thumb_link: '../meInfo/meInfo',
+        title: '物182',
+        desc: '软件学院学生',
+        btnText: '十 关注',
+        btn_state: 0
+      }
+    ]
   },
 
   /**

@@ -7,7 +7,7 @@
 (把添加新文件，删除新文件，某个页面完成编写需要测试等其他重要信息放在这)
 
 1. 2019.7.18 添加第一批需要编写的页面（me, meInfo, mefollow, mefans, mePoster, meCollect, meHistory)
-
+2. 2019.7.19 基本完善一些界面（me,meCollect,meHistory），在数据库里添加了几个集合
 
 
 ### 计划
@@ -62,7 +62,7 @@
 
 ---
 
-* 可以考虑使用[有赞的UI 组件库](https://github.com/youzan/vant-weapp)
+* 可以考虑使用[有赞的UI 组件库](https://github.com/youzan/vant-weapp),   [ColorUI](https://github.com/weilanwl/ColorUI),   [iView](https://github.com/TalkingData/iview-weapp),   [WuxUI](https://github.com/wux-weapp/wux-weapp/)
 * 尽量模块化，方便自己以后修改
 * 每个人尽量独立负责自己所编写页面的前端展示代码，只留下js的部分函数由负责云数据库的云函数的人完成
 
@@ -108,10 +108,34 @@
 
 | 状态（未完成，代码中，测试修复，完成） | 页面                  | 编写者 |
 | -------------------------------------- | --------------------- | ------ |
-| 未完成                                 | 我的  （me）          |        |
-| 未完成                                 | 个人资料（meInfo)     |        |
-| 未完成                                 | 关注（mefollow）      |        |
-| 未完成                                 | 粉丝（mefans）        |        |
-| 未完成                                 | 我的帖子（mePoster）  |        |
-| 未完成                                 | 我的收藏（meCollect） |        |
+| 未完成                                 | 我的  （me）          |    田仁杰    |
+| 未完成                                 | 个人主页（meInfo)     |  吴佩津      |
+| 未完成                                 | 编辑资料（meInfoEdit) |  吴佩津      |
+| 未完成                                 | 关注（mefollow）      |  吴佩津      |
+| 未完成                                 | 粉丝（mefans）        |  吴佩津      |
+| 未完成                                 | 我的帖子（mePoster）  |     田仁杰   |
+| 未完成                                 | 我的收藏（meCollect） |     田仁杰   |
 | 未完成                                 | 浏览历史（meHistory） |        |
+| 未完成                                 | 主页（index） |      田仁杰  |
+| 未完成                                 | 发帖（publish） |      田仁杰  |
+
+### 数据库
+
+---
+ 
+ * 集合topic，存放所有帖子
+ 
+|  属性  |        功能        |    
+| -------------------------------------- | --------------------- |
+|   title |         帖子标题       | 
+|  content|           帖子内容    | 
+| images |         帖子内图片      | 
+| user |         发帖用户      | 
+|  date|        发帖日期       | 
+|  iscollection|       收藏状态     | 
+
+ * 集合collection，存放收藏帖子信息
+ 
+ |  属性  |        功能        |    
+| -------------------------------------- | --------------------- |
+ |  date|        收藏日期       | 

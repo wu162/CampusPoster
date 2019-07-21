@@ -6,10 +6,7 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"nodeModules": true
+		"newFeature": true
 	},
 	"appid": "wx52c4895f2272e4a7",
 	"projectname": "CampusPoster",
@@ -33,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -43,15 +40,29 @@
 				},
 				{
 					"id": -1,
-					"name": "me",
-					"pathName": "pages/me/me",
+					"name": "mefollow",
+					"pathName": "pages/mefollow/mefollow",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "collection",
-					"pathName": "pages/meCollect/meCollect",
+					"name": "mefans",
+					"pathName": "pages/mefans/mefans",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "meInfoEdit",
+					"pathName": "pages/meInfoEdit/meInfoEdit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "meInfo",
+					"pathName": "pages/meInfo/meInfo",
 					"query": "",
 					"scene": null
 				},
@@ -63,7 +74,7 @@
 					"scene": null
 				},
 				{
-					"id": 4,
+					"id": -1,
 					"name": "history",
 					"pathName": "pages/meHistory/meHistory",
 					"query": "",

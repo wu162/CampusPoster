@@ -10,7 +10,7 @@ Page({
     content: '',
     images: [],
     iscollect: false,
-    user:{}
+    user: {}
   },
   /**
     * 生命周期函数--监听页面加载
@@ -105,7 +105,7 @@ Page({
         that.saveToHistoryServer();
         // 清空数据
         that.data.content = "";
-        that.data.images = [];  
+        that.data.images = [];
         that.setData({
           textContent: '',
           images: [],
@@ -170,7 +170,7 @@ Page({
     })
   },
 
-  
+
   /**
    * 判断用户是否登录
    */

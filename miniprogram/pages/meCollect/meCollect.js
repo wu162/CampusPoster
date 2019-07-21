@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page:0,
-collects:{},
-topics:[],
+    page: 0,
+    collects: {},
+    topics: [],
   },
 
   /**
@@ -53,7 +53,7 @@ topics:[],
         .get({
           success: function (res) {
             this.data.topics.push(res.data);
-           this.setData({
+            this.setData({
               topics: this.data.topics,
             })
           },

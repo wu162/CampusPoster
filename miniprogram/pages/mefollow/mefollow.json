@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "关注",
+  "usingComponents": {
+    "btnCard":"../../components/btnCard/index"
+  }
 }

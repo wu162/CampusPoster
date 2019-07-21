@@ -1,9 +1,9 @@
 {
-  "cloud":true,
   "pages": [
     "pages/index/index",
     "pages/me/me",
     "pages/meInfo/meInfo",
+    "pages/meInfoEdit/meInfoEdit",
     "pages/mefollow/mefollow",
     "pages/mefans/mefans",
     "pages/mePoster/mePoster",
@@ -52,8 +52,5 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "van-search": "lib/search/index"
-  }
+  "sitemapLocation": "sitemap.json"
 }

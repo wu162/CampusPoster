@@ -1,2 +1,34 @@
-<!--pages/meCollect/meCollect.wxml-->
-<text>pages/meCollect/meCollect.wxml</text>
+<van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  show-action
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
+ <view class='container-line'></view>
+<!--miniprogram/pages/collect/collect.wxml-->
+<block wx:for='{{topics}}' wx:for-index="idx">
+  <view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
+    <view class='container-content'>
+      <view class='content'>
+       <!-- 显示图片 -->
+        <block wx:if="{{item.images.length > 0}}">
+              <image class='content-img' src='{{item.images[0]}}' mode='aspectFill'></image>
+                <!-- 显示文本 -->
+        <view class='time-content'>
+        <view class='user-publish-time'>{{item.date}}</view>
+        <text class='content-text'>{{item.content}}</text>
+        </view>
+           </block>
+ <block wx:else>
+         <!-- 显示文本 -->
+        <view class='time-content'>
+        <view class='user-publish-time2'>{{item.date}}</view>
+        <text class='content-text'>{{item.content}}</text>
+        </view>
+              </block>
+      </view>
+    </view>
+    <view class='container-line'></view>
+  </view>
+</block>

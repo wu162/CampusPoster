@@ -1,66 +1,43 @@
 // pages/me/me.js
 Page({
-
   /**
-   * 页面的初始数据
+    * 收藏列表
+    */
+  onCollectClick: function (event) {
+    wx.navigateTo({
+      url: '../meCollect/meCollect',
+    })
+  },
+  /**
+   * 浏览历史
    */
-  data: {
-
+  onHistoryClick: function (event) {
+    wx.navigateTo({
+      url: '../meHistory/meHistory',
+    })
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 关于
    */
-  onLoad: function (options) {
-
+  onAboutClick: function (event) {
+    wx.navigateTo({
+      url: '../about/about',
+    })
+  },
+  /**
+   * 修改资料
+   */
+  onChangeClick: function (event) {
+    wx.navigateTo({
+      url: '../meInfo/meInfo',
+    })
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  * 更多
+  */
+  onMoreClick: function (event) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

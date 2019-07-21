@@ -8,7 +8,11 @@
     "pages/mefans/mefans",
     "pages/mePoster/mePoster",
     "pages/meCollect/meCollect",
-    "pages/meHistory/meHistory"
+    "pages/meHistory/meHistory",
+    "pages/message/message",
+    "pages/enter/enter",
+    "pages/about/about",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -16,6 +20,37 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "校园贴吧",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#87CEFF",
+    "backgroungColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homes.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/like.png",
+        "selectedIconPath": "images/liked.png"
+      },
+      {
+        "pagePath": "pages/enter/enter",
+        "text": "进吧",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publish_s.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me_s.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -11,8 +11,7 @@
     "pages/meHistory/meHistory",
     "pages/message/message",
     "pages/enter/enter",
-    "pages/about/about",
-    "pages/publish/publish"
+    "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

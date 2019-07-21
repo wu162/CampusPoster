@@ -8,6 +8,9 @@
 
 1. 2019.7.18 添加第一批需要编写的页面（me, meInfo, mefollow, mefans, mePoster, meCollect, meHistory)
 2. 2019.7.19 基本完善一些界面（me,meCollect,meHistory），在数据库里添加了几个集合
+3. 2019.7.20 添加vant组件库，编写并完成自己写的组件btnCard
+4. 2019.7.21 完成meInfo, mefollow, mefans, meInfoEdit的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
+5. 2019.7.21 第一次合并代码
 
 
 ### 计划
@@ -127,20 +130,20 @@
 ### 数据库
 
 ---
- 
+
  * 集合topic，存放所有帖子
- 
-|  属性  |        功能        |    
+
+|  属性  |        功能        |
 | -------------------------------------- | --------------------- |
-|   title |         帖子标题       | 
-|  content|           帖子内容    | 
-| images |         帖子内图片      | 
-| user |         发帖用户      | 
-|  date|        发帖日期       | 
-|  iscollection|       收藏状态     | 
+|   title |         帖子标题       |
+|  content|           帖子内容    |
+| images |         帖子内图片      |
+| user |         发帖用户      |
+|  date|        发帖日期       |
+|  iscollection|       收藏状态     |
 
  * 集合collection，存放收藏帖子信息
- 
- |  属性  |        功能        |    
+
+|  属性  |        功能        |
 | -------------------------------------- | --------------------- |
- |  date|        收藏日期       | 
+|  date|        收藏日期       |

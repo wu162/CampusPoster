@@ -11,6 +11,21 @@ Page({
     page: 0,
     totalCount: 0,
     topics: {},
+    test:[{
+   barname:'贴吧1',
+   title:'标题1',
+   time:'7:30',
+    },
+      {
+        barname: '贴吧2',
+        title: '标题2',
+        time: '8:30',
+      },
+      {
+        barname: '贴吧3',
+        title: '标题3',
+        time: '9:30',
+      }]
   },
 
   /**

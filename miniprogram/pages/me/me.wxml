@@ -9,6 +9,7 @@
     <view class='changeInfo'>查看个人主页或编辑资料
     </view>
   </view>
+  <view class='right_'>></view>
 </view>
 
     <view class='hr'></view>
@@ -36,7 +37,7 @@
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
-      <view>我的收藏</view>
+      <view >我的收藏</view>
     </view>
     <view class='right'>></view>
   </view>
@@ -48,7 +49,7 @@
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
-      <view>浏览历史</view>
+      <view class='navigation'>浏览历史</view>
     </view>
     <view class='right'>></view>
   </view>
@@ -59,7 +60,7 @@
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
-      <view>关于</view>
+      <view class='navigation'>关于</view>
     </view>
        <view class='right'>></view>
   </view>
@@ -70,7 +71,7 @@
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
-      <view>更多</view>
+      <view class='navigation'>更多</view>
     </view>
     <view class='right'>></view>
   </view>

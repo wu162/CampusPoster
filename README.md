@@ -121,9 +121,9 @@
 | 未完成                                 | 浏览历史（meHistory） |   田仁杰     |
 | 未完成                                 | 主页（index） |      吴佩津  |
 | 未完成                                 | 发帖（post） |      田仁杰  |
-| 未完成 | 进吧（enter） |  |
-| 未完成 | 贴吧主页（postIndex） |  |
-| 未完成 | 搜索页（search） |  |
+| 未完成 | 进吧（enter） | 吴佩津 |
+| 未完成 | 贴吧主页（postIndex） | 吴佩津 |
+| 未完成 | 搜索页（search） |吴佩津  |
 | 未完成 | 帖子内容页面（postContent） |  |
 | 未完成 | 回复页面（reply） |  |
 | 未完成 | 消息（message） |  |

@@ -1,10 +1,29 @@
 // pages/reply/reply.js
-Page({
+  const app = getApp()
+var that
+const db = wx.cloud.database();
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+  Page({
+
+    /**
+     * 页面的初始数据
+     */
+    data: {
+      isreplay:false,
+      iscollect:false,
+      page: 0,
+      totalCount: 0,
+      topics: { },
+      content:'',
+      test: {
+        head: '../../images/头像.png',
+        name: '帖子作者名',
+        date: '两天前',
+        images: '../../images/bg.png',
+        title: '标题1',
+        content:'随便加的一些内容'
+    },
+      inputValue:''
 
   },
 

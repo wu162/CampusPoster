@@ -11,6 +11,7 @@
 3. 2019.7.20 添加vant组件库，编写并完成自己写的组件btnCard
 4. 2019.7.21 完成meInfo, mefollow, mefans, meInfoEdit的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 5. 2019.7.21 第一次合并代码
+6. 2019.7.23 添加wux库，添加2个需要编写的页面（likes,mentions）
 
 
 ### 计划

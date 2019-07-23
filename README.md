@@ -12,7 +12,7 @@
 4. 2019.7.21 完成meInfo, mefollow, mefans, meInfoEdit的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 5. 2019.7.21 第一次合并代码
 6. 2019.7.23 添加wux库，添加2个需要编写的页面（likes,mentions）
-
+7. 2019.7.23 完成postContent，reply页面的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 
 ### 计划
 

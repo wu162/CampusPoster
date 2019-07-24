@@ -1,1 +1,120 @@
-/* pages/message/message.wxss */
+page{
+  background: #EFEFF4;
+}
+.hr{
+  height: 2rpx;
+  background-color: #E5E5E5;
+}
+.itemForm{
+  display: flex;
+  flex-direction: row;
+  background-color: #FFFFFF;
+  height: 100rpx;
+  align-items: center;
+}
+.itemText{
+  width: 75%;
+  text-align: left;
+  font-size: 36rpx;
+  color: #000000;
+}
+.itemIcon{
+  width: 15%;
+  text-align: center;
+}
+.right{
+  width: 10%;
+  text-align: center;
+  color: #C7C7CC;
+}
+.line{
+  height: 24rpx;
+}
+.message{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+.userForm{
+  display: flex;
+  flex-direction: row;
+  height: 108rpx;
+}
+.userIcon{
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  margin-right: 24rpx;
+  width: 72rpx;
+  height: 72rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.userName{
+  overflow: hidden;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  width: 65%;
+  text-align: left;
+  font-size: 34rpx;
+  color: #000000;
+}
+.time{
+  margin-top: 36rpx;
+  margin-right: 30rpx;
+  width: 25%;
+  text-align: right;
+  font-size: 26rpx;
+  color: #A9A9A9;
+}
+.title{
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-top: 28rpx;
+  font-size: 34rpx;
+  color: #000000;
+}
+.replyForm{
+  display: flex;
+  flex-direction: row;
+  margin-left: 56rpx;
+  margin-right: 56rpx;
+  margin-top: 28rpx;
+}
+.replyText1{
+  width: 20%;
+  font-size: 26rpx;
+  color: #000000;
+}
+.replyText2{
+  width: 80%;
+  font-size: 26rpx;
+  color: #000000;
+}
+.Blueform{
+  margin-left: 56rpx;
+  margin-top: 20rpx;
+  margin-right: 56rpx;
+  margin-bottom: 38rpx;
+  border-radius: 16rpx;
+  background-color: #CFF9FF;
+}
+.beRepliedText{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  color: #000000;
+}
+.remind{
+  height:  80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.remindText{
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #a3a2a2;
+}

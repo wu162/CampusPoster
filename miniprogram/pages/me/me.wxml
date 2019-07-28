@@ -41,7 +41,7 @@
     </view>
     <view class='right'>></view>
   </view>
- 
+   <view class='hr'></view>
   <!-- 浏览历史 -->
   <view class='hr'></view>
   <view class='item' bindtap='onHistoryClick'>
@@ -53,6 +53,7 @@
     </view>
     <view class='right'>></view>
   </view>
+    <view class='hr'></view>
   <!-- 关于 -->
    <view class='hr'></view>
   <view class='item' bindtap='onAboutClick' >

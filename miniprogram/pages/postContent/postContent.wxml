@@ -1,2 +1,105 @@
-<!--pages/postContent/postContent.wxml-->
-<text>pages/postContent/postContent.wxml</text>
+<view class='container-line' ></view>
+<!--miniprogram/pages/collect/collect.wxml-->
+  <view class='container' bindtap='onExitReplayClick'>
+    <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>{{test.date}}</view>
+      </view>
+      <button class="btn" bindtap='follow'>关注</button>
+      </view>
+      <!-- 显示文本 -->
+        <text class='title'>{{test.title}}</text>
+         <text class='content'>{{test.content}}</text>
+       <!-- 显示图片 -->
+        <block wx:if="{{test.images!=null}}">
+              <image class='content-img' src='{{test.images}}' mode='aspectFill'></image> 
+           </block>
+<button class='bar'>所属吧名</button>
+ <view class='container-content'>
+<image class='icon-up'  src="../../images/分享.png" ></image>
+<view class='icon-text'>40</view>
+<image class='icon-up2'  src="../../images/评论.png" ></image>
+<view class='icon-text'>40</view>
+<image class='icon-up3'  src="../../images/点赞.png"></image>
+<view class='icon-text'>40</view>
+</view>
+<view class='line' ></view>
+
+
+
+         <van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="全部回复">
+   <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      <image class='icon-up4'  src="../../images/点赞.png"></image>
+<view class='icon-text2'>40</view>
+      </view>
+      <view class='replay-content'>不错</view>
+      <view class='replay'>回复</view>
+
+
+        <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      </view>
+      <view class='replay-content'>不错</view>
+      <view class='replay'>回复</view>
+
+
+        <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      </view>
+      <view class='replay-content'>不错</view>
+      <view class='replay'>回复</view>
+   <view class='block' ></view>
+
+  </van-tab>
+  <van-tab title="只看楼主">
+     <view class='block' ></view>
+  </van-tab>
+</van-tabs>
+  <view class='return-container' bindtap='onRrturnClick' >
+    <image class='return-icon' src='../../images/返回顶部.png'></image>
+  </view>
+        </view>
+    <view class='container-line'></view>
+
+
+ <view class="answer-footer flex-wrp"  wx:if='{{isreplay}}'>
+<view class ='input-replay' >  
+       <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder-style="color:red"  bindinput="bindKeyInput"/>
+      </view>
+    </view>
+  </view>
+           </view>
+       <button class="btn-post" bindtap='post'>发送</button>
+           </view>
+
+ <view class="answer-footer flex-wrp"  wx:else>
+       <view class ='input' bindtap='onReplayClick' >  
+       <text class='input-text'> 我有一个大胆的想法....</text> </view>      
+                    <image class='icon' src="../../images/评论.png"></image>       
+                    <image class='icon' src="../../images/收藏.png"></image>
+                    <view wx:if='{{iscollect}}'> 
+                    <image class='icon' src="../../images/分享.png" bindtap='onCollectClick'></image>      
+                    </view>
+                     <view wx:else> 
+                    <image class='icon' src="../../images/分享.png" bindtap='onCollectClick'></image>      
+                    </view>   
+     </view>

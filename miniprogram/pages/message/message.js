@@ -1,11 +1,51 @@
 // pages/message/message.js
 Page({
+  /**
+      * @我的
+      */
+  onMentionsClick: function (event) {
+    wx.navigateTo({
+      url: '../mentions/mentions',
+    })
+  },
+
+  /**
+    * 点赞
+    */
+  onLikesClick: function (event) {
+    wx.navigateTo({
+      url: '../likes/likes',
+    })
+  },
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    test: [{
+      head:'../../images/bg.png',
+      username:'Alice1',
+      time:'15:50',
+      title:'帖子1',
+      reply:'Alice1回复的内容',
+      bereply:'被Alice1回复的内容',
+    },
+    {
+      head: '../../images/bg.png',
+      username: 'Alice2',
+      time: '昨天 15:12',
+      title: '帖子2',
+      reply: 'Alice2回复的内容',
+      bereply: '被Alice2回复的内容',
+    },
+    {
+      head: '../../images/bg.png',
+      username: 'Alice3',
+      time: '2000年1月1日',
+      title: '帖子3',
+      reply: 'Alice3回复的内容',
+      bereply: '被Alice3回复的内容',
+    }]
   },
 
   /**

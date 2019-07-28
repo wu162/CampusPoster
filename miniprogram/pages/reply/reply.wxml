@@ -1,2 +1,47 @@
-<!--pages/reply/reply.wxml-->
-<text>pages/reply/reply.wxml</text>
+   <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      <image class='icon-up4'  src="../../images/点赞.png"></image>
+<view class='icon-text2'>40</view>
+      </view>
+      <view class='replays'>不错</view>
+<view class='line' ></view>
+<view>7条回复 </view>
+   <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      <image class='icon-up4'  src="../../images/点赞.png"></image>
+<view class='icon-text2'>40</view>
+      </view>
+      <view class='replays'>不错</view>
+      <view class='contain-line'></view>
+         <view class='container-content'>
+    <image class='head'src='{{test.head}}'></image>
+      <view class='title-content'>
+      <view class='name'>{{test.name}}</view>
+      <view class='date'>第2楼 | {{test.date}}</view>
+      </view>
+      <image class='icon-up4'  src="../../images/点赞.png"></image>
+<view class='icon-text2'>40</view>
+      </view>
+      <view class='replays'>不错</view>
+            <view class='contain-line'></view>
+
+            <view class="answer-footer flex-wrp" >
+<view class ='input-replay' >  
+       <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder-class='placeholder' placeholder='回复'    bindinput="bindKeyInput"/>
+      </view>
+    </view>
+  </view>
+           </view>
+       <button class="btn-post" bindtap='post'>发送</button>
+           </view>

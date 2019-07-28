@@ -12,7 +12,7 @@
 4. 2019.7.21 完成meInfo, mefollow, mefans, meInfoEdit的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 5. 2019.7.21 第一次合并代码
 6. 2019.7.23 添加wux库，添加2个需要编写的页面（likes,mentions）
-
+7. 2019.7.23 完成postContent，reply页面的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 
 ### 计划
 
@@ -127,10 +127,10 @@
 | 未完成 | 搜索页（search） |吴佩津  |
 | 未完成 | 帖子内容页面（postContent） | 田仁杰 |
 | 未完成 | 回复页面（reply） |田仁杰  |
-| 未完成 | 点赞（likes） |  |
-| 未完成 | 消息（message） |  |
-| 未完成 | @ 页面（mentions） |  |
-| 未完成 | 关于（about） |  |
+| 未完成 | 点赞（likes） | 张家铭 |
+| 未完成 | 消息（message） | 张家铭 |
+| 未完成 | @ 页面（mentions） | 马晓轩 |
+| 未完成 | 关于（about） | 马晓轩 |
 
 ### 数据库
 

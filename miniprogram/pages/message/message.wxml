@@ -1,2 +1,62 @@
-<!--pages/message/message.wxml-->
-<text>pages/message/message.wxml</text>
+<view class='hr'></view>
+<view class='itemForm' bindtap='onMentionsClick'>
+  <view class='itemIcon'>
+    <image src='../../images/@.png' style="width:44rpx;height:44rpx;"></image>
+  </view>
+  <view class='itemText'>
+  @我的
+  </view>
+  <view class='right'>></view>
+</view>
+<view class='hr'></view>
+
+<view class='hr'></view>
+<view class='itemForm' bindtap='onLikesClick'>
+  <view class='itemIcon'>
+   <image src='../../images/点赞.png' style="width:44rpx;height:44rpx;"></image>
+  </view>
+  <view class='itemText'>
+  点赞
+  </view>
+  <view class='right'>></view>
+</view>
+<view class='hr'></view>
+
+<block wx:for='{{test}}' wx:for-index="idx">
+<view class='line'></view>
+
+<view class='hr'></view>
+<view class='message' data-topicId='{{item._id}}'>
+  <view class='userForm'>
+    <view class='userIcon'>
+      <image src='{{item.head}}'></image>
+    </view>
+    <view class='userName'>{{item.username}}</view>
+    <view class='time'>{{item.time}}</view>
+  </view>
+
+  <view class='hr'></view>
+  <view class='hr'></view>
+
+  
+    <view class='title'>{{item.title}}</view>
+
+  <view class='replyForm'>
+    <view class='replyText1'>回复人：</view>
+    <view class='replyText2'>{{item.reply}}</view>
+  </view>
+
+  <view class='Blueform'>
+    <view class='beRepliedText'>{{item.bereply}}</view>
+  </view>
+
+</view>
+<view class='hr'></view>
+</block>
+
+
+<view class='remind'>
+  <view class='remindText'>
+  无更多回复
+  </view>
+</view>

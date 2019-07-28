@@ -5,7 +5,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    test: [{
+      head: '../../images/bg.png',
+      username: 'Alice1',
+      time: '15:50',
+      typeisreply: true,
+      reply: 'Alice1回复的内容',
+      image: '../../images/bg.png',
+      title: '帖子1',
+      barname: '所属吧名1',
+    },
+    {
+      head: '../../images/bg.png',
+      username: 'Alice2',
+      time: '昨天 15:12',
+      typeisreply: false,
+      reply: '',
+      image: '../../images/bg.png',
+      title: '帖子2',
+      barname: '所属吧名2',
+    },
+    {
+      head: '../../images/bg.png',
+      username: 'Alice3',
+      time: '2000年1月1日',
+      typeisreply: true,
+      reply: 'Alice3回复的内容',
+      image: '../../images/bg.png',
+      title: '帖子3',
+      barname: '所属吧名2',
+    }]
   },
 
   /**

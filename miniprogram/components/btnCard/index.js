@@ -27,7 +27,15 @@ Component({
     btn_state:{           //0没按下，1按下了
       type:Number,
       value:0
-    }
+    },
+    hidden:{
+      type: Boolean,
+      value: false
+    },
+    card_link: {
+      type: String,
+      value: ''
+    },
   },
 
   data:{
@@ -53,6 +61,12 @@ Component({
     onthumb (e) {
       wx.navigateTo({
         url: this.data.thumb_link
+      })
+    },
+
+    onCard(e){
+      wx.navigateTo({
+        url: this.data.card_link
       })
     }
   },

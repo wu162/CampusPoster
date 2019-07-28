@@ -1,4 +1,7 @@
 {
+  "navigationBarTitleText": "主页",
   "usingComponents": {
+    "wux-search-bar": "../../wux/search-bar/index",
+    "postCard": "../../components/postCard/index"
   }
 }

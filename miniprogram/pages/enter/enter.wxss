@@ -1,1 +1,35 @@
-/* pages/enter/enter.wxss */
+.search{
+  width: 100%;
+}
+
+.label{
+  margin: 36rpx 38rpx;
+  display: flex;
+}
+
+.label_title{
+  font-size: 36rpx;
+  flex: 1;
+}
+
+.eye{
+  width: 46rpx;
+  height: 30rpx;
+}
+
+.poster_scroll_X{
+  margin:34rpx 38rpx;
+  height: 210rpx;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.posterRec{
+  display: inline-block;
+  margin-left: 15rpx;
+}

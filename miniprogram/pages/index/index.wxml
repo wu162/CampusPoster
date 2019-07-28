@@ -1,1 +1,15 @@
-<text>首页</text>
+<view class='search' bindtap='onSearch'>
+  <wux-search-bar disabled/>
+</view>
+<view wx:for="{{postList}}">
+  <postCard thumb='{{item.thumb}}'
+            thumb_link='{{item.thumb_link}}'
+            content_link='{{item.content_link}}'
+            name='{{item.name}}'
+            title='{{item.title}}'
+            content='{{item.content}}'
+            thumbs='{{item.thumbs}}'
+            icon='{{icons}}'
+            desc='{{item.nums}}'/>
+  <view wx:if="{{index<postList.length-1}}" class='br'></view>
+</view>

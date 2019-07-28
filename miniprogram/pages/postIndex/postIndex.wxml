@@ -1,2 +1,45 @@
-<!--pages/postIndex/postIndex.wxml-->
-<text>pages/postIndex/postIndex.wxml</text>
+<view class='bg'>
+  <view class='head'>
+    <image class='post_thumb' src='{{post.thumb}}'></image>
+    <view class='info'>
+      <view class='title'>{{post.title}}</view>
+      <view class='desc'>{{post.desc}}</view>
+    </view>
+    <view class="{{post.btn_text=='关注'?'btn-unpressed':'btn-pressed'}}">
+      <text class='btn_text'>{{post.btn_text}}</text>
+    </view>
+  </view>
+</view>
+<view class='top_postWrap'>
+  <view class='top_post'>
+    <view class='first_top'>
+      <text class='top_label'>置顶</text>
+      <text class='top_title'>{{top[0]}}</text>
+    </view>
+    <view class='br'></view>
+    <view class='first_top'>
+      <text class='top_label'>置顶</text>
+      <text class='top_title'>{{top[1]}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='tabs'>
+  <wux-tabs defaultCurrent="tab1">
+    <wux-tab key="tab1" title="全部"></wux-tab>
+    <wux-tab key="tab2" title="精华"></wux-tab>
+</wux-tabs>
+</view>
+
+<view wx:for="{{postList}}">
+  <postCard thumb='{{item.thumb}}'
+            thumb_link='{{item.thumb_link}}'
+            content_link='{{item.content_link}}'
+            name='{{item.name}}'
+            title='{{item.title}}'
+            content='{{item.content}}'
+            thumbs='{{item.thumbs}}'
+            icon='{{icons}}'
+            desc='{{item.nums}}'/>
+  <view wx:if="{{index<postList.length-1}}" class='br2'></view>
+</view>

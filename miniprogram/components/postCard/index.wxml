@@ -1,0 +1,35 @@
+<view class='container width'>
+  <view class='head width'>
+      <image class='thumb' src='{{thumb}}' bindtap='onthumb'></image>
+      <text class='name'>{{name}}</text>
+  </view>
+  <view class='title width' bindtap='onContent'>{{title}}</view>
+  <view class='content width' bindtap='onContent'>{{content}}</view>
+
+  <view wx:if="{{thumbs.length==1}}" class='width'>
+    <image class='thumbs_single' src='{{thumbs[0]}}' mode='center'></image>
+  </view>
+  <view wx:if="{{thumbs.length==2}}" class='width'>
+    <image class='thumbs_multi' src='{{thumbs[0]}}' mode='center'></image>
+    <image class='thumbs_multi space_left' src='{{thumbs[1]}}' mode='center'></image>
+  </view>
+  <view wx:if="{{thumbs.length>=3}}" class='width'>
+    <image class='thumbs_multi' src='{{thumbs[0]}}' mode='center'></image>
+    <image class='thumbs_multi space_left' src='{{thumbs[1]}}' mode='center'></image>
+    <image class='thumbs_multi space_left' src='{{thumbs[2]}}' mode='center'></image>
+  </view>
+
+  <view class='width flex_items bottom'>
+    <view class='bottom_left'>
+      <image class='bottom_icon' src='{{icon[0]}}'></image>
+      <text class='desc'>{{desc[0]}}</text>
+      <image class='bottom_icon bottom_between' src='{{icon[1]}}'></image>
+      <text class='desc'>{{desc[1]}}</text>
+    </view>
+    <view>
+      <image class='bottom_icon' src='{{icon[2]}}'></image>
+      <text class='desc'>{{desc[2]}}</text>
+    </view>
+  </view>
+
+</view>

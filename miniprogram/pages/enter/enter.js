@@ -5,7 +5,77 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    see:1,
+    posterRec:[
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        name: '吧名',
+        desc: '关注10w',
+        link: '../postContent/postContent'
+      }
+    ],
+    posterFol:[
+      {
+        thumb: '../../images/bg.png',
+        title: '吧名',
+        desc: '关注 10w  帖子 10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        title: '吧名',
+        desc: '关注 10w  帖子 10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        title: '吧名',
+        desc: '关注 10w  帖子 10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        title: '吧名',
+        desc: '关注 10w  帖子 10w',
+        link: '../postContent/postContent'
+      },
+      {
+        thumb: '../../images/bg.png',
+        title: '吧名',
+        desc: '关注 10w  帖子 10w',
+        link: '../postContent/postContent'
+      }
+    ]
   },
 
   /**
@@ -15,52 +85,23 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onEye:function(e){
+    if(this.data.see==1)
+    {
+      this.setData({
+        see:0
+      })
+    }
+    else{
+      this.setData({
+        see: 1
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onSearch:function(e){
+    wx.navigateTo({
+      url: '../search/search'
+    })
   }
 })

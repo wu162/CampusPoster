@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "贴吧主页",
+  "usingComponents": {
+    "btnCard": "../../components/btnCard/index",
+    "wux-tabs": "../../wux/tabs/index",
+    "wux-tab": "../../wux/tab/index",
+    "postCard": "../../components/postCard/index"
+  }
 }

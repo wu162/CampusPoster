@@ -1,2 +1,22 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<van-search show-action 
+            value="{{searchValue}}" 
+            placeholder='请输入搜索关键字' 
+            bind:cancel='onCancel'/>
+
+<view wx:for="{{history}}">
+  <van-field value="{{item}}"
+    left-icon="clock-o"
+    right-icon='close'
+    readonly
+    data-index="{{index}}"
+    data-value="{{item}}"
+    bind:click-icon='onDelete'
+    bindtap='onHistory'/>
+</view>
+<view wx:if="{{history.length>0}}" class='br'></view>
+<view class='label'>贴吧热搜</view>
+<view class='tag'>
+  <view wx:for="{{tags}}" class='inline'>
+    <van-tag round size="medium">{{item}}</van-tag>
+  </view>
+</view>

@@ -1,1 +1,28 @@
-<wux-search-bar clear maxlength="8" />
+<view class='search' bindtap='onSearch'>
+  <wux-search-bar disabled/>
+</view>
+<view class='label'>
+  <text class='label_title'>最近逛的吧</text>
+  <view class='eye_wrap'>
+    <image class='eye' src="{{see==1?'../../images/eye_o.png':'../../images/eye_c.png'}}" bindtap='onEye'></image>
+  </view>
+</view>
+<scroll-view class="poster_scroll_X" scroll-x="true" hidden="{{see==1?false:true}}">
+  <view wx:for="{{posterRec}}" class='posterRec'>
+    <boxCard thumb='{{item.thumb}}'
+             title='{{item.name}}' 
+             desc='{{item.desc}}' 
+             link='{{item.link}}'/>
+  </view>
+</scroll-view>
+
+<view class='label'>
+  <text class='label_title'>关注的吧</text>
+</view>
+<view wx:for="{{posterFol}}" class='posterFol'>
+  <btnCard thumb='{{item.thumb}}' 
+             title='{{item.title}}' 
+             desc='{{item.desc}}' 
+             card_link='{{item.link}}'
+             hidden='true' />
+</view>

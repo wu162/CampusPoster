@@ -1,0 +1,6 @@
+<view class='container' bindtap='onclick'>
+  <view class='bg'></view>
+  <image class='thumb' src='{{thumb}}'></image>
+  <view class='title'>{{title}}</view>
+  <view class='desc'>{{desc}}</view>
+</view>

@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "进吧",
   "usingComponents": {
-    "wux-search-bar": "../../wux/search-bar/index"
+    "wux-search-bar":"../../wux/search-bar/index",
+    "boxCard": "../../components/boxCard/index",
+    "btnCard": "../../components/btnCard/index"
   }
 }

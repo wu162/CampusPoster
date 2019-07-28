@@ -1,4 +1,4 @@
-<view class="card-content">
+<view class="card-content" bindtap='onCard'>
     <view class="card-thumb flex-item" bindtap='onthumb'>
         <image class='card-thumb-image' src="{{thumb}}"></image>
     </view>
@@ -6,7 +6,7 @@
         <text class="card-title">{{title}}</text>
         <text class="card-desc">{{desc}}</text>
     </view>
-    <view class="card-btn flex-item" bindtap='btnpressed'>
+    <view class="card-btn flex-item" bindtap='btnpressed' hidden="{{hidden}}">
         <text class="{{btn_state==0?'btn-text-unpressed':'btn-text-pressed'}}">{{btnText}}</text>
     </view>
 </view>

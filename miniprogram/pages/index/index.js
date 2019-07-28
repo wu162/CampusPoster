@@ -26,7 +26,7 @@ Page({
         name: '作者名',
         title: '帖子标题',
         content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
-        thumbs: ['../../images/bg.png', '../../images/bg.png', '../../images/bg.png', '../../images/bg.png'],
+        thumbs: [],
         nums: ['20', '20', '20']
       },
       {
@@ -36,7 +36,7 @@ Page({
         name: '作者名',
         title: '帖子标题',
         content: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
-        thumbs: ['../../images/bg.png', '../../images/bg.png', '../../images/bg.png', '../../images/bg.png'],
+        thumbs: ['../../images/bg.png'],
         nums: ['20', '20', '20']
       }
     ]

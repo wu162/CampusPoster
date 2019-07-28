@@ -11,37 +11,37 @@ Page({
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         name: '吧名',
         desc: '关注10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       }
     ],
     posterFol:[
@@ -49,31 +49,31 @@ Page({
         thumb: '../../images/bg.png',
         title: '吧名',
         desc: '关注 10w  帖子 10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         title: '吧名',
         desc: '关注 10w  帖子 10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         title: '吧名',
         desc: '关注 10w  帖子 10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         title: '吧名',
         desc: '关注 10w  帖子 10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       },
       {
         thumb: '../../images/bg.png',
         title: '吧名',
         desc: '关注 10w  帖子 10w',
-        link: '../postContent/postContent'
+        link: '../postIndex/postIndex'
       }
     ]
   },

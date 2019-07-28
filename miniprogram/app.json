@@ -39,16 +39,16 @@
         "selectedIconPath": "images/homes.png"
       },
       {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "images/like.png",
-        "selectedIconPath": "images/liked.png"
-      },
-      {
         "pagePath": "pages/enter/enter",
         "text": "进吧",
         "iconPath": "images/publish.png",
         "selectedIconPath": "images/publish_s.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/like.png",
+        "selectedIconPath": "images/liked.png"
       },
       {
         "pagePath": "pages/me/me",

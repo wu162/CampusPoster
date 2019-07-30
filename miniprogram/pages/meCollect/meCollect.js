@@ -12,27 +12,33 @@ Page({
     totalCount: 0,
     topics: {},
     test: [{
-      head:'../../images/头像.png',
+      head:'../../images/tian/head.png',
       name:'帖子作者名',
       barname: '贴吧1',
-      collect:'../../images/收藏图标.png',
-      images: '../../images/bg.png',
+      collect:'../../images/tian/collect.png',
+      collected: '../../images/tian/collected.png',
+      images: '../../images/tian/bg.png',
       title: '标题1',
+      isCollected:true,
     },
       {
-        head: '../../images/头像.png',
+        head: '../../images/tian/head.png',
         name: '帖子作者名',
         barname: '贴吧1',
-        collect: '../../images/收藏图标选中.png',
+        collect: '../../images/tian/collect.png',
+        collected: '../../images/tian/collected.png',
         title: '标题1',
+        isCollected: true,
       },
       {
-        head: '../../images/头像.png',
+        head: '../../images/tian/head.png',
         name: '帖子作者名',
         barname: '贴吧1',
-        collect: '../../images/收藏图标.png',
-        images: '../../images/bg.png',
+        collect: '../../images/tian/collect.png',
+        collected: '../../images/tian/collected.png',
+        images: '../../images/tian/bg.png',
         title: '标题1',
+        isCollected: false,
       }]
   },
 
@@ -88,10 +94,34 @@ Page({
   onItemClick: function (event) {
     var id = event.currentTarget.dataset.topicid;
     wx.navigateTo({
-
+      url: '../postContent/postContent',
     })
   },
-
+  /**
+ * writer 点击
+ */
+  onWriterClick: function (event) {
+    var id = event.currentTarget.dataset.topicid;
+    wx.navigateTo({
+      url: '../meInfo/meInfo',
+    })
+  },
+  /**
+   *collect 点击
+   */
+  OnCollectClick: function (event) {
+   var index=event.currentTarget.dataset.index;
+   console.log(index)
+    var up = "test[0].collect";
+    if(![up])
+   that.setData({
+     [up]:true,
+   })
+   else
+      that.setData({
+        [up]:false,
+      })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

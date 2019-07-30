@@ -1,2 +1,30 @@
-<!--pages/post/post.wxml-->
-<text>pages/post/post.wxml</text>
+<!--miniprogram/pages/marry/marry.wxml-->
+<view class="content">
+  <form bindsubmit="formSubmit">
+    <view class="text-content">
+
+     <view class='title-area'>
+        <textarea name="input-content" type="text" placeholder="加个标题哟~" placeholder-class="holder" value="{{titleContent}}" bindblur='gettitleAreaContent'></textarea>
+      </view>
+
+      <view class='text-area'>
+        <textarea name="input-content" type="text" placeholder="来吧，尽情发挥吧~" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent'></textarea>
+      </view>
+
+    </view>
+    <scroll-view class="image-group" scroll-x="true">
+      <block wx:for='{{images}}' wx:for-index='idx'>
+      <view>
+        <image src='{{images[idx]}}' mode='aspectFill' bindtap="previewImg"></image>
+        <icon type='clear' bindtap='removeImg'  data-index="{{idx}}" ></icon>
+      </view>
+      </block>
+    </scroll-view>
+      <image class='btn-img' src='../../images/tian/add.png' bindtap='chooseImage'></image>
+      <view class='line'></view>
+       <image class="btn" formType='submit'  open-type="getUserInfo" src='../../images/tian/post.png'></image>
+      <view class='line'></view>
+    
+  </form>
+
+</view>

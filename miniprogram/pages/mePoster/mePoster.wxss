@@ -1,1 +1,79 @@
 /* pages/mePoster/mePoster.wxss */
+@import "../postContent/postContent.wxss";
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.container-content{
+   display: flex;
+  flex-direction: row;
+}
+.content {
+  display: flex;
+  flex-direction:column;
+}
+.day{
+  margin-left: 12rpx;
+  font-size: 48rpx;
+
+}
+.content-img {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.container-line{
+  height: 1rpx;
+  background-color:#D6D6DB;
+}
+.month{
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+.barsname{
+  margin-top: 25rpx;
+  margin-left: 22rpx;
+  font-size: 26rpx;
+  color: #A9A9A9;
+}
+.titlename{
+  margin-left: 20rpx;
+  font-size: 35rpx;
+  margin-bottom: 10rpx;
+}
+.icon-up{
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+  margin-left: 120rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+.icon-up2{
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+  margin-left: 60rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+.icon-up3{
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+  margin-left: 300rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+.icon-text{
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
+.left{
+  margin-left: 100rpx;
+}
+.fenge-line{
+  height: 15rpx;
+  color: #FCF9FE
+}

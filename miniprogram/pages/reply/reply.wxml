@@ -1,8 +1,8 @@
    <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
+    <image class='head'src='{{test[0].head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
+      <view class='name'>{{test[0].name}}</view>
+      <view class='date'>第2楼 | {{test[0].date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>
 <view class='icon-text2'>40</view>
@@ -10,35 +10,40 @@
       <view class='replays'>不错</view>
 <view class='line' ></view>
 <view>7条回复 </view>
+ <block wx:for='{{test}}' wx:for-index="idx">
    <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
+    <image class='head'src='{{item.head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
+      <view class='name'>{{item.name}}</view>
+      <view class='date'>第2楼 | {{item.date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>
 <view class='icon-text2'>40</view>
       </view>
       <view class='replays'>不错</view>
       <view class='contain-line'></view>
-         <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
+   </block>
+
+   <block wx:for='{{reply}}' wx:for-index="idx">
+   <view class='container-content'>
+    <image class='head'src='{{item.head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
+      <view class='name'>{{item.name}}</view>
+      <view class='date'>第2楼 | {{item.date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>
 <view class='icon-text2'>40</view>
       </view>
-      <view class='replays'>不错</view>
-            <view class='contain-line'></view>
-
+      <view class='replays'>{{item.content}}</view>
+      <view class='contain-line'></view>
+   </block>
+   <view class='block' ></view>
             <view class="answer-footer flex-wrp" >
 <view class ='input-replay' >  
        <view class="page-section">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" placeholder-class='placeholder' placeholder='回复'    bindinput="bindKeyInput"/>
+        <input class="weui-input" placeholder-class='placeholder' placeholder='回复'  bindinput="bindKeyInput"/>
       </view>
     </view>
   </view>

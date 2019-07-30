@@ -14,14 +14,33 @@ Page({
     totalCount: 0,
     topics: {},
     content:'',
-    test: {
-      head: '../../images/头像.png',
+    test: 
+      [{head: '../../images/bg.png',
       name: '帖子作者名',
       date: '两天前',
       images: '../../images/bg.png',
       title: '标题1',
-      content:'随便加的一些内容'
-    },
+      content:'随便加的一些内容'}
+      ,
+        {
+          head: '../../images/bg.png',
+          name: '帖子作者名',
+          date: '两天前',
+          images: '../../images/bg.png',
+          title: '标题1',
+          content: '随便加的一些内容',
+          replyCount:7
+        }
+        ,
+        {
+          head: '../../images/bg.png',
+          name: '帖子作者名',
+          date: '两天前',
+          images: '../../images/bg.png',
+          title: '标题1',
+          content: '随便加的一些内容'
+        }
+      ],
     inputValue:''
 
   },
@@ -75,13 +94,30 @@ Page({
   /**
    * item 点击
    */
-  onItemClick: function (event) {
+  onWriterClick: function (event) {
     var id = event.currentTarget.dataset.topicid;
     wx.navigateTo({
-
+      url: '../meInfo/meInfo',
     })
   },
-
+  /**
+ * reply 点击
+ */
+  onReplyClick: function (event) {
+    var id = event.currentTarget.dataset.topicid;
+    wx.navigateTo({
+      url: '../reply/reply',
+    })
+  },
+  /**
+  * reply 点击
+  */
+  onBarClick: function (event) {
+    var id = event.currentTarget.dataset.topicid;
+    wx.navigateTo({
+      url: '../postIndex/postIndex',
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -151,6 +187,7 @@ Page({
     })
       
   },
+  
   onExitReplayClick: function (event) {
     console.log("Exit")
     if (that.data.isreplay)
@@ -168,7 +205,19 @@ Page({
         isreplay: true
       })
   },
-
+  // 回到顶部
+  goTop: function (e) {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
   /**
  * 获取填写的内容
  */

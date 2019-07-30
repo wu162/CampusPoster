@@ -1,4 +1,4 @@
-<view class='userBg'  bindtap='onChangeClick'>
+<view class='userBg' bindtap='onChangeClick'>
   <view class='img'>
     <open-data type="userAvatarUrl"></open-data>
   </view>
@@ -12,40 +12,39 @@
   <view class='right_'>></view>
 </view>
 
-    <view class='hr'></view>
-    <view class='userBg2'>
-        <view class="user-item" bindtap='onAboutClick'>
-         <text class='num'>0</text>
-          <text class='text'>关注</text>
-        </view>
-         <view class="user-item">
-         <text class='num'>0</text>
-          <text class='text'>粉丝</text>
-        </view>
-         <view class="user-item">
-         <text class='num'>0</text>
-          <text class='text'>帖子</text>
-        </view>
-        </view>
+<view class='hr'></view>
+<view class='userBg2'>
+  <view class="user-item" bindtap='onFollowClick'>
+    <text class='num'>0</text>
+    <text class='text'>关注</text>
+  </view>
+  <view class="user-item" bindtap='onFanClick'>
+    <text class='num'>0</text>
+    <text class='text'>粉丝</text>
+  </view>
+  <view class="user-item" bindtap='onPosterClick'>
+    <text class='num'>0</text>
+    <text class='text'>帖子</text>
+  </view>
+</view>
 
 <!-- 底部列表 -->
 <view class='content'>
   <!-- 收藏列表 -->
-   <view class='line'></view>
+  <view class='line'></view>
   <view class='item' bindtap='onCollectClick'>
-  <view class='icon'>
+    <view class='icon'>
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
-      <view >我的收藏</view>
+      <view>我的收藏</view>
     </view>
     <view class='right'>></view>
   </view>
-   <view class='hr'></view>
-  <!-- 浏览历史 -->
   <view class='hr'></view>
+  <!-- 浏览历史 -->
   <view class='item' bindtap='onHistoryClick'>
-  <view class='icon'>
+    <view class='icon'>
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
@@ -53,22 +52,21 @@
     </view>
     <view class='right'>></view>
   </view>
-    <view class='hr'></view>
+  <view class='hr'></view>
   <!-- 关于 -->
-   <view class='hr'></view>
-  <view class='item' bindtap='onAboutClick' >
-  <view class='icon'>
+  <view class='item' bindtap='onAboutClick'>
+    <view class='icon'>
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>
       <view class='navigation'>关于</view>
     </view>
-       <view class='right'>></view>
+    <view class='right'>></view>
   </view>
   <view class='hr'></view>
   <!-- 更多 -->
-  <view class='item'  bindtap='onMoreClick'>
-     <view class='icon'>
+  <view class='item' bindtap='onMoreClick'>
+    <view class='icon'>
       <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
     </view>
     <view class='itemName'>

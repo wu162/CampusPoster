@@ -1,2 +1,33 @@
-<!--pages/mePoster/mePoster.wxml-->
-<text>pages/mePoster/mePoster.wxml</text>
+<view class='container-line'></view>
+<!--miniprogram/pages/collect/collect.wxml-->
+<block wx:for='{{test}}' wx:for-index="idx">
+  <view class='container' data-topicId='{{item._id}}' data-index='{{idx}}'>
+    <view class='container-content'>
+    <view class='content'>
+    <text class='day'>{{item.day}}</text>
+    <text class ='month'>{{item.month}}</text>
+      </view>
+      <view class='content' bindtap='onItemClick'>
+       <text class='barsname'>{{item.barname}}</text>
+    <text class ='titlename'>{{item.title}}</text>
+      </view>
+      </view>
+<view class='left' bindtap='onItemClick' >
+       <!-- 显示图片 -->
+        <block wx:if="{{item.images!=null}}">
+       <block wx:for='{{item.images}}' wx:for-index="imgidx">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+                  </block>
+           </block>
+        </view>
+        <view class='container-content'  bindtap='onItemClick'>
+<image class='icon-up'  src="../../images/分享.png" ></image>
+<view class='icon-text'>40</view>
+<image class='icon-up2'  src="../../images/评论.png" ></image>
+<view class='icon-text'>40</view>
+<image class='icon-up3'  src="../../images/点赞.png"></image>
+<view class='icon-text'>40</view>
+</view>
+    <view class='fenge-line'></view>
+    </view>
+</block>

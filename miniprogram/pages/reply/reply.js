@@ -15,15 +15,42 @@ const db = wx.cloud.database();
       totalCount: 0,
       topics: { },
       content:'',
-      test: {
-        head: '../../images/头像.png',
+      list:{
+      head:'',
+      name:'',
+      date:'',
+      images:'',
+      title:'',
+      content:'',
+      },
+      test: [{
+        head: '../../images/tian/head.png',
         name: '帖子作者名',
         date: '两天前',
         images: '../../images/bg.png',
         title: '标题1',
         content:'随便加的一些内容'
     },
-      inputValue:''
+        {
+          head: '../../images/tian/head.png',
+          name: '帖子作者名',
+          date: '两天前',
+          images: '../../images/bg.png',
+          title: '标题1',
+          content: '随便加的一些内容'
+        },
+        {
+          head: '../../images/tian/head.png',
+          name: '帖子作者名',
+          date: '两天前',
+          images: '../../images/bg.png',
+          title: '标题1',
+          content: '随便加的一些内容'
+        },
+    ],
+      inputValue:'',
+      reply:{},
+      length:0
 
   },
 
@@ -31,7 +58,10 @@ const db = wx.cloud.database();
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    that = this;
+    console.log(that.data.length)
+    that.getData();
   },
 
   /**
@@ -48,38 +78,70 @@ const db = wx.cloud.database();
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    getData: function () {
+      console.log("aaaaaaa");
+        db.collection('reply') .where({
+          date:"两天前"
+        }).get({
+            success: function (res) {
+              that.setData({
+                reply: res.data,
+                length:res.data.length
+              })
+              console.log("aaaaaaa");
+              console.log(that.data.length);
+            },
+            fail: function (event) {
+            },
+             
+        })
+    },
+    /**
+      * 保存到发布集合中
+      */
+    saveDataToServer: function (event) {
+      db.collection('reply').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          head: '../../images/tian/head.png',
+          name: '帖子作者名',
+          date: '两天前',
+          images: '../../images/bg.png',
+          title: '标题1',
+          content: that.data.inputValue
+        },
+        success: function (res) {
+          // 保存到发布历史
+          that.saveToHistoryServer();
+          // 清空数据
+          that.data.content = "";
+          that.data.images = [];
 
-  },
+          that.setData({
+            textContent: '',
+            images: [],
+          })
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+          that.showTipAndSwitchTab();
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+        },
+      })
+    },
+    /**
+    * 获取填写的内容
+    */
+    bindKeyInput: function (e) {
+      this.setData({
+        inputValue: e.detail.value
+      })
+      console.log(this.data.inputValue)
+    },
+  post:function(){
+    if (that.data.inputValue.trim() != '') 
+      that.saveDataToServer();
+    wx.navigateTo({
+      url: '../reply/reply',
+    })
+}
+ 
+  })

@@ -1,16 +1,21 @@
 <view class='container-line'></view>
 <!--miniprogram/pages/collect/collect.wxml-->
 <block wx:for='{{test}}' wx:for-index="idx">
-  <view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
+  <view class='container' data-topicId='{{item._id}}' data-index='{{idx}}'>
     <view class='container-content'>
-    <image class='head'src='{{item.head}}'></image>
-      <view class='content'>
+    <image class='head'  bindtap='onWriterClick' src='{{item.head}}'></image>
+      <view class='content' bindtap='onWriterClick'>
       <view class='name'>{{item.name}}</view>
       <view class='bar'>{{item.barname}}</view>
       </view>
-      <image class='collect' src='{{item.collect}}'></image>
+      <block wx:if="{{item.isCollected}}">
+      <image class='collect' bindtap='onCollectClick' src='{{item.collected}}'></image>
+      </block>
+            <block wx:else>
+      <image class='collect' bindtap='onCollectClick' src='{{item.collect}}'></image>
+      </block>
       </view>
-<view class='topic'>
+<view class='topic' bindtap='onItemClick' >
        <!-- 显示图片 -->
         <block wx:if="{{item.images!=null}}">
               <image class='content-img' src='{{item.images}}' mode='aspectFill'></image>

@@ -2,77 +2,63 @@
 <!--miniprogram/pages/collect/collect.wxml-->
   <view class='container' bindtap='onExitReplayClick'>
     <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
-      <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>{{test.date}}</view>
+    <image class='head' bindtap='onWriterClick' src='{{test[0].head}}'></image>
+      <view class='title-content' >
+      <view class='name' bindtap='onWriterClick'>{{test[0].name}}</view>
+      <view class='date'>{{test[0].date}}</view>
       </view>
       <button class="btn" bindtap='follow'>关注</button>
       </view>
       <!-- 显示文本 -->
-        <text class='title'>{{test.title}}</text>
-         <text class='content'>{{test.content}}</text>
+        <text class='title'>{{test[0].title}}</text>
+         <text class='content'>{{test[0].content}}</text>
        <!-- 显示图片 -->
-        <block wx:if="{{test.images!=null}}">
-              <image class='content-img' src='{{test.images}}' mode='aspectFill'></image> 
+        <block wx:if="{{test[0].images!=null}}">
+              <image class='content-img' src='{{test[0].images}}' mode='aspectFill'></image> 
            </block>
-<button class='bar'>所属吧名</button>
+<button class='bar' bindtap='onBarClick'>所属吧名 </button>
  <view class='container-content'>
-<image class='icon-up'  src="../../images/分享.png" ></image>
+<image class='icon-up'  src="../../images/tian/share.png" ></image>
 <view class='icon-text'>40</view>
-<image class='icon-up2'  src="../../images/评论.png" ></image>
+<image class='icon-up2'  src="../../images/tian/comment.png" ></image>
 <view class='icon-text'>40</view>
-<image class='icon-up3'  src="../../images/点赞.png"></image>
+<image class='icon-up3'  src="../../images/tian/praise.png"></image>
 <view class='icon-text'>40</view>
 </view>
 <view class='line' ></view>
 
 
-
-         <van-tabs active="{{ active }}" bind:change="onChange">
+<view class='tab'>
+         <van-tabs z-index='0' active="{{ active }}" bind:change="onChange">
   <van-tab title="全部回复">
-   <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
-      <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
-      </view>
-      <image class='icon-up4'  src="../../images/点赞.png"></image>
-<view class='icon-text2'>40</view>
-      </view>
-      <view class='replay-content'>不错</view>
-      <view class='replay'>回复</view>
-
-
-        <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
-      <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
-      </view>
-      </view>
-      <view class='replay-content'>不错</view>
-      <view class='replay'>回复</view>
-
-
-        <view class='container-content'>
-    <image class='head'src='{{test.head}}'></image>
-      <view class='title-content'>
-      <view class='name'>{{test.name}}</view>
-      <view class='date'>第2楼 | {{test.date}}</view>
-      </view>
-      </view>
-      <view class='replay-content'>不错</view>
-      <view class='replay'>回复</view>
-   <view class='block' ></view>
+   
 
   </van-tab>
   <van-tab title="只看楼主">
-     <view class='block' ></view>
   </van-tab>
 </van-tabs>
+</view>
+  <block wx:for='{{test}}' wx:for-index="idx">
+<view class='container-content'>
+    <image class='head' bindtap='onWriterClick'src='{{item.head}}'></image>
+      <view class='title-content'>
+      <view class='name' bindtap='onWriterClick'>{{item.name}}</view>
+      <view class='date'>第2楼 | {{item.date}}</view>
+      </view>
+      <image class='icon-up4'  src="../../images/tian/praise.png"></image>
+<view class='icon-text2'>40</view>
+      </view>
+      <view class='replay-content'>不错</view>
+       <block wx:if="{{item.replyCount==null}}">
+      <view class='replay' bindtap='onReplyClick'>回复</view>
+      </block>
+      <block wx:else>
+      <view class='replay' bindtap='onReplyClick'>查看全部{{item.replyCount}}条回复 ></view>
+      </block>
+</block>
+   <view class='block' ></view>
   <view class='return-container' bindtap='onRrturnClick' >
-    <image class='return-icon' src='../../images/返回顶部.png'></image>
+    <image class='return-icon' bindtap='goTop' src='../../images/tian/return.png'></image>
   </view>
         </view>
     <view class='container-line'></view>
@@ -94,12 +80,12 @@
  <view class="answer-footer flex-wrp"  wx:else>
        <view class ='input' bindtap='onReplayClick' >  
        <text class='input-text'> 我有一个大胆的想法....</text> </view>      
-                    <image class='icon' src="../../images/评论.png"></image>       
+                    <image class='icon' src="../../images/tian/comment.png"></image>       
                     <image class='icon' src="../../images/收藏.png"></image>
                     <view wx:if='{{iscollect}}'> 
-                    <image class='icon' src="../../images/分享.png" bindtap='onCollectClick'></image>      
+                    <image class='icon' src="../../images/tian/share.png" bindtap='onCollectClick'></image>      
                     </view>
                      <view wx:else> 
-                    <image class='icon' src="../../images/分享.png" bindtap='onCollectClick'></image>      
+                    <image class='icon' src="../../images/tian/share.png" bindtap='onCollectClick'></image>      
                     </view>   
      </view>

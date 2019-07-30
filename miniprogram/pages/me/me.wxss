@@ -5,6 +5,7 @@
   background-color: #fff;
   align-items: center;
 }
+
 .user-item {
   width: 33%;
   display: flex;
@@ -12,13 +13,16 @@
   flex-direction: column;
   padding: 40rpx;
 }
-.num{
-  font-size:48rpx;
+
+.num {
+  font-size: 48rpx;
 }
-.text{
-  font-size:20rpx;
-  color: #7F8389;
+
+.text {
+  font-size: 20rpx;
+  color: #7f8389;
 }
+
 .userBg2 {
   display: flex;
   flex-direction: row;
@@ -26,6 +30,7 @@
   background-color: #fff;
   align-items: center;
 }
+
 .img {
   overflow: hidden;
   display: block;
@@ -42,16 +47,18 @@
   margin-left: 20rpx;
   align-items: center;
 }
-.nick-name{
-    margin-left: 18rpx;
+
+.nick-name {
+  margin-left: 18rpx;
   font-family: 'Mcrosoft Yahei';
   font-size: 36rpx;
 }
-.changeInfo{
-    margin-left: 18rpx;
-    margin-top: 18rpx;
-  font-size:26rpx;
-  color: #AAAAAA;
+
+.changeInfo {
+  margin-left: 18rpx;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  color: #aaa;
 }
 
 .content {
@@ -84,16 +91,17 @@
 .right {
   width: 40%;
   text-align: right;
-  color: #C7C7CC;
-  }
- .right_ {
+  color: #c7c7cc;
+}
+
+.right_ {
   width: 35%;
   text-align: right;
-  color: #C7C7CC;
-  } 
+  color: #c7c7cc;
+}
+
 .hr {
   height: 1rpx;
   background-color: #ccc;
   opacity: 0.2;
 }
-

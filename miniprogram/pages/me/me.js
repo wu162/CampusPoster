@@ -1,5 +1,31 @@
 // pages/me/me.js
 Page({
+
+
+  /**
+   * 关注列表
+   */
+  onFollowClick: function (event) {
+    wx.navigateTo({
+      url: '../mefollow/mefollow',
+    })
+  },
+  /**
+ * 粉丝列表
+ */
+  onFanClick: function (event) {
+    wx.navigateTo({
+      url: '../mefans/mefans',
+    })
+  },
+  /**
+ * 帖子列表
+ */
+  onCollectClick: function (event) {
+    wx.navigateTo({
+      url: '../mePoster/mePoster',
+    })
+  },
   /**
     * 收藏列表
     */
@@ -38,6 +64,8 @@ Page({
   * 更多
   */
   onMoreClick: function (event) {
-
+    wx.navigateTo({
+      url: '../meInfo/meInfo',
+    })
   },
 })

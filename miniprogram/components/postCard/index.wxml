@@ -1,7 +1,11 @@
 <view class='container width'>
   <view class='head width'>
       <image class='thumb' src='{{thumb}}' bindtap='onthumb'></image>
-      <text class='name'>{{name}}</text>
+      <view class='col'>
+        <view class='name'>{{name}}</view>
+        <wux-timeago wx:if='{{timeFormat==1}}' wux-class='time' to="{{time}}" lang="zh_CN" refreshable/>
+        <view class='time' wx:else>{{dateStr}}</view>
+      </view>
   </view>
   <view class='title width' bindtap='onContent'>{{title}}</view>
   <view class='content width' bindtap='onContent'>{{content}}</view>

@@ -36,6 +36,7 @@
             thumb_link='{{item.thumb_link}}'
             content_link='{{item.content_link}}'
             name='{{item.name}}'
+            time='{{item.time}}'
             title='{{item.title}}'
             content='{{item.content}}'
             thumbs='{{item.thumbs}}'

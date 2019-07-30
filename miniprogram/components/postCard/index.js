@@ -10,10 +10,14 @@ Component({
     },
     content_link: {
       type: String,
-      value: ''
+      value: 0
     },
     name: {
       type: String,
+      value: ''
+    },
+    time: {
+      type: Number,
       value: ''
     },
     title: {
@@ -36,6 +40,35 @@ Component({
       type: Array,
       value: []
     },
+  },
+
+  data:{
+    timeFormat:0,
+    dateStr:''
+  },
+
+  lifetimes: {
+    ready: function () {
+      var now=new Date().getTime();
+      var interval=(now-this.data.time)/3600000;
+      if(interval<24)
+      {
+        this.setData({
+          timeFormat:1
+        })
+      }
+      else
+      {
+        var date=new Date(this.data.time);
+        var year = date.getFullYear();
+        var month =parseInt(date.getMonth())+1;
+        var day = date.getDate();
+        var dateStr = year+'-'+month+'-'+day;
+        this.setData({
+          dateStr: dateStr
+        })
+      }
+    }
   },
 
   methods: {

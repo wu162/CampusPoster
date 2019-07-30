@@ -24,11 +24,23 @@
   border-radius: 72rpx;
 }
 
+.col{
+  display: flex;
+  flex-direction: column;
+}
+
 .name{
   margin-left: 22rpx;
-  margin-top: 16rpx;
+  margin-top: 4rpx;
   font-size: 30rpx;
   font-weight: bold;
+}
+
+.time{
+  display: block;
+  margin-left: 22rpx;
+  font-size: 22rpx;
+  color: #888888;
 }
 
 .title{

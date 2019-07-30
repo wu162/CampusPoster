@@ -92,7 +92,7 @@ Page({
     }
   },
   /**
-   * item 点击
+   * Writer 点击
    */
   onWriterClick: function (event) {
     var id = event.currentTarget.dataset.topicid;

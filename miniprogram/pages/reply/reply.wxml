@@ -1,7 +1,7 @@
    <view class='container-content'>
-    <image class='head'src='{{test[0].head}}'></image>
+    <image class='head'  bindtap='onWriterClick'src='{{test[0].head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{test[0].name}}</view>
+      <view class='name'  bindtap='onWriterClick'>{{test[0].name}}</view>
       <view class='date'>第2楼 | {{test[0].date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>
@@ -12,9 +12,9 @@
 <view>7条回复 </view>
  <block wx:for='{{test}}' wx:for-index="idx">
    <view class='container-content'>
-    <image class='head'src='{{item.head}}'></image>
+    <image class='head'  bindtap='onWriterClick'src='{{item.head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{item.name}}</view>
+      <view class='name'  bindtap='onWriterClick'>{{item.name}}</view>
       <view class='date'>第2楼 | {{item.date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>
@@ -26,9 +26,9 @@
 
    <block wx:for='{{reply}}' wx:for-index="idx">
    <view class='container-content'>
-    <image class='head'src='{{item.head}}'></image>
+    <image class='head' bindtap='onWriterClick' src='{{item.head}}'></image>
       <view class='title-content'>
-      <view class='name'>{{item.name}}</view>
+      <view class='name' bindtap='onWriterClick'>{{item.name}}</view>
       <view class='date'>第2楼 | {{item.date}}</view>
       </view>
       <image class='icon-up4'  src="../../images/点赞.png"></image>

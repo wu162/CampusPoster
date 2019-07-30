@@ -111,18 +111,9 @@ const db = wx.cloud.database();
           content: that.data.inputValue
         },
         success: function (res) {
-          // 保存到发布历史
-          that.saveToHistoryServer();
-          // 清空数据
-          that.data.content = "";
-          that.data.images = [];
-
-          that.setData({
-            textContent: '',
-            images: [],
+          wx.navigateTo({
+            url: '../reply/reply',
           })
-
-          that.showTipAndSwitchTab();
 
         },
       })
@@ -139,9 +130,18 @@ const db = wx.cloud.database();
   post:function(){
     if (that.data.inputValue.trim() != '') 
       that.saveDataToServer();
-    wx.navigateTo({
-      url: '../reply/reply',
+    this.setData({
+      inputValue: ''
     })
-}
- 
+    
+},
+  /**
+   * Writer 点击
+   */
+  onWriterClick: function (event) {
+      var id = event.currentTarget.dataset.topicid;
+      wx.navigateTo({
+        url: '../meInfo/meInfo',
+      })
+    },
   })

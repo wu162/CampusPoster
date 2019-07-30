@@ -14,7 +14,7 @@
 6. 2019.7.23 添加wux库，添加2个需要编写的页面（likes,mentions）
 7. 2019.7.23 完成postContent，reply页面的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 8. 2019.7.28 完成enter,index,postIndex,search页面的编写并上传
-
+9. 2019.7.30 基本完善页面的前段逻辑，修复标签栏渲染层级问题，完成mePoster,Post页面的wxml代码编写，并上传至master分支
 ### 计划
 
 ------

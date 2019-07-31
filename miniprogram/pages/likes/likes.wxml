@@ -1,37 +1,22 @@
-<block wx:for='{{test}}' wx:for-index="idx">
-  <view class='hr'></view>
-  <view class='like' data-topicId='{{item._id}}'>
-    <view class='user'>
-     <view class='head'>
-       <image src='{{item.head}}'></image>
-      </view>
-     <view class='userName'>{{item.username}}</view>
-     <view class='time'>{{item.time}}</view>
-   </view>
-
-    <view wx:if="{{item.typeisreply}}">
-     <view class='text'>赞了你的回复</view>
-     <view class='reply'>
-      <view class='text1'>回复：</view>
-      <view class='text2'>{{item.reply}}</view>
-     </view>
-   </view>
-   <view wx:else>
-     <view class='text'>赞了你的帖子</view>
-   </view>
-
-
-   <view class='tiezi'>
-     <view class='form'>
-       <view class='{{item.image}}'></view>
-       <view class='title'>{{item.title}}</view>  
-      </view>
-     <view class='barName'>{{item.barname}}</view>
-   </view>
-  </view>
-  <view class='hr'></view>
-  <view class='line'></view>
+<block wx:for='{{test}}'>
+  <messageCard  pageislikes='{{pageislikes}}'
+                person_link='{{item.person_link}}'
+                postContent_link='{{item.postContent_link}}'
+                postIndex_link='{{item.postIndex_link}}'
+                head='{{item.head}}'
+                username='{{item.username}}'
+                time='{{item.time}}'
+                typeisreply='{{item.typeisreply}}'
+                myname='{{item.myname}}'
+                reply='{{item.reply}}'
+                images='{{item.images}}'
+                title='{{item.title}}'
+                barname='{{item.barname}}'/>
+  <view wx:if="{{index<test.length-1}}" class='line'></view>
 </block>
+
+
+
 
 
 <view class='remind'>

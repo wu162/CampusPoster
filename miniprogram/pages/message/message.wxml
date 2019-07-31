@@ -1,7 +1,7 @@
 <view class='hr'></view>
 <view class='itemForm' bindtap='onMentionsClick'>
   <view class='itemIcon'>
-    <image src='../../images/@.png' style="width:44rpx;height:44rpx;"></image>
+    <image src='../../images/zhang/@.png' style="width:44rpx;height:44rpx;"></image>
   </view>
   <view class='itemText'>
   @我的
@@ -10,10 +10,10 @@
 </view>
 <view class='hr'></view>
 
-<view class='hr'></view>
+
 <view class='itemForm' bindtap='onLikesClick'>
   <view class='itemIcon'>
-   <image src='../../images/点赞.png' style="width:44rpx;height:44rpx;"></image>
+   <image src='../../images/zhang/dianzan.png' style="width:44rpx;height:44rpx;"></image>
   </view>
   <view class='itemText'>
   点赞
@@ -21,37 +21,22 @@
   <view class='right'>></view>
 </view>
 <view class='hr'></view>
-
-<block wx:for='{{test}}' wx:for-index="idx">
 <view class='line'></view>
 
-<view class='hr'></view>
-<view class='message' data-topicId='{{item._id}}'>
-  <view class='userForm'>
-    <view class='userIcon'>
-      <image src='{{item.head}}'></image>
-    </view>
-    <view class='userName'>{{item.username}}</view>
-    <view class='time'>{{item.time}}</view>
-  </view>
 
-  <view class='hr'></view>
-  <view class='hr'></view>
-
-  
-    <view class='title'>{{item.title}}</view>
-
-  <view class='replyForm'>
-    <view class='replyText1'>回复人：</view>
-    <view class='replyText2'>{{item.reply}}</view>
-  </view>
-
-  <view class='Blueform'>
-    <view class='beRepliedText'>{{item.bereply}}</view>
-  </view>
-
-</view>
-<view class='hr'></view>
+<block wx:for='{{test}}'>
+  <messageCard  person_link='{{item.person_link}}'
+                postContent_link='{{item.postContent_link}}'
+                postIndex_link='{{item.postIndex_link}}'
+                reply_link='{{item.reply_link}}'
+                head='{{item.head}}'
+                username='{{item.username}}'
+                time='{{item.time}}'
+                title='{{item.title}}'
+                reply='{{item.reply}}'
+                beReply='{{item.beReply}}'
+                barname='{{item.barname}}'/>
+  <view wx:if="{{index<test.length-1}}" class='line'></view>
 </block>
 
 

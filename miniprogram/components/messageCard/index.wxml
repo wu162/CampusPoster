@@ -1,0 +1,70 @@
+<view class='hr'></view>
+<view class='message'>
+  <view class='userForm' bindtap='onPersonClick'>
+    <view class='userIcon'>
+      <image src='{{head}}' style="width:72rpx;height:72rpx;border-radius: 50%;"></image>
+    </view>
+    <view class='ntForm'>
+      <view class='userName'>{{username}}</view>
+      <wux-timeago wx:if='{{timeFormat==1}}' wux-class='time' to="{{time}}" lang="zh_CN" refreshable/>
+      <view class='time' wx:else>{{dateStr}}</view>
+    </view>
+
+
+
+  </view>
+
+
+
+  <view wx:if="{{pageislikes}}">
+    <view wx:if="{{typeisreply}}">
+      <view class='text'>赞了你的回复</view>
+      <view class='reply'>
+        <view class='text1'>{{myname}}</view>
+          <view style='font-size: 24rpx; color: #000000;'>：</view>
+        <view class='text2'>{{reply}}</view>
+      </view>
+    </view>
+
+    <view wx:else>
+      <view class='text'>赞了你的帖子</view>
+    </view>
+
+
+    <view class='tiezi'>
+      <view class='grform' bindtap='onPostContentClick'>
+        <view wx:if="{{images[0].src}}" class='image'>
+         <image src='{{images[0].src}}' style="width:120rpx;height:120rpx;"></image>
+        </view>
+        <view class='title'>{{title}}</view>  
+      </view>
+      <view class='barName' bindtap='onPostIndexClick' style="margin-top: 28rpx;">{{barname}}</view>
+    </view>
+
+  </view>
+
+
+
+  <view wx:else>
+    <view class='replyForm' bindtap='onPostContentClick'>
+     <view class='replyText1'>回复我：</view>
+      <view class='replyText2'>{{reply}}</view>
+    </view>
+
+    <view class="tiezi">
+    <view class='grform' bindtap='onPostContentClick'>
+     <view class='beRepliedText'>{{beReply}}</view>
+    </view>
+    </view>
+
+    <view class='bottonForm'>
+     <view class='barName' bindtap='onPostIndexClick'>{{barname}}</view>
+     <view class='replyIcon' bindtap='onReplyClick'>
+       <image src='../../images/zhang/pinglun.png' style="width:35rpx;height:35rpx;"></image>
+     </view>
+     <view class='replyText' bindtap='onReplyClick'>回复</view>
+    </view>
+  </view>
+
+</view>
+<view class='hr'></view>

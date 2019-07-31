@@ -15,6 +15,7 @@
 7. 2019.7.23 完成postContent，reply页面的wxml代码编写，完成这几个页面的基本前端功能，并上传至master分支
 8. 2019.7.28 完成enter,index,postIndex,search页面的编写并上传
 9. 2019.7.30 基本完善页面的前端逻辑，修复标签栏渲染层级问题，完成mePoster,Post页面的wxml代码编写，并上传至master分支
+10. 2019.8.1 修复message，likes页面头像椭圆问题，更改时间格式，添加页面跳转，修改部分样式，尝试编写组件messageCard,并上传至master分支
 ### 计划
 
 ------

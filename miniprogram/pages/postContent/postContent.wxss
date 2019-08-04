@@ -4,7 +4,7 @@
   margin-top: 40rpx;
   line-height: 50rpx;
   margin-bottom: 20rpx;
-  margin-left: 240rpx;
+  margin-left: 140rpx;
   background-color:rgb(26, 173, 25);
   color: #fff;
   font-size: 26rpx;
@@ -96,6 +96,7 @@
 }
 
 .title-content {
+  width: 300rpx;
   display: flex;
   flex-direction:column;
   margin-right: 5%;
@@ -118,6 +119,7 @@
   height: 72rpx;
   margin-left: 30rpx;
   margin-top: 40rpx;
+  border-radius: 50%;
 }
 .collect{
     width: 56rpx;
@@ -193,7 +195,7 @@ font-size: 30rpx;
 .icon-up4{
     margin-top: 80rpx;
     margin-bottom: 30rpx;
-  margin-left: 276rpx;
+  margin-left: 176rpx;
     width: 28rpx;
     height: 28rpx;}
 .icon-text{

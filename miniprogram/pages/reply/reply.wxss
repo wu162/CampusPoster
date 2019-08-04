@@ -19,3 +19,9 @@ width: 100%;
   color: #888888;
   font-size: 28rpx;
 }
+.reply{
+  font-size: 36rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  color:#000000
+}

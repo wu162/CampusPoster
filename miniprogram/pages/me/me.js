@@ -21,7 +21,7 @@ Page({
   /**
  * 帖子列表
  */
-  onCollectClick: function (event) {
+  onPosterClick: function (event) {
     wx.navigateTo({
       url: '../mePoster/mePoster',
     })

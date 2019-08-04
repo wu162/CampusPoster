@@ -60,7 +60,6 @@ const db = wx.cloud.database();
   onLoad: function (options) {
     
     that = this;
-    console.log(that.data.length)
     that.getData();
   },
 
@@ -79,17 +78,33 @@ const db = wx.cloud.database();
   },
 
     getData: function () {
-      console.log("aaaaaaa");
         db.collection('reply') .where({
-          date:"两天前"
         }).get({
             success: function (res) {
+              
+              for (var i = 0; i<res.data.length;i++)
+            {
+                var date = res.data[i].date
+                var t1 = new Date()
+                var t = new Date(t1 - date + 16 * 3600 * 1000)
+                var d= parseInt(t.getTime() / 1000 / 3600 / 24)
+                var h=t.getHours()
+                var m=t.getMinutes()
+                if(d==0&&h==0&&m==0)
+                {res.data[i].changeDate =t.getSeconds().toString()+"秒前  ";}
+                else if (d == 0 && h == 0)
+                {res.data[i].changeDate = m.toString() + "分钟前";}
+                else if (d == 0 )
+                {res.data[i].changeDate = h.toString() + "小时前";}
+                else
+                {res.data[i].changeDate = d.toString() + "天前  ";}
+                console.log(res.data[i].changeDate)
+            }
               that.setData({
                 reply: res.data,
                 length:res.data.length
               })
-              console.log("aaaaaaa");
-              console.log(that.data.length);
+             
             },
             fail: function (event) {
             },
@@ -105,10 +120,11 @@ const db = wx.cloud.database();
         data: {
           head: '../../images/tian/head.png',
           name: '帖子作者名',
-          date: '两天前',
+          date: new Date(),
           images: '../../images/bg.png',
           title: '标题1',
-          content: that.data.inputValue
+          content: that.data.inputValue,
+          changeDate:''
         },
         success: function (res) {
           wx.navigateTo({

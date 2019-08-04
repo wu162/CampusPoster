@@ -53,7 +53,7 @@
       <view class='replay' bindtap='onReplyClick'>回复</view>
       </block>
       <block wx:else>
-      <view class='replay' bindtap='onReplyClick'>查看全部{{item.replyCount}}条回复 ></view>
+      <view class='replay' bindtap='onReplyClick'>查看全部{{item.replyCount}}条评论 ></view>
       </block>
 </block>
    <view class='block' ></view>

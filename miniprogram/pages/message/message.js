@@ -23,84 +23,43 @@ Page({
    */
   data: {
     test: [{
-      head:'../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      reply_link: '../reply/reply',
+      head:'../../images/zhang/bg.png',
       username:'Alice1',
-      time:'15:50',
+      time: new Date(2019,7,1,6,30,0).getTime(),
       title:'帖子1',
-      reply:'Alice1回复的内容',
-      bereply:'被Alice1回复的内容',
+      reply:'Alice1回复的内容,由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+      beReply:'被Alice1回复的内容,由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+      barname:'所属吧名',
     },
     {
-      head: '../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      reply_link: '../reply/reply',
+      head: '../../images/zhang/bg.png',
       username: 'Alice2',
-      time: '昨天 15:12',
+      time: new Date(2019, 6, 26, 10, 28, 4).getTime(),
       title: '帖子2',
       reply: 'Alice2回复的内容',
-      bereply: '被Alice2回复的内容',
+      beReply: '被Alice2回复的内容',
+      barname: '所属吧名',
     },
     {
-      head: '../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      reply_link: '../reply/reply',
+      head: '../../images/zhang/bg.png',
       username: 'Alice3',
-      time: '2000年1月1日',
+      time: new Date(2019, 5, 28, 8, 18, 6).getTime(),
       title: '帖子3',
       reply: 'Alice3回复的内容',
-      bereply: '被Alice3回复的内容',
-    }]
+      beReply: '被Alice3回复的内容',
+      barname: '所属吧名',
+    }],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

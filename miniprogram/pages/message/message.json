@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "消息",
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-search-bar": "../../wux/search-bar/index",
+    "messageCard": "../../components/messageCard/index"
+  }
 }

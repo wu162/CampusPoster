@@ -5,91 +5,49 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageislikes:true,
     test: [{
-      head: '../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      head: '../../images/zhang/bg.png',
       username: 'Alice1',
       time: '15:50',
       typeisreply: true,
-      reply: 'Alice1回复的内容',
-      image: '../../images/bg.png',
-      title: '帖子1',
+      myname:'zhang',
+      reply: '我回复的内容由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
+      images: [{ src:'../../images/zhang/bg.png'}, { src:'../../images/zhang/bg.png'}, { src:'../../images/zhang/bg.png'}],
+      title: '帖子1由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道',
       barname: '所属吧名1',
     },
     {
-      head: '../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      head: '../../images/zhang/bg.png',
       username: 'Alice2',
       time: '昨天 15:12',
       typeisreply: false,
+      myname: 'zhang',
       reply: '',
-      image: '../../images/bg.png',
+      images: [{ src: '../../images/zhang/bg.png' }, { src: '../../images/zhang/bg.png' }, { src: '../../images/zhang/bg.png' }],
       title: '帖子2',
       barname: '所属吧名2',
     },
     {
-      head: '../../images/bg.png',
+      person_link: '../meInfo/meInfo',
+      postContent_link: '../postContent/postContent',
+      postIndex_link: '../postIndex/postIndex',
+      head: '../../images/zhang/bg.png',
       username: 'Alice3',
-      time: '2000年1月1日',
+      time: '2000年01月01日',
       typeisreply: true,
-      reply: 'Alice3回复的内容',
-      image: '../../images/bg.png',
+      myname: 'zhang',
+      reply: '我回复的内容',
+      images: [],
       title: '帖子3',
       barname: '所属吧名2',
-    }]
+      }]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

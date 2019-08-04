@@ -36,10 +36,15 @@
             thumb_link='{{item.thumb_link}}'
             content_link='{{item.content_link}}'
             name='{{item.name}}'
+            time='{{item.time}}'
             title='{{item.title}}'
             content='{{item.content}}'
             thumbs='{{item.thumbs}}'
             icon='{{icons}}'
             desc='{{item.nums}}'/>
   <view wx:if="{{index<postList.length-1}}" class='br2'></view>
+</view>
+
+<view class='post_btn' bindtap='onpost'>
+  <text>+</text>
 </view>

@@ -44,3 +44,7 @@
             desc='{{item.nums}}'/>
   <view wx:if="{{index<postList.length-1}}" class='br2'></view>
 </view>
+
+<view class='post_btn' bindtap='onpost'>
+  <text>+</text>
+</view>

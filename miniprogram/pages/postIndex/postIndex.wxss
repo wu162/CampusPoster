@@ -112,3 +112,20 @@
   height: 18rpx;
   background-color: #eeeeee;
 }
+
+.post_btn{
+  position: fixed;
+  bottom: 220rpx;
+  right: 60rpx;
+  width: 110rpx;
+  height: 110rpx;
+  color: #ffffff;
+  background-color: #1f76bd;
+  border-radius: 110rpx;
+  z-index: 3;
+  display:flex; 
+  justify-content:center; 
+  align-items:center;
+  font-size: 100rpx;
+  box-shadow: 0 4rpx 8rpx 4rpx #888888;
+}

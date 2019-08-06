@@ -34,7 +34,7 @@
   <view class='line'></view>
   <view class='item' bindtap='onCollectClick'>
     <view class='icon'>
-      <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
+      <image src='../../images/tian/mycollect.png' class="icons"></image>
     </view>
     <view class='itemName'>
       <view>我的收藏</view>
@@ -45,7 +45,7 @@
   <!-- 浏览历史 -->
   <view class='item' bindtap='onHistoryClick'>
     <view class='icon'>
-      <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
+      <image src='../../images/tian/history.png'class="icons"></image>
     </view>
     <view class='itemName'>
       <view class='navigation'>浏览历史</view>
@@ -56,7 +56,7 @@
   <!-- 关于 -->
   <view class='item' bindtap='onAboutClick'>
     <view class='icon'>
-      <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
+      <image src='../../images/tian/about.png' class="icons"></image>
     </view>
     <view class='itemName'>
       <view class='navigation'>关于</view>
@@ -67,7 +67,7 @@
   <!-- 更多 -->
   <view class='item' bindtap='onMoreClick'>
     <view class='icon'>
-      <image src='../../images/liked.png' style="width:22px;height:21px;"></image>
+      <image src='../../images/tian/more.png'class="icons" ></image>
     </view>
     <view class='itemName'>
       <view class='navigation'>更多</view>

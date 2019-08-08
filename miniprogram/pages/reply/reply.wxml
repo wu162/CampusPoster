@@ -9,30 +9,17 @@
       </view>
       <view class='replays'>不错</view>
 <view class='line' ></view>
-<view class='reply'>7条回复 </view>
- <block wx:for='{{test}}' wx:for-index="idx">
-   <view class='container-content'>
-    <image class='head'  bindtap='onWriterClick'src='{{item.head}}'></image>
-      <view class='title-content'>
-      <view class='name'  bindtap='onWriterClick'>{{item.name}}</view>
-      <view class='date'>第2楼 | {{item.date}}</view>
-      </view>
-      <image class='icon-up4'  src="../../images/点赞.png"></image>
-<view class='icon-text2'>40</view>
-      </view>
-      <view class='replays'>不错</view>
-      <view class='contain-line'></view>
-   </block>
-
+<view class='reply'>{{length}}条回复 </view>
    <block wx:for='{{reply}}' wx:for-index="idx">
    <view class='container-content'>
-    <image class='head' bindtap='onWriterClick' src='{{item.head}}'></image>
+    <image class='head' bindtap='onWriterClick' src='{{item.user.avatarUrl}}'></image>
       <view class='title-content'>
-      <view class='name' bindtap='onWriterClick'>{{item.name}}</view>
-      <view class='date'>第2楼 | {{item.changeDate}}</view>
+      <view class='name' bindtap='onWriterClick'>{{item.user.nickName}}</view>
+      <view class='date'>第{{idx+1}}楼 | {{item.changeDate}}</view>
       </view>
-      <image class='icon-up4'  src="../../images/点赞.png"></image>
-<view class='icon-text2'>40</view>
+      <image class='icon-up4' wx:if='{{item.is_up}}' bindtap='onUpClick'   src="../../images/点赞.png" data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'></image>
+      <image class='icon-up4' wx:else bindtap='onUpClick' src="../../images/点赞.png" data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'></image>
+<view class='icon-text2'>{{item.up}}</view>
       </view>
       <view class='replays'>{{item.content}}</view>
       <view class='contain-line'></view>

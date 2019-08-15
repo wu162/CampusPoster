@@ -1,27 +1,29 @@
    <view class='container-content'>
-    <image class='head'  bindtap='onWriterClick'src='{{test[0].head}}'></image>
+    <image class='head'  bindtap='onWriterClick'src='{{reply.user.avatarUrl}}'></image>
       <view class='title-content'>
-      <view class='name'  bindtap='onWriterClick'>{{test[0].name}}</view>
-      <view class='date'>第2楼 | {{test[0].date}}</view>
+      <view class='name'  bindtap='onWriterClick'>{{reply.user.nickName}}</view>
+      <view class='date'>第{{sequence}}楼 | {{reply.changeDate}}</view>
       </view>
-      <image class='icon-up4'  src="../../images/点赞.png"></image>
-<view class='icon-text2'>40</view>
+       <image class='icon-up4' wx:if='{{reply.is_up}}' bindtap='onUpClick'   src="../../images/点赞.png" data-replyId='{{reply._id}}' data-openid='{{reply._openid}}'data-idx='{{idx}}'></image>
+      <image class='icon-up4' wx:else bindtap='onUpClick' src="../../images/点赞.png" data-replyId='{{reply._id}}' data-openid='{{reply._openid}}'data-idx='{{idx}}'></image>
+<view class='icon-text2'>{{reply.up}}</view>
       </view>
-      <view class='replays'>不错</view>
+      <view class='replays'>{{reply.content}}</view>
+      
 <view class='line' ></view>
 <view class='reply'>{{length}}条回复 </view>
-   <block wx:for='{{reply}}' wx:for-index="idx">
+   <block wx:for='{{reply_in}}' wx:for-index="idx">
    <view class='container-content'>
     <image class='head' bindtap='onWriterClick' src='{{item.user.avatarUrl}}'></image>
       <view class='title-content'>
       <view class='name' bindtap='onWriterClick'>{{item.user.nickName}}</view>
-      <view class='date'>第{{idx+1}}楼 | {{item.changeDate}}</view>
+      <view class='date'>{{item.changeDate}}</view>
       </view>
       <image class='icon-up4' wx:if='{{item.is_up}}' bindtap='onUpClick'   src="../../images/点赞.png" data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'></image>
       <image class='icon-up4' wx:else bindtap='onUpClick' src="../../images/点赞.png" data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'></image>
 <view class='icon-text2'>{{item.up}}</view>
       </view>
-      <view class='replays'>{{item.content}}</view>
+      <view class='replays' bindtap="changeTextArea" data-rid='{{item._openid}}' data-name='{{item.user.nickName}}'>{{item.content}}</view>
       <view class='contain-line'></view>
    </block>
    <view class='block' ></view>
@@ -30,10 +32,10 @@
        <view class="page-section">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" placeholder-class='placeholder' placeholder='回复'  bindinput="bindKeyInput"/>
+        <input class="weui-input" placeholder-class='placeholder' placeholder='{{textarea}} 'bindinput="bindKeyInput"/>
       </view>
     </view>
   </view>
            </view>
-       <button class="btn-post" bindtap='post'>发送</button>
+       <button class="btn-post" bindtap='post' data-replyId='{{reply._id}}' data-openid='{{reply._openid}}' data-idx='{{sequence}}'>发送</button>
            </view>

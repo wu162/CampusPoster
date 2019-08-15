@@ -10,15 +10,8 @@ const db = wx.cloud.database();
      */
     data: {
   
-      test: [{
-        head: '../../images/tian/head.png',
-        name: '帖子作者名',
-        date: '两天前',
-        images: '../../images/bg.png',
-        title: '标题1',
-        content:'随便加的一些内容'
-    },
-    ],
+      textarea:"回复",
+      name:'',
       inputValue:'',
       reply:{},
       reply_in:{},
@@ -26,7 +19,8 @@ const db = wx.cloud.database();
       openid:'',
       rid:'',
       up:0,
-      length:0
+      length:0,
+      sequence:'',
   },
 
   /**
@@ -37,101 +31,114 @@ const db = wx.cloud.database();
     that = this;
     that.data.id = options.id;
     that.data.openid = options.openid;
+    that.setData({
+      sequence: options.sequence
+    })
     that.data.rid=options.rid;
     that.getData();
     that.jugdeUserLogin();
+    console.log(that.data.id)
   },
+  
 
     getData: function () {
-
-      // 获取回复信息
-      db.collection('reply').get({
+      db.collection('reply').doc(that.data.id).get({
         success: function (res) {
-          for (var i = 0; i < res.data.length; i++) {
-            var date = res.data[i].date
-            var t1 = new Date()
-            var t = new Date(t1 - date + 16 * 3600 * 1000)
-            var d = parseInt(t.getTime() / 1000 / 3600 / 24)
-            var h = t.getHours()
-            var m = t.getMinutes()
-            if (d == 0 && h == 0 && m == 0) { res.data[i].changeDate = t.getSeconds().toString() + "秒前  "; }
-            else if (d == 0 && h == 0) { res.data[i].changeDate = m.toString() + "分钟前"; }
-            else if (d == 0) { res.data[i].changeDate = h.toString() + "小时前"; }
-            else { res.data[i].changeDate = d.toString() + "天前  "; }
-//获取赞的情况
-            var up = "up[" + i + "]";
-            db.collection('up')
-              .where({
-                _openid: that.data.openid,
-                r_id: res.data[i]._id
-              })
-              .get({
-                success: function (res2) {
-                  if (res2.data.length > 0)
-                  res.data[i].is_up=true
-                },
-              })
-            db.collection('up')
-              .where({
-                r_id: res.data[i]._id
-              })
-              .get({
-                success: function (res3) {
-                  res.data[i].up = res3.data.length
-                },
-              })
-          }
-          
+          var date = res.data.date
+          var t1 = new Date()
+          var t = new Date(t1 - date + 16 * 3600 * 1000)
+          var d = parseInt(t.getTime() / 1000 / 3600 / 24)
+          var h = t.getHours()
+          var m = t.getMinutes()
+          if (d == 0 && h == 0 && m == 0) { res.data.changeDate = t.getSeconds().toString() + "秒前  "; }
+          else if (d == 0 && h == 0) { res.data.changeDate = m.toString() + "分钟前"; }
+          else if (d == 0) { res.data.changeDate = h.toString() + "小时前"; }
+          else { res.data.changeDate = d.toString() + "天前  "; }
           that.setData({
-            reply: res.data,
-            length: res.data.length
+            reply: res.data, 
           })
-         
-        }
-      })
-        db.collection('reply_in') .where({
-        }).get({
+          // 获取回复信息
+          console.log(that.data.reply._id)
+          db.collection('reply_in').where({
+            r_id: that.data.reply._id
+          }).get({
             success: function (res) {
-              for (var i = 0; i<res.data.length;i++)
-            {
+              for (var i = 0; i < res.data.length; i++) {
                 var date = res.data[i].date
                 var t1 = new Date()
                 var t = new Date(t1 - date + 16 * 3600 * 1000)
-                var d= parseInt(t.getTime() / 1000 / 3600 / 24)
-                var h=t.getHours()
-                var m=t.getMinutes()
-                if(d==0&&h==0&&m==0)
-                {res.data[i].changeDate =t.getSeconds().toString()+"秒前  ";}
-                else if (d == 0 && h == 0)
-                {res.data[i].changeDate = m.toString() + "分钟前";}
-                else if (d == 0 )
-                {res.data[i].changeDate = h.toString() + "小时前";}
-                else
-                {res.data[i].changeDate = d.toString() + "天前  ";}
-            }
-              that.setData({
-                reply_in: res.data,
-              })
+                var d = parseInt(t.getTime() / 1000 / 3600 / 24)
+                var h = t.getHours()
+                var m = t.getMinutes()
+                if (d == 0 && h == 0 && m == 0) { res.data[i].changeDate = t.getSeconds().toString() + "秒前  "; }
+                else if (d == 0 && h == 0) { res.data[i].changeDate = m.toString() + "分钟前"; }
+                else if (d == 0) { res.data[i].changeDate = h.toString() + "小时前"; }
+                else { res.data[i].changeDate = d.toString() + "天前  "; }
+                that.setData({
+                  reply_in: res.data,
+                  length: res.data.length
+                })
+              }
+
+        }
+      })
+
+      var j = 0
+      var k = 0    
+  
 
 
-            },
-            fail: function (event) {
-            },
-             
-        })
+            var data = res.data[0]._id
+//获取赞的情况
+            // db.collection('up')
+            //   .where({
+            //     _openid: that.data.openid,
+            //     _id: data
+            //   })
+            //   .get({
+            //     success: function (res2) {
+            //       if (res2.data.length > 0)
+            //       {res.data[j].is_up=true}
+            //       console.log(res2.data)
+            //       j++;
+            //       data = res.data[j]._id
+            //       console.log(data)
+            //       that.setData({
+            //         reply_in: res.data,
+            //         length: res.data.length
+            //       })
+            //     },
+            //   })
+
+            // db.collection('up')
+            //   .where({
+            //     _id: data
+            //   })
+            //   .get({
+            //     success: function (res3) {
+            //       res.data[k++].up = res3.data.length
+            //       that.setData({
+            //         reply_in: res.data,
+            //         length: res.data.length
+            //       })
+            //     },
+            //   })
+          }
+          
+      })
+        
     },
     /**
       * 保存到发布集合中
       */
     saveDataToServer: function (event) {
-      db.collection('reply').add({
+      db.collection('reply_in').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           date: new Date(),
           user: that.data.user,
           b_rid:that.data.bid,
           r_id: that.data.id,
-          u_id: that.data.openid,
           up:that.data.up,
           content: that.data.inputValue,
           changeDate:'',
@@ -139,7 +146,7 @@ const db = wx.cloud.database();
         },
         success: function (res) {
           wx.navigateTo({
-            url: "../reply/reply?id=" + that.data.id + "&openid=" + that.data.openid
+            url: "../reply/reply?id=" + that.data.id + "&openid=" + that.data.openid + "&sequence="+that.data.sequence
           })
 
         },
@@ -149,8 +156,9 @@ const db = wx.cloud.database();
     * 获取填写的内容
     */
     bindKeyInput: function (e) {
+      console.log(that.data.name)
       this.setData({
-        inputValue: e.detail.value
+        inputValue: that.data.name+e.detail.value
       })
       console.log(this.data.inputValue)
     },
@@ -162,6 +170,18 @@ const db = wx.cloud.database();
     })
     
 },
+/**
+   * 回复点击
+   */
+
+    changeTextArea: function (event){
+      var rid = event.currentTarget.dataset.openid;
+      that.setData({
+        textarea: "回复 "+event.currentTarget.dataset.name+":",
+        name: "回复 " + event.currentTarget.dataset.name + ":"
+      })
+     console.log(that.data.name)
+    },
   /**
    * Writer 点击
    */
@@ -191,11 +211,10 @@ const db = wx.cloud.database();
    * 添加到点赞集合中
    */
     saveToUpServer: function (id,idx) {
-      console.log(idx)
-      console.log(that.data.reply[idx]._id)
-      db.collection('up').add({
+      db.collection('reply').add({
         data: {
-          r_id: that.data.reply[idx]._id,
+          _id: that.data.reply[idx]._id,
+          is_up
         },
         success: function (res) {
         },
@@ -205,11 +224,7 @@ const db = wx.cloud.database();
   * 从点赞集合中移除
   */
     removeFromUpServer: function (id,idx) {
-      db.collection('up').where({
-        r_id: that.data.reply[idx].id,
-        _openid:that.data.openid
-      }).remove({
-
+      db.collection('up').doc(that.data.reply[idx]._id).remove({
       });
     },
     /**

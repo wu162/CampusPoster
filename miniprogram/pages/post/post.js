@@ -7,18 +7,34 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    title:'',
     content: '',
     images: [],
     user: {},
-    isLike: false,
+    isCollect: false,
+    bid:'',
+    openid:''
+
   },
   /**
     * 生命周期函数--监听页面加载
     */
   onLoad: function (options) {
     that = this
+    that.data.bid = options.b_id;
+    that.data.openid=options.open_id;
     that.jugdeUserLogin();
+    wx.cloud.callFunction({
+      
+    })
   },
+  /**
+ * 获取填写的标题
+ */
+  gettitleAreaContent: function (event) {
+    that.data.title = event.detail.value;
+  },
+
   /**
    * 获取填写的内容
    */
@@ -26,21 +42,19 @@ Page({
     that.data.content = event.detail.value;
   },
 
+
   /**
    * 选择图片
    */
   chooseImage: function (event) {
     wx.chooseImage({
-      count: 9,
-      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      count: 6,
       success: function (res) {
         // 设置图片
         that.setData({
           images: res.tempFilePaths,
         })
         that.data.images = []
-        console.log(res.tempFilePaths)
         for (var i in res.tempFilePaths) {
           // 将图片上传至云存储空间
           wx.cloud.uploadFile({
@@ -69,13 +83,11 @@ Page({
    * 发布
    */
   formSubmit: function (e) {
-    console.log('图片：', that.data.images)
-
     this.data.content = e.detail.value['input-content'];
     if (this.data.canIUse) {
-      if (this.data.images.length > 0) {
+      if (this.data.images.length > 0 && this.data.title.trim() != '') {
         this.saveDataToServer();
-      } else if (this.data.content.trim() != '') {
+      } else if (this.data.content.trim() != ''&&this.data.title.trim()!='') {
         this.saveDataToServer();
       } else {
         wx.showToast({
@@ -95,20 +107,21 @@ Page({
     db.collection('topic').add({
       // data 字段表示需新增的 JSON 数据
       data: {
+        title:that.data.title,
         content: that.data.content,
         date: new Date(),
         images: that.data.images,
         user: that.data.user,
-        isLike: that.data.isLike,
+        isCollect: that.data.isCollect,
+        bar:that.data.bid
       },
       success: function (res) {
-        // 保存到发布历史
-        that.saveToHistoryServer();
         // 清空数据
+        that.data.title = "";
         that.data.content = "";
         that.data.images = [];
-
         that.setData({
+          titleContent:'',
           textContent: '',
           images: [],
         })
@@ -123,10 +136,12 @@ Page({
    */
   showTipAndSwitchTab: function (event) {
     wx.showToast({
-      title: '新增记录成功',
+      title: '发帖成功',
     })
-    wx.switchTab({
-      url: '../home/home',
+    var bid = that.data.bid;
+    var openid = that.data.openid;
+    wx.navigateTo({
+      url: "../postindex/postindex?id=" + bid + "&openid=" + openid
     })
   },
   /**
@@ -151,28 +166,6 @@ Page({
       urls: this.data.images
     })
   },
-
-  /**
-   * 添加到发布集合中
-   */
-  saveToHistoryServer: function (event) {
-    db.collection('history').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        content: that.data.content,
-        date: new Date(),
-        images: that.data.images,
-        user: that.data.user,
-        isLike: that.data.isLike,
-      },
-      success: function (res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      },
-      fail: console.error
-    })
-  },
-
 
   /**
    * 判断用户是否登录

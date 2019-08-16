@@ -198,6 +198,12 @@ font-size: 30rpx;
   margin-left: 176rpx;
     width: 28rpx;
     height: 28rpx;}
+    .icon-up5{
+    margin-top: 80rpx;
+    margin-bottom: 30rpx;
+  margin-left: 176rpx;
+    width: 35rpx;
+    height: 35rpx;}
 .icon-text{
   margin-top: 20rpx;
   margin-bottom: 30rpx;

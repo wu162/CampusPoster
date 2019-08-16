@@ -22,7 +22,7 @@
     </scroll-view>
       <image class='btn-img' src='../../images/tian/add.png' bindtap='chooseImage'></image>
       <view class='line'></view>
-       <image class="btn" formType='submit'  open-type="getUserInfo" src='../../images/tian/post.png'></image>
+       <button class="btn" formType='submit'  open-type="getUserInfo">发布</button>
       <view class='line'></view>
     
   </form>

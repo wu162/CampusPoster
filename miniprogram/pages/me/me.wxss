@@ -24,11 +24,14 @@
 }
 
 .userBg2 {
+  margin-left: 50rpx;
+  width: 650rpx;
   display: flex;
   flex-direction: row;
   height: 100rpx;
   background-color: #fff;
   align-items: center;
+  margin-bottom: 20rpx;
 }
 
 .img {
@@ -67,14 +70,14 @@
 }
 
 .line {
-  height: 30rpx;
+  height: 50rpx;
 }
 
 .item {
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  height: 80rpx;
+  height: 95rpx;
   align-items: center;
 }
 
@@ -89,6 +92,7 @@
 }
 
 .right {
+  margin-left: 10rpx;
   width: 40%;
   text-align: right;
   color: #c7c7cc;
@@ -104,4 +108,9 @@
   height: 1rpx;
   background-color: #ccc;
   opacity: 0.2;
+}
+.icons{
+height: 44rpx;
+width:44rpx;
+margin-top: 10rpx;
 }

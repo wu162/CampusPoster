@@ -47,16 +47,16 @@
       <view class='name' bindtap='onWriterClick'>{{item.user.nickName}}</view>
       <view class='date'>第{{idx+2}}楼 | {{item.changeDate}}</view>
       </view>
-     <image class='icon-up4' wx:if='{{up_per[idx].length>0}}' bindtap='onUpClick' data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'  src="../../images/点赞.png" ></image>
-      <image class='icon-up4' wx:else bindtap='onUpClick'data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}' src="../../images/点赞.png" ></image>
+     <image class='icon-up4' wx:if='{{up_per[idx].length>0}}' bindtap='onUpClick' data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}'  src="../../images/tian/is_praise.png" ></image>
+      <image class='icon-up4' wx:else bindtap='onUpClick'data-replyId='{{item._id}}' data-openid='{{item._openid}}'data-idx='{{idx}}' src="../../images/tian/praise.png" ></image>
 <view class='icon-text2'>{{up[idx]}}</view>
       </view>
       <view class='replay-content'>{{item.content}}</view>
        <block wx:if="{{reply_in[idx].length==0}}">
-      <view class='replay' bindtap='onReplyPageClick'data-replyId='{{item._id}}' data-openid='{{item._openid}}' data-idx='{{idx}}'>回复</view>
+      <view class='replay' bindtap='onReplyPageClick'data-replyId='{{item._id}}' data-up='{{up[idx]}}' data-isup='{{up_per[idx].length}}'data-openid='{{item._openid}}' data-idx='{{idx}}'>回复</view>
       </block>
       <block wx:else>
-      <view class='replay' bindtap='onReplyPageClick'data-replyId='{{item._id}}' data-openid='{{item._openid}}' data-idx='{{idx}}'>查看全部{{reply_in[idx].length}}条评论 ></view>
+      <view class='replay' bindtap='onReplyPageClick'data-replyId='{{item._id}}' data-up='{{up[idx]}}' data-isup='{{up_per[idx].length}}'data-openid='{{item._openid}}' data-idx='{{idx}}'>查看全部{{reply_in[idx].length}}条评论 ></view>
       </block>
 </block>
 </view>
@@ -88,10 +88,10 @@
                     <image class='icon' src="../../images/tian/comment.png"></image>       
                    
                     <view wx:if='{{iscollect}}'> 
-                    <image class='icon' src="../../images/收藏.png" bindtap='onCollectClick'></image>      
+                    <image class='icon' src="../../images/tian/iscollect.png" bindtap='onCollectClick'></image>      
                     </view>
                      <view wx:else> 
-                    <image class='icon' src="../../images/收藏.png" bindtap='onCollectClick'></image>      
+                    <image class='icon' src="../../images/tian/not_collect.png" bindtap='onCollectClick'></image>      
                     </view>   
                      <image class='icon' src="../../images/tian/share.png"></image>
      </view>

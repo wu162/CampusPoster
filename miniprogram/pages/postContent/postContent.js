@@ -179,10 +179,13 @@ getUp_per:function(res,i){
     var id = event.currentTarget.dataset.replyid;
     var openid = event.currentTarget.dataset.openid;
     var sequence = event.currentTarget.dataset.idx+2;
-    console.log(sequence)
+    var up = event.currentTarget.dataset.up;
+    var isup = event.currentTarget.dataset.isup;
+    console.log(up)
+    console.log(isup)
       wx.navigateTo({
-        url: "../reply/reply?id=" + id + "&openid=" + openid + "&sequence=" + sequence
-    })
+        url: "../reply/reply?id=" + id + "&openid=" + openid + "&sequence=" + sequence + "&up=" + up + "&isup=" + isup
+      })
   },
   /**
   * bar 点击

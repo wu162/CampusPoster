@@ -20,7 +20,11 @@ const db = wx.cloud.database();
       rid:'',
       up:0,
       length:0,
+      up: {},
+      up_per: {},
       sequence:'',
+      reply_up:'',
+      reply_isup:'',
   },
 
   /**
@@ -32,12 +36,13 @@ const db = wx.cloud.database();
     that.data.id = options.id;
     that.data.openid = options.openid;
     that.setData({
-      sequence: options.sequence
+      sequence: options.sequence,
+      reply_up:options.up,
+      reply_isup:options.isup
     })
     that.data.rid=options.rid;
     that.getData();
     that.jugdeUserLogin();
-    console.log(that.data.id)
   },
   
 
@@ -58,7 +63,7 @@ const db = wx.cloud.database();
             reply: res.data, 
           })
           // 获取回复信息
-          console.log(that.data.reply._id)
+          console.log(that.data.reply)
           db.collection('reply_in').where({
             r_id: that.data.reply._id
           }).get({
@@ -79,54 +84,47 @@ const db = wx.cloud.database();
                   length: res.data.length
                 })
               }
-
+              for (var i = 0; i < res.data.length; i++) {
+                that.getUp(res, i)
+                that.getUp_per(res, i)
+              }
         }
       })
-
-      var j = 0
-      var k = 0    
-  
-
-
-            var data = res.data[0]._id
-//获取赞的情况
-            // db.collection('up')
-            //   .where({
-            //     _openid: that.data.openid,
-            //     _id: data
-            //   })
-            //   .get({
-            //     success: function (res2) {
-            //       if (res2.data.length > 0)
-            //       {res.data[j].is_up=true}
-            //       console.log(res2.data)
-            //       j++;
-            //       data = res.data[j]._id
-            //       console.log(data)
-            //       that.setData({
-            //         reply_in: res.data,
-            //         length: res.data.length
-            //       })
-            //     },
-            //   })
-
-            // db.collection('up')
-            //   .where({
-            //     _id: data
-            //   })
-            //   .get({
-            //     success: function (res3) {
-            //       res.data[k++].up = res3.data.length
-            //       that.setData({
-            //         reply_in: res.data,
-            //         length: res.data.length
-            //       })
-            //     },
-            //   })
           }
           
       })
         
+    },
+    //获取赞的情况
+    getUp_per: function (res, i) {
+      db.collection('up')
+        .where({
+          _openid: that.data.openid,
+          _id: res.data[i]._id
+        })
+        .get({
+          success: function (res2) {
+            var up = "up_per[" + i + "]";
+            that.setData({
+              [up]: res2.data,
+            })
+          },
+        })
+    },
+    //获取赞的总数
+    getUp: function (res, i) {
+      db.collection('up')
+        .where({
+          _id: res.data[i]._id
+        })
+        .get({
+          success: function (res3) {
+            var up = "up[" + i + "]";
+            that.setData({
+              [up]: res3.data.length,
+            })
+          },
+        })
     },
     /**
       * 保存到发布集合中
@@ -197,7 +195,7 @@ const db = wx.cloud.database();
     onUpClick: function (event) {
       var id = event.currentTarget.dataset.replyid;
       var idx = event.currentTarget.dataset.idx;
-      if (that.data.reply[idx].is_up) {
+      if (that.data.reply_in[idx].is_up) {
         // 需要判断是否存在
         that.removeFromUpServer(id,idx);
         that.refreshUpIcon(false,idx)
@@ -211,10 +209,9 @@ const db = wx.cloud.database();
    * 添加到点赞集合中
    */
     saveToUpServer: function (id,idx) {
-      db.collection('reply').add({
+      db.collection('up').add({
         data: {
-          _id: that.data.reply[idx]._id,
-          is_up
+          _id: that.data.reply_in[idx]._id,
         },
         success: function (res) {
         },
@@ -224,17 +221,86 @@ const db = wx.cloud.database();
   * 从点赞集合中移除
   */
     removeFromUpServer: function (id,idx) {
-      db.collection('up').doc(that.data.reply[idx]._id).remove({
+      db.collection('up').doc(that.data.reply_in[idx]._id).remove({
+      });
+    },
+    /**
+* 刷新点赞icon
+*/
+    refreshUpIcon(isUp, idx) {
+      var reply = "reply_in[" + idx + "].is_up";
+      var up = "up[" + idx + "]";
+      var up_per = "up_per[" + idx + "]";
+      that.setData({
+        [reply]: isUp,
+      })
+      if (isUp) {
+        that.setData({
+          [up]: that.data.up[idx] + 1,
+          [up_per]: "111"
+        })
+      }
+      else {
+        that.setData({
+          [up]: that.data.up[idx] - 1,
+          [up_per]: ''
+        })
+      }
+    },
+
+
+    /**
+* Praise 点击
+*/
+    onReplyUpClick: function (event) {
+      var id = event.currentTarget.dataset.replyid;
+      console.log(id)
+      if (that.data.reply_isup!=0) {
+        // 需要判断是否存在
+        that.removeFromReplyUpServer(id);
+        that.refreshReplyUpIcon(false)
+      }
+      else {
+        that.saveToReplyUpServer(id);
+        that.refreshReplyUpIcon(true)
+      }
+
+    },
+    /**
+   * 添加到点赞集合中
+   */
+    saveToReplyUpServer: function (id) {
+      db.collection('up').add({
+        data: {
+          _id: that.data.reply._id,
+        },
+        success: function (res) {
+        },
+      })
+    },
+    /**
+  * 从点赞集合中移除
+  */
+    removeFromReplyUpServer: function (id) {
+      db.collection('up').doc(that.data.reply._id).remove({
       });
     },
     /**
    * 刷新点赞icon
    */
-    refreshUpIcon(isUp,idx) {
-      var up = "reply[" + idx + "].is_up";
-      that.setData({
-       [up]: isUp,
-      })
+    refreshReplyUpIcon(isUp) {
+      if (isUp) {
+        that.setData({
+          reply_up: that.data.reply_up + 1,
+          reply_isup: 1
+        })
+      }
+      else {
+        that.setData({
+          reply_up: that.data.reply_up - 1,
+          reply_isup: 0
+        })
+      }
     },
     /**
       * 判断用户是否登录

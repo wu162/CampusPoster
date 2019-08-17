@@ -1,0 +1,1 @@
+<button class="btn" bindtap="getuser" hover-class="btn-hover">进入贴吧</button>

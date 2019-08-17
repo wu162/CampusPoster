@@ -1,0 +1,37 @@
+<!--miniprogram/pages/marry/marry.wxml-->
+<view class="content">
+  <form bindsubmit="formSubmit">
+    <view class="text-content">
+
+      <view class='title-area'>
+        <textarea name="input-name" type="text" placeholder="加个帅气的贴吧名吧！" placeholder-class="holder" value="{{b_name}}" bindblur='getNameAreaContent'></textarea>
+      </view>
+
+      <!-- <view class='text-area'>
+        <textarea name="input-content" type="text" placeholder="来吧，尽情发挥吧~" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent'></textarea>
+      </view> -->
+
+    </view>
+
+    <scroll-view class="image-group" scroll-x="true">
+      <block wx:for='{{temp}}' wx:for-index='idx'>
+        <view>
+          <image src='{{temp[idx]}}' mode='aspectFill' bindtap="previewImg"></image>
+          <icon type='clear' bindtap='removeImg'  data-index="{{idx}}" ></icon>
+        </view>
+      </block>
+    </scroll-view>
+
+    <view wx:if='{{haveNotChooseImage}}'>
+      <image class='btn-img' src='../../images/tian/add.png' bindtap='chooseImage'></image>
+    </view>
+
+    <view class='line'></view>
+    <button class="btn" formType='submit' hover-class="btn-hover">建吧</button>
+
+
+    <view class='line'></view>
+    
+  </form>
+
+</view>

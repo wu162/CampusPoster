@@ -1,0 +1,18 @@
+/* pages/start/start.wxss */
+page {
+    height: 100%;
+}
+.btn {
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  position: center;
+  background-color: rgb(163, 222, 163);
+  font-size: 30rpx;
+  color: #fff
+}
+
+.btn-hover::after{
+  background-color:aliceblue;
+  color: #000000;
+}

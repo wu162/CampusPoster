@@ -26,3 +26,7 @@
              card_link='{{item.link}}'
              hidden='true' />
 </view>
+
+
+
+<button class="btn" bindtap="onPostCreatClick" hover-class="btn-hover">创建新吧</button>

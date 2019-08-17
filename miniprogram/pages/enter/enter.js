@@ -1,10 +1,15 @@
 // pages/enter/enter.js
+const app = getApp()
+var that
+const db = wx.cloud.database();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:'',
     see:1,
     posterRec:[
       {
@@ -82,7 +87,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that=this
+    that.getOpenid();
+  },
 
+  getOpenid(){
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取的openid',res.result.openid)
+        that.data.id=res.result.openid
+        that.setData({
+          id: that.data.id
+        })
+      }
+    })
   },
 
   onEye:function(e){
@@ -99,9 +118,19 @@ Page({
     }
   },
 
+  /**
+        * 跳转到建吧页面
+        */
+  onPostCreatClick(e) {
+    console.log('that.data.id',that.data.id)
+    wx.navigateTo({
+      url: '../postCreat/postCreat?id=' + that.data.id,
+    })
+  },
+
   onSearch:function(e){
     wx.navigateTo({
-      url: '../search/search'
+      url: '../search/search?id=' + that.data.id
     })
   }
 })

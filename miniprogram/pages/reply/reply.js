@@ -130,6 +130,21 @@ const db = wx.cloud.database();
       * 保存到发布集合中
       */
     saveDataToServer: function (event) {
+      db.collection('message').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          date: new Date().getTime(),
+          user: that.data.user,
+          b_id: that.data.bid,
+          r_id: that.data.id,
+          u_id: that.data.reply._openid,
+          content: that.data.inputValue,
+          type: 2
+        },
+        success: function (res) {
+          console.log("yes")
+        }
+      })
       db.collection('reply_in').add({
         // data 字段表示需新增的 JSON 数据
         data: {
@@ -144,7 +159,7 @@ const db = wx.cloud.database();
         },
         success: function (res) {
           wx.navigateTo({
-            url: "../reply/reply?id=" + that.data.id + "&openid=" + that.data.openid + "&sequence="+that.data.sequence
+            url: "../reply/reply?id=" + that.data.id + "&openid=" + that.data.openid + "&sequence=" + that.data.sequence + "&up=" + that.data.reply_up + "&isup=" + that.data.reply_isup
           })
 
         },

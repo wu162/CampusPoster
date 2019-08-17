@@ -1,4 +1,7 @@
 // pages/message/message.js
+var that
+const db = wx.cloud.database()
+const app = getApp()
 Page({
   /**
       * @我的
@@ -22,6 +25,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    reply:{},
+    
     test: [{
       person_link: '../meInfo/meInfo',
       postContent_link: '../postContent/postContent',
@@ -61,5 +66,45 @@ Page({
       beReply: '被Alice3回复的内容',
       barname: '所属吧名',
     }],
+  },
+  onLoad: function (options) {
+    that = this
+    that.jugdeUserLogin();
+  },
+
+  
+
+  /**
+  * 判断用户是否登录
+  */
+  jugdeUserLogin: function (event) {
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              that.data.user = res.userInfo;
+              console.log(res)
+              that.getMessage();
+            }
+          })
+        }
+      }
+    })
+  },
+  // 获取消息
+  getMessage: function () {
+    db.collection('message').where({
+      u_id: app.globalData.openid
+    }).get({
+      success: function (res) {
+        that.setData({
+          reply: res.data,
+        })
+        console.log(res)
+      }
+    })
   },
 })

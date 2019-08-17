@@ -27,11 +27,13 @@ Page({
         head: '../../images/bg.png',
         name: '帖子作者名',
         date: '两天前',
-        images: '../../images/bg.png',
+        images: ['../../images/bg.png'],
         title: '标题1',
         content: '随便加的一些内容'
       }],
-
+    length:0,
+    length2:0,
+    comment_length:0,
   },
 
   /**
@@ -79,10 +81,17 @@ Page({
           length: res.data.length
         })
         for (var i = 0; i < res.data.length; i++) {
-         that.getReply_in(res,i);
+          if (i == res.data.length-1)
+         {
+           that.getReply_in(res,i,true);
+         }
+         else
+         {
+          that.getReply_in(res, i,false);
+         }
          that.getUp(res,i)
          that.getUp_per(res,i)
-          
+      
     }
     
       }
@@ -92,18 +101,29 @@ Page({
   },
 
   //获取内层回复
-getReply_in:function(res,i){
+getReply_in:function(res,i,last){
   var up = "reply_in[" + i + "]";
   db.collection('reply_in').where({
     r_id: res.data[i]._id
   }).get({
     success: function (res2) {
+      console.log(that.data.length2)
+      if(last)
       that.setData({
         [up]: res2.data,
+        length:that.data.length+res2.data.length,
+        comment_length:that.data.length
       })
+      else
+        that.setData({
+          [up]: res2.data,
+          length: that.data.length + res2.data.length,
+        })
+        console.log(that.data.length)
     },
   })
 },
+
 //获取赞的情况
 getUp_per:function(res,i){
   db.collection('up')
@@ -142,17 +162,30 @@ getUp_per:function(res,i){
      * 保存到发布集合中
      */
   saveDataToServer: function (event) {
+    db.collection('message').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        date: new Date().getTime(),
+        user: that.data.user,
+        b_id: that.data.bid,
+        r_id: that.data.id,
+        u_id:that.data.reply._openid,
+        content: that.data.inputValue,
+        type:1
+      },
+      success: function (res) {
+      console.log("yes")
+      }
+    })
     db.collection('reply').add({
       // data 字段表示需新增的 JSON 数据
       data: {
         date: new Date(),
         user: that.data.user,
-        b_rid: that.data.bid,
+        b_id: that.data.bid,
         r_id: that.data.id,
-        up: that.data.up,
         content: that.data.inputValue,
         changeDate: '',
-        is_up: false
       },
       success: function (res) {
         wx.navigateTo({
@@ -221,6 +254,18 @@ getUp_per:function(res,i){
       that.setData({
         isreply: false
       })
+  },
+  // 预览图片
+  previewImg: function (e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    console.log(index)
+    wx.previewImage({
+      //当前显示图片
+      current: that.data.test[0].images[index],
+      //所有图片
+      urls: that.data.test[0].images
+    })
   },
 
   //点击收藏

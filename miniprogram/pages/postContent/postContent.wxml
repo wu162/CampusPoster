@@ -13,15 +13,15 @@
         <text class='title'>{{test[0].title}}</text>
          <text class='content'>{{test[0].content}}</text>
        <!-- 显示图片 -->
-        <block wx:if="{{test[0].images!=null}}">
-              <image class='content-img' src='{{test[0].images}}' mode='aspectFill'></image> 
+        <block wx:for="{{test[0].images}}" wx:for-index="useridx">
+              <image class='content-img' src='{{item}}' bindtap="previewImg"data-index='{{useridx}}' mode='aspectFill'></image> 
            </block>
 <button class='bar' bindtap='onBarClick'>所属吧名 </button>
  <view class='container-content'>
 <image class='icon-up'  src="../../images/tian/share.png" ></image>
 <view class='icon-text'>40</view>
 <image class='icon-up2'  src="../../images/tian/comment.png" ></image>
-<view class='icon-text'>40</view>
+<view class='icon-text'>{{comment_length}}</view>
 <image class='icon-up3'  src="../../images/tian/praise.png"></image>
 <view class='icon-text'>40</view>
 </view>

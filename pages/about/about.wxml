@@ -1,0 +1,4 @@
+<view>
+  <image src='{{pic}}' mode="widthFix"></image>
+</view>
+

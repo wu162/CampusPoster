@@ -1,0 +1,30 @@
+<view class='container-line'></view>
+
+<block wx:for='{{test}}'>
+  <view class='container' data-topicId='{{item._id}}' data-index='{{idx}}'>
+    <view class='container-content'>
+      <image class='head' bindtap='onWriterClick' src='{{item.head}}'></image>
+      <view class='content' bindtap='onWriterClick'>
+        <view class='name'>{{item.name}}</view>
+      </view>
+      <!--是否有粉丝标签-->
+      <block wx:if="{{item.isFan}}">
+        <image class='fan' src='{{item.fan}}'></image>
+      </block>
+    </view>
+
+    <!--@的文本内容-->
+    <view class='mention' bindtap='onItemClick' >     
+      <text>{{item.mention}}</text>
+    </view>
+
+    <!--time-->
+    <view class='time'>  
+      <image class='timepic' src='{{item.timepic}}'></image>
+      <text class='timet'>{{item.time}}</text>
+    </view>
+   
+    <view class='line'></view> 
+  </view>  
+</block>
+

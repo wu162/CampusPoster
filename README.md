@@ -126,6 +126,8 @@
 | 未完成 | 帖子内容页面（postContent） | 田仁杰 |
 | 未完成 | 回复页面（reply） |田仁杰  |
 | 未完成 | 点赞（likes） | 张家铭 |
+| 未完成 | 启动页（start） | 张家铭 |
+| 未完成 | 建吧页（postCreat） | 张家铭 |
 | 未完成 | 消息（message） | 张家铭 |
 | 未完成 | @ 页面（mentions） | 马晓轩 |
 | 未完成 | 关于（about） | 马晓轩 |
@@ -156,13 +158,9 @@
 | avatar       | 头像（应该存放图片链接） |
 | birth        | 出生日期                 |
 | age          | 年龄                     |
-| region       | 地区                     |
+| region       | 地区 【省，市】           |
 | sign         | 个性签名                 |
-| postFollow   | 关注的贴吧（集合类型）   |
-| fans         | 粉丝（集合类型）         |
-| personFollow | 关注的人（集合类型）     |
-| postList     | 发过的帖子（集合类型）   |
-| postCollect  | 收藏的帖子（集合类型）   |
+| sex          | 性别0：未知，1：男，2：女|
 
 * 浏览历史history
 
@@ -171,6 +169,17 @@
 | uid  | 用户id             |
 | time | 记录点开帖子的时间 |
 | pid  | 帖子id             |
+
+* 吧bar
+
+| 属性 | 功能               |
+| ---- | ------------------ |
+| id  | 贴吧id                     |
+| b_avatar | 贴吧头像              |
+| b_name  | 吧名                   |
+| b_follow  | 吧名                  |
+| b_postList | 吧名                 |
+| openid  | 建这个吧的人的openid     |
 
 * 消息message（还需完善）
 

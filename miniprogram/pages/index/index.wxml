@@ -1,7 +1,7 @@
 <view class='search' bindtap='onSearch'>
   <wux-search-bar disabled/>
 </view>
-<view wx:for="{{postList}}">
+<!-- <view wx:for="{{postList}}">
   <postCard thumb='{{item.thumb}}'
             thumb_link='{{item.thumb_link}}'
             content_link='{{item.content_link}}'
@@ -13,4 +13,20 @@
             icon='{{icons}}'
             desc='{{item.nums}}'/>
   <view wx:if="{{index<postList.length-1}}" class='br'></view>
+</view> -->
+
+
+<view wx:for="{{topics}}">
+  <postCard thumb='{{item.user.avatarUrl}}'
+            name='{{item.user.nickName}}'
+            time='{{item.date2}}'
+            title='{{item.title}}'
+            content='{{item.content}}'
+            thumbs='{{item.images}}'
+            b_id='{{item.bar}}'
+            t_id='{{item._id}}'
+            _openid='{{_openid}}'
+            icon='{{icons}}'
+            desc='{{item.nums}}'/>
+  <view wx:if="{{index<topics.length-1}}" class='br'></view>
 </view>

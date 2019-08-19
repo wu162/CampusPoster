@@ -1,6 +1,6 @@
 Component({
   properties: {
-    thumb: {
+    thumb: {                //头像（用到了）
       type: String,
       value: ''
     },
@@ -8,7 +8,7 @@ Component({
       type: String,
       value: ''
     },
-    title: {
+    title: {                //吧名（用到了）
       type: String,
       value: ''
     },
@@ -36,6 +36,14 @@ Component({
       type: String,
       value: ''
     },
+    b_id: {                     //吧id（用到了）
+      type: String,
+      value: ''
+    },
+    _openid: {                  //本用户_openid（用到了）
+      type: String,
+      value: ''
+    }
   },
 
   data:{
@@ -66,7 +74,7 @@ Component({
 
     onCard(e){
       wx.navigateTo({
-        url: this.data.card_link
+        url: '../postIndex/postIndex?b_id=' + this.data.b_id + '&_openid=' + this.data._openid
       })
     }
   },

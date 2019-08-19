@@ -8,15 +8,21 @@
   </view>
 </view>
 <scroll-view class="poster_scroll_X" scroll-x="true" hidden="{{see==1?false:true}}">
-  <view wx:for="{{posterRec}}" class='posterRec'>
+  <!-- <view wx:for="{{posterRec}}" class='posterRec'>
     <boxCard thumb='{{item.thumb}}'
              title='{{item.name}}' 
              desc='{{item.desc}}' 
              link='{{item.link}}'/>
+  </view> -->
+  <view wx:for="{{posterRec}}" class='posterRec'>
+    <boxCard thumb='{{item.b_avatar}}'
+             title='{{item.b_name}}' 
+             _openid='{{item._openid}}'
+             b_id='{{item._id}}'/>
   </view>
 </scroll-view>
 
-<view class='label'>
+<!-- <view class='label'>
   <text class='label_title'>关注的吧</text>
 </view>
 <view wx:for="{{posterFol}}" class='posterFol'>
@@ -24,6 +30,17 @@
              title='{{item.title}}' 
              desc='{{item.desc}}' 
              card_link='{{item.link}}'
+             hidden='true' />
+</view> -->
+
+<view class='label'>
+  <text class='label_title'>关注的吧</text>
+</view>
+<view wx:for="{{posterFol}}" class='posterFol'>
+  <btnCard thumb='{{item.b_avatar}}' 
+             title='{{item.b_name}}' 
+             _openid='{{item._openid}}'
+             b_id='{{item._id}}'
              hidden='true' />
 </view>
 

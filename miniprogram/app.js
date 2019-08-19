@@ -11,7 +11,6 @@ App({
     }
 
     this.globalData = {
-      openid: 'oDgOl5Bl4zo2lBHrQYrQqgWtm1go',
       env: 'wxproject - md8bn'
     }
   }

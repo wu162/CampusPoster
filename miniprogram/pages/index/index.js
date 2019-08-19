@@ -1,3 +1,6 @@
+const app = getApp()
+var that
+const db = wx.cloud.database();
 
 Page({
 
@@ -5,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    _openid: '',
+    topics: [],
     icons: ['../../images/wu/share.png',
       '../../images/wu/review.png',
       '../../images/wu/like.png'],
@@ -49,8 +54,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    that = this
+    that.getOpenid();     //获取用户_openid
   },
+
+  //页面显示时刷新数据
+  onShow: function () {
+    that.getTopics();   //获取帖子
+  },
+
+
+
+  //获取用户的_openid
+  getOpenid() {
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取的openid', res.result.openid)
+        that.data._openid = res.result.openid
+        that.setData({
+          _openid: that.data._openid
+        })
+      }
+    })
+  },
+
+  //获取帖子(未限制数量)
+  getTopics: function () {
+    db.collection('topic').get({
+      success: function (res) {
+        that.data.topics = res.data
+        that.setData({
+          topics: that.data.topics
+        })
+        console.log('that.data.topics', that.data.topics)
+      }
+    })
+  },
+
+
+
+
 
   onSearch: function (e) {
     wx.navigateTo({

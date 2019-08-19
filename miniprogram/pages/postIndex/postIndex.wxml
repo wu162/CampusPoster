@@ -1,8 +1,10 @@
 <view class='bg'>
   <view class='head'>
-    <image class='post_thumb' src='{{post.thumb}}'></image>
+    <!-- <image class='post_thumb' src='{{post.thumb}}'></image> -->
+    <image class='post_thumb' src='{{bar[0].b_avatar}}'></image>
     <view class='info'>
-      <view class='title'>{{post.title}}</view>
+      <!-- <view class='title'>{{post.title}}</view> -->
+      <view class='title'>{{bar[0].b_name}}</view>
       <view class='desc'>{{post.desc}}</view>
     </view>
     <view class="{{post.btn_text=='关注'?'btn-unpressed':'btn-pressed'}}">
@@ -31,18 +33,19 @@
 </wux-tabs>
 </view>
 
-<view wx:for="{{postList}}">
-  <postCard thumb='{{item.thumb}}'
-            thumb_link='{{item.thumb_link}}'
-            content_link='{{item.content_link}}'
-            name='{{item.name}}'
-            time='{{item.time}}'
+<view wx:for="{{topics}}">
+  <postCard thumb='{{item.user.avatarUrl}}'
+            name='{{item.user.nickName}}'
+            time='{{item.date2}}'
             title='{{item.title}}'
             content='{{item.content}}'
-            thumbs='{{item.thumbs}}'
-            icon='{{icons}}'
+            thumbs='{{item.images}}'
+            b_id='{{b_id}}'
+            t_id='{{item._id}}'
+            _openid='{{_openid}}'
+            icon='{{icons}}'            
             desc='{{item.nums}}'/>
-  <view wx:if="{{index<postList.length-1}}" class='br2'></view>
+  <view wx:if="{{index<topics.length-1}}" class='br2'></view>
 </view>
 
 <view class='post_btn' bindtap='onpost'>

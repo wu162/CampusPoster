@@ -40,6 +40,20 @@ Component({
       type: Array,
       value: []
     },
+
+
+    b_id: {
+      type: String,
+      value: ''
+    },
+    t_id: {
+      type: String,
+      valude: ''
+    },
+    _openid: {
+      type: String,
+      value: ''
+    }
   },
 
   data:{
@@ -74,13 +88,13 @@ Component({
   methods: {
     onthumb(e) {
       wx.navigateTo({
-        url: this.data.thumb_link
+        url: '../meInfo/meInfo?_openid=' + this.data._openid
       })
     },
 
     onContent(e){
       wx.navigateTo({
-        url: this.data.content_link
+        url: '../postContent/postContent?b_id=' + this.data.b_id + '&t_id=' + this.data.t_id + '&_openid=' + this.data._openid
       })
     }
   },

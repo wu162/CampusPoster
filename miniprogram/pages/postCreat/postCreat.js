@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
+    _openid:'',
     b_name: '',
     haveNotChooseImage: true,
     isbit: false,
@@ -23,9 +23,9 @@ Page({
     */
   onLoad: function (options) {
     that = this
-    that.data.id = options.id;
+    that.data._openid = options._openid;
     that.setData({
-      id: that.data.id,
+      openid: that.data._openid,
     })
   },
   /**
@@ -153,11 +153,11 @@ Page({
   },
 
   jump:function (){
-    var id = that.data.id
+    var _openid = that.data._openid
     var b_id = that.data.b_id;
-    console.log('id',id,'b_id',b_id)
+    console.log('_openid', _openid,'b_id',b_id)
     wx.redirectTo({
-      url: "../postIndex/postIndex?b_id=" + b_id + "&id=" + id
+      url: "../postIndex/postIndex?b_id=" + b_id + "&_openid=" + _openid
     })
   },
 

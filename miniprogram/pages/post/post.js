@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     that = this
     that.data.bid = options.b_id;
-    that.data.openid=options.open_id;
+    that.data.openid = options._openid;
     that.jugdeUserLogin();
     wx.cloud.callFunction({
       
@@ -110,6 +110,7 @@ Page({
         title:that.data.title,
         content: that.data.content,
         date: new Date(),
+        date2: new Date().getTime(),
         images: that.data.images,
         user: that.data.user,
         isCollect: that.data.isCollect,
@@ -140,8 +141,8 @@ Page({
     })
     var bid = that.data.bid;
     var openid = that.data.openid;
-    wx.navigateTo({
-      url: "../postindex/postindex?id=" + bid + "&openid=" + openid
+    wx.redirectTo({
+      url: "../postIndex/postIndex?b_id=" + bid + "&_openid=" + openid
     })
   },
   /**

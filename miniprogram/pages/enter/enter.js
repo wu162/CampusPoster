@@ -9,77 +9,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
+    _openid:'',
     see:1,
     posterRec:[
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        name: '吧名',
-        desc: '关注10w',
-        link: '../postIndex/postIndex'
-      }
+      // {
+      //   thumb: '../../images/bg.png',
+      //   name: '吧名',
+      //   desc: '关注10w',
+      //   link: '../postIndex/postIndex'
+      // },
+      // {
+      //   thumb: '../../images/bg.png',
+      //   name: '吧名',
+      //   desc: '关注10w',
+      //   link: '../postIndex/postIndex'
+      // }
     ],
     posterFol:[
-      {
-        thumb: '../../images/bg.png',
-        title: '吧名',
-        desc: '关注 10w  帖子 10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        title: '吧名',
-        desc: '关注 10w  帖子 10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        title: '吧名',
-        desc: '关注 10w  帖子 10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        title: '吧名',
-        desc: '关注 10w  帖子 10w',
-        link: '../postIndex/postIndex'
-      },
-      {
-        thumb: '../../images/bg.png',
-        title: '吧名',
-        desc: '关注 10w  帖子 10w',
-        link: '../postIndex/postIndex'
-      }
+      // {
+      //   thumb: '../../images/bg.png',
+      //   title: '吧名',
+      //   desc: '关注 10w  帖子 10w',
+      //   link: '../postIndex/postIndex'
+      // },
+      // {
+      //   thumb: '../../images/bg.png',
+      //   title: '吧名',
+      //   desc: '关注 10w  帖子 10w',
+      //   link: '../postIndex/postIndex'
+      // }
     ]
   },
 
@@ -88,21 +46,73 @@ Page({
    */
   onLoad: function (options) {
     that=this
-    that.getOpenid();
+    that.getOpenid();     //获取用户_openid
   },
 
+  //页面显示时刷新数据
+  onShow: function (){
+    this.getBarFollows();   //获取关注的吧
+    this.getBarRec();       //获取最近逛的吧
+  },
+
+
+  //获取用户的_openid
   getOpenid(){
     wx.cloud.callFunction({
       name: 'getOpenid',
       complete: res => {
         console.log('云函数获取的openid',res.result.openid)
-        that.data.id=res.result.openid
+        that.data._openid = res.result.openid
         that.setData({
-          id: that.data.id
+          _openid: that.data._openid
         })
       }
     })
   },
+
+  //获取关注的吧
+  getBarFollows:function() {
+    //获取本用户建的吧（暂时用建的吧来代替）
+    db.collection('bar').where({
+      _openid: app.globalData.openid,
+    }).get({
+      success: function(res){
+        that.data.posterFol=res.data
+        that.setData({
+          posterFol: that.data.posterFol
+        })
+        console.log('that.data.posterFol', that.data.posterFol)
+      }
+    })
+
+    //获取本用户关注的吧（未施工）
+
+
+
+  },
+
+
+  //获取最近逛的吧
+  getBarRec: function () {
+    //获取本用户建的吧（暂时用建的吧来代替）
+    db.collection('bar').where({
+      _openid: app.globalData.openid,
+    }).get({
+      success: function (res) {
+        that.data.posterRec = res.data
+        that.setData({
+          posterRec: that.data.posterRec
+        })
+        console.log('that.data.posterRec', that.data.posterRec)
+      }
+    })
+
+    //获取本用户最近逛的吧（未施工）
+
+
+  },
+
+
 
   onEye:function(e){
     if(this.data.see==1)
@@ -122,15 +132,15 @@ Page({
         * 跳转到建吧页面
         */
   onPostCreatClick(e) {
-    console.log('that.data.id',that.data.id)
+    console.log('that.data._openid', that.data._openid)
     wx.navigateTo({
-      url: '../postCreat/postCreat?id=' + that.data.id,
+      url: '../postCreat/postCreat?_openid=' + that.data._openid,
     })
   },
 
   onSearch:function(e){
     wx.navigateTo({
-      url: '../search/search?id=' + that.data.id
+      url: '../search/search?_openid=' + that.data._openid
     })
   }
 })

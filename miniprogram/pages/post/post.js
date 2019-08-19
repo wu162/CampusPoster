@@ -141,8 +141,8 @@ Page({
     })
     var bid = that.data.bid;
     var openid = that.data.openid;
-    wx.redirectTo({
-      url: "../postIndex/postIndex?b_id=" + bid + "&_openid=" + openid
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**

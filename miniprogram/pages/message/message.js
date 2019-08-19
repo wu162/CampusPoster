@@ -86,7 +86,6 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               that.data.user = res.userInfo;
-              console.log(res)
               that.getMessage();
             }
           })

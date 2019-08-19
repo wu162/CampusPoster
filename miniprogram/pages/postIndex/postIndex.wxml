@@ -31,17 +31,16 @@
 </wux-tabs>
 </view>
 
-<view wx:for="{{postList}}">
-  <postCard thumb='{{item.thumb}}'
-            thumb_link='{{item.thumb_link}}'
-            content_link='{{item.content_link}}'
-            name='{{item.name}}'
-            time='{{item.time}}'
+<view wx:for="{{topic}}">
+  <postCard bindtap='onTopicClick' data-openid='{{openid}}' data-t_id='{{item._id}}' thumb='{{item.user.avatarUrl}}'
+            
+            name='{{item.user.nickName}}'
+            time='{{item.date}}'
             title='{{item.title}}'
             content='{{item.content}}'
-            thumbs='{{item.thumbs}}'
+            thumbs='{{item.images}}'
             icon='{{icons}}'
-            desc='{{item.nums}}'/>
+            desc='{{nums}}'/>
   <view wx:if="{{index<postList.length-1}}" class='br2'></view>
 </view>
 

@@ -80,8 +80,12 @@ Page({
         desc: '关注 10w  帖子 10w',
         link: '../postIndex/postIndex'
       }
-    ]
+    ],
+      bar:{},
+
   },
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -89,8 +93,19 @@ Page({
   onLoad: function (options) {
     that=this
     that.getOpenid();
+    that.getBar();
   },
-
+  /**
+  * bar 点击
+  */
+  onBarClick: function (event) {
+    var id = event.currentTarget.dataset.b_id;
+    var openid = event.currentTarget.dataset.openid;
+    console.log(id)
+    wx.navigateTo({
+      url: "../postIndex/postIndex?id=" + id + "&openid=" + openid
+    })
+  },
   getOpenid(){
     wx.cloud.callFunction({
       name: 'getOpenid',
@@ -103,7 +118,17 @@ Page({
       }
     })
   },
-
+  //获取吧的情况
+  getBar: function () {
+    db.collection('bar')
+      .get({
+        success: function (res) {
+          that.setData({
+           bar: res.data,
+          })
+        },
+      })
+  },
   onEye:function(e){
     if(this.data.see==1)
     {

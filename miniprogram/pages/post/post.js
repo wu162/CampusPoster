@@ -1,5 +1,7 @@
+const app = getApp()
 var that
 const db = wx.cloud.database();
+
 Page({
 
   /**
@@ -21,12 +23,12 @@ Page({
     */
   onLoad: function (options) {
     that = this
-    that.data.bid = options.b_id;
-    that.data.openid=options.open_id;
+    that.data.bid = options.id;
+    that.data.openid = app.globalData.openid;
+    console.log(that.data.openid)
+    console.log(that.data.bid )
     that.jugdeUserLogin();
-    wx.cloud.callFunction({
-      
-    })
+
   },
   /**
  * 获取填写的标题
@@ -56,6 +58,7 @@ Page({
         })
         that.data.images = []
         for (var i in res.tempFilePaths) {
+          console.log(res.tempFilePaths[i])
           // 将图片上传至云存储空间
           wx.cloud.uploadFile({
             // 指定要上传的文件的小程序临时文件路径
@@ -63,6 +66,7 @@ Page({
             filePath: res.tempFilePaths[i],
             // 成功回调
             success: res => {
+              console.log(res.fileID)
               that.data.images.push(res.fileID)
             },
           })
@@ -113,7 +117,7 @@ Page({
         images: that.data.images,
         user: that.data.user,
         isCollect: that.data.isCollect,
-        bar:that.data.bid
+        b_id:that.data.bid
       },
       success: function (res) {
         // 清空数据
@@ -141,7 +145,7 @@ Page({
     var bid = that.data.bid;
     var openid = that.data.openid;
     wx.navigateTo({
-      url: "../postindex/postindex?id=" + bid + "&openid=" + openid
+      url: "../postIndex/postIndex?id=" + bid + "&openid=" + openid
     })
   },
   /**

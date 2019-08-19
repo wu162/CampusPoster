@@ -19,12 +19,11 @@
 <view class='label'>
   <text class='label_title'>关注的吧</text>
 </view>
-<view wx:for="{{posterFol}}" class='posterFol'>
-  <btnCard thumb='{{item.thumb}}' 
-             title='{{item.title}}' 
-             desc='{{item.desc}}' 
-             card_link='{{item.link}}'
-             hidden='true' />
+<view wx:for="{{bar}}" class='posterFol'>
+  <btnCard thumb='{{item.b_avatar}}' 
+             title='{{item.b_name}}' 
+             desc='{{item.b_name}}' 
+             hidden='true' bindtap="onBarClick" data-b_id='{{item._id}}' data-index='{{id}}'/>
 </view>
 
 

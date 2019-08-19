@@ -1,4 +1,7 @@
 // pages/postIndex/postIndex.js
+const app = getApp()
+var that
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -16,6 +19,7 @@ Page({
     icons: ['../../images/wu/share.png',
       '../../images/wu/review.png',
       '../../images/wu/like.png'],
+    nums: ['20', '20', '20'],
     postList: [
       {
         thumb: '../../images/bg.png',
@@ -50,19 +54,64 @@ Page({
         thumbs: ['../../images/bg.png'],
         nums: ['20', '20', '20']
       }
-    ]
+    ],
+    bar:{},
+    topic:{},
+    openid:'',
+    b_id:'',
+
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that=this;
+that.data.openid=options.openid;
+that.data.b_id=options.id;
+that.getBarInfo();
   },
 
-  onpost:function(e){
+  /**
+  * topic 点击
+  */
+  onTopicClick: function (event) {
+    var tid = event.currentTarget.dataset.t_id;
+    var openid = event.currentTarget.dataset.openid;
     wx.navigateTo({
-      url: '../post/post'
+      url: "../postContent/postContent?tid=" + tid + "&openid=" + openid
+    })
+  },
+  //获取吧的情况
+  getBarInfo: function () {
+    db.collection('bar')
+      .get({
+        success: function (res) {
+          console.log(res)
+          that.setData({
+            bar: res.data,
+          })
+
+          db.collection('topic').where({
+            b_id:res.data.id
+          }).get({
+            success:function(res2){
+              console.log(res2.data)
+              that.setData({
+                topic: res2.data
+              })
+            }
+          })
+        },
+      })
+  },
+  onpost:function(e){
+    var id=that.data.b_id
+    var openid=that.data.openid
+    console.log("?")
+    wx.navigateTo({
+       url: "../post/post?id=" + id + "&openid=" + openid
     })
   }
 })

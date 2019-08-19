@@ -2,18 +2,18 @@
 <!--miniprogram/pages/collect/collect.wxml-->
   <view class='container' bindtap='onExitReplyClick'>
     <view class='container-content'>
-    <image class='head' bindtap='onWriterClick' src='{{test[0].head}}'></image>
+    <image class='head' bindtap='onWriterClick' src='{{topic.user.avatarUrl}}'></image>
       <view class='title-content' >
-      <view class='name' bindtap='onWriterClick'>{{test[0].name}}</view>
-      <view class='date'>{{test[0].date}}</view>
+      <view class='name' bindtap='onWriterClick'>{{topic.user.nickName}}</view>
+      <view class='date'>{{topic.changeDate}}</view>
       </view>
       <button class="btn" bindtap='follow'>关注</button>
       </view>
       <!-- 显示文本 -->
-        <text class='title'>{{test[0].title}}</text>
-         <text class='content'>{{test[0].content}}</text>
+        <text class='title'>{{topic.title}}</text>
+         <text class='content'>{{topic.content}}</text>
        <!-- 显示图片 -->
-        <block wx:for="{{test[0].images}}" wx:for-index="useridx">
+        <block wx:for="{{topic.images}}" wx:for-index="useridx">
               <image class='content-img' src='{{item}}' bindtap="previewImg"data-index='{{useridx}}' mode='aspectFill'></image> 
            </block>
 <button class='bar' bindtap='onBarClick'>所属吧名 </button>

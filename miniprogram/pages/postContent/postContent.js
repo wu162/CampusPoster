@@ -15,8 +15,9 @@ Page({
     topics: {},
     content:'',
     inputValue:'',
-    id:'',
-    openid: "oDgOl5Bl4zo2lBHrQYrQqgWtm1go",
+    r_id:'',
+    b_id:'',
+    openid: '',
     reply: {},
     reply_in:{},
     up:{},
@@ -34,6 +35,7 @@ Page({
     length:0,
     length2:0,
     comment_length:0,
+    topic:{},
   },
 
   /**
@@ -41,27 +43,43 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.data.id = options.id;
-   // that.data.openid = options.openid;
-    that.data.barid=options.barid;
-    // 获取话题信息
-    db.collection('topic').doc(that.data.id).get({
-      success: function (res) {
-        that.topic = res.data;
-        that.setData({
-          topic: that.topic,
-        })
-      }
+    that.data.t_id = options.tid;
+    that.setData({
+      t_id:options.tid
     })
+    that.data.openid = app.globalData.openid;
+    console.log(that.data.openid)
+    that.data.barid=options.barid;
+   
     that.getData();
     that.jugdeUserLogin();
   },
 
   getData: function () {
-    var j = 0
-    var k = 0
+    // 获取话题信息
+    db.collection('topic').doc(that.data.t_id).get({
+      success: function (res) {
+        var date = res.data.date
+        var t1 = new Date()
+        var t = new Date(t1 - date + 16 * 3600 * 1000)
+        var d = parseInt(t.getTime() / 1000 / 3600 / 24)
+        var h = t.getHours()
+        var m = t.getMinutes()
+        if (d == 0 && h == 0 && m == 0) { res.data.changeDate = t.getSeconds().toString() + "秒前  "; }
+        else if (d == 0 && h == 0) { res.data.changeDate = m.toString() + "分钟前"; }
+        else if (d == 0) { res.data.changeDate = h.toString() + "小时前"; }
+        else { res.data.changeDate = d.toString() + "天前  "; }
+
+        that.setData({
+          topic: res.data,
+        })
+      }
+    })
     // 获取回复信息
-    db.collection('reply').get({
+    db.collection('reply').where({
+      r_id: that.data.r_id
+    })
+    .get({
       success: function (res) {
         for (var i = 0; i < res.data.length; i++) {
           var date = res.data[i].date
@@ -107,7 +125,6 @@ getReply_in:function(res,i,last){
     r_id: res.data[i]._id
   }).get({
     success: function (res2) {
-      console.log(that.data.length2)
       if(last)
       that.setData({
         [up]: res2.data,
@@ -119,7 +136,6 @@ getReply_in:function(res,i,last){
           [up]: res2.data,
           length: that.data.length + res2.data.length,
         })
-        console.log(that.data.length)
     },
   })
 },
@@ -174,7 +190,6 @@ getUp_per:function(res,i){
         type:1
       },
       success: function (res) {
-      console.log("yes")
       }
     })
     db.collection('reply').add({
@@ -183,13 +198,14 @@ getUp_per:function(res,i){
         date: new Date(),
         user: that.data.user,
         b_id: that.data.bid,
-        r_id: that.data.id,
+        r_id: that.data.r_id,
         content: that.data.inputValue,
         changeDate: '',
       },
       success: function (res) {
+        console.log(that.data.t_id)
         wx.navigateTo({
-          url: "../postContent/postContent?id=" + that.data.id + "&openid=" + that.data.openid
+          url: "../postContent/postContent?tid=" + that.data.t_id + "&openid=" + that.data.openid
         })
 
       },
@@ -224,7 +240,7 @@ getUp_per:function(res,i){
   * bar 点击
   */
   onBarClick: function (event) {
-    var id = event.currentTarget.dataset.barid;
+    var id = event.currentTarget.dataset.b_id;
     var openid = event.currentTarget.dataset.openid;
     wx.navigateTo({
       url: "../postIndex/postIndex?id=" + id + "&openid=" + openid
@@ -345,7 +361,6 @@ getUp_per:function(res,i){
   onUpClick: function (event) {
     var id = event.currentTarget.dataset.replyid;
     var idx = event.currentTarget.dataset.idx;
-    console.log(that.data.up_per[idx])
     if (that.data.up_per[idx].length>0)
     {
       // 需要判断是否存在

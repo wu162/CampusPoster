@@ -1,6 +1,6 @@
 // pages/start/start.js
 const app = getApp()
-var that 
+var that
 const db = wx.cloud.database();
 Page({
 
@@ -41,10 +41,10 @@ Page({
                 that.data.region.push(res.userInfo.city);
                 //下载头像图片            注：要把thirdwx.qlogo.cn和wx.qlogo.cn添加到downloadFile的合法域名里
                 wx.downloadFile({
-                  url: that.data.image, 
+                  url: that.data.image,
                   success(res) {
                     // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-                    that.data.image=res.tempFilePath
+                    that.data.image = res.tempFilePath
                   }
                 })
                 that.setData({
@@ -64,10 +64,10 @@ Page({
       this.jugdeUserLogin();
     }
   },
-  
+
 
   //在user库里查找用户
-  getuser: function(){
+  getuser: function () {
     that = this
     // 判断用户是否第一次使用，不是则创建新用户
     db.collection('user')
@@ -81,7 +81,7 @@ Page({
             console.log('无此用户');
             // that.upLoadImage();    //函数调用顺序问题
             // that.addUser(db);
-            that.upLoadImage().then(result =>{
+            that.upLoadImage().then(result => {
               that.addUser(db);
             })
           }
@@ -93,15 +93,15 @@ Page({
           console.log('获取数据失败')
         }
       })
-      wx.switchTab({
-        url: '../index/index',
-      })
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
 
 
   // 上传头像图片
-  upLoadImage:function() {
-    return new Promise(resolve =>{
+  upLoadImage: function () {
+    return new Promise(resolve => {
       that = this,
         // 将图片上传至云存储空间
         wx.cloud.uploadFile({
@@ -126,7 +126,7 @@ Page({
     });
   },
 
-  
+
   /**
    * 图片路径格式化
    */
@@ -191,7 +191,7 @@ Page({
               that.data.user = res.userInfo;
               that.data.name = res.userInfo.nickName;
               that.data.image = res.userInfo.avatarUrl;
-              that.data.gender = res.userInfo.gender ;
+              that.data.gender = res.userInfo.gender;
               that.data.region.push(res.userInfo.province);
               that.data.region.push(res.userInfo.city);
               //下载头像图片            注：要把thirdwx.qlogo.cn和wx.qlogo.cn添加到downloadFile的合法域名里

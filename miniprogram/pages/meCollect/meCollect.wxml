@@ -1,23 +1,19 @@
 <view class='container-line'></view>
 <!--miniprogram/pages/collect/collect.wxml-->
-<block wx:for='{{test}}' wx:for-index="idx">
-  <view class='container' data-topicId='{{item._id}}' data-index='{{idx}}'>
+<block wx:for='{{topics}}' wx:for-index="idx">
+  <view class='container' bindtap='onTopicClick'data-t_id='{{item._id}}'data-_openid='{{openid}}' data-index='{{idx}}'
+      data-b_id='{{item.b_id}}'>
     <view class='container-content'>
-    <image class='head'  bindtap='onWriterClick' src='{{item.head}}'></image>
+    <image class='head'  bindtap='onWriterClick' src='{{item.user.avatarUrl}}'></image>
       <view class='content' bindtap='onWriterClick'>
-      <view class='name'>{{item.name}}</view>
-      <view class='bar'>{{item.barname}}</view>
+      <view class='name'>{{item.user.nickName}}</view>
+      <view class='bar'>{{bar[idx][0].b_name}}</view>
       </view>
-      <block wx:if="{{item.isCollected}}">
-      <image class='collect' bindtap='onCollectClick' src='{{item.collected}}'></image>
-      </block>
-            <block wx:else>
-      <image class='collect' bindtap='onCollectClick' src='{{item.collect}}'></image>
-      </block>
+   
       </view>
 <view class='topic' bindtap='onItemClick' >
        <!-- 显示图片 -->
-        <block wx:if="{{item.images!=null}}">
+        <block wx:if="{{item.images.length!=0}}">
               <image class='content-img' src='{{item.images}}' mode='aspectFill'></image>
                 <!-- 显示文本 -->
         <text class='title'>{{item.title}}</text>

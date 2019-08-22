@@ -33,21 +33,14 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.getData(that.data.page);
+    that.getData();
   },
   /**
    * 获取列表数据
    * 
    */
   getData: function (page) {
-    // 获取总数
-    db.collection('topic').count({
-      success: function (res) {
-        that.data.totalCount = res.total;
-      }
-    })
-    // 获取前十条
-    try {
+ 
       db.collection('topic')
         .where({
           _openid: app.globalData.openid, // 填入当前用户 openid
@@ -59,28 +52,18 @@ Page({
             that.setData({
               topics: that.data.topics,
             })
-            wx.hideNavigationBarLoading();//隐藏加载
-            wx.stopPullDownRefresh();
-
-          },
-          fail: function (event) {
-            wx.hideNavigationBarLoading();//隐藏加载
-            wx.stopPullDownRefresh();
           }
         })
-    } catch (e) {
-      wx.hideNavigationBarLoading();//隐藏加载
-      wx.stopPullDownRefresh();
-      console.error(e);
-    }
   },
   /**
    * item 点击
    */
   onItemClick: function (event) {
-    var id = event.currentTarget.dataset.topicid;
+    var id = event.currentTarget.dataset.t_id;
+    var b_id = event.currentTarget.dataset.b_id;
+    var _openid = event.currentTarget.dataset._openid;
     wx.navigateTo({
-      url: '../postContent/postContent',
+      url: '../postContent/postContent?b_id=' + this.data.b_id + '&t_id=' + this.data.t_id + '&_openid=' + this.data._openid
     })
   },
 

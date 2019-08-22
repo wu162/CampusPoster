@@ -1,14 +1,15 @@
 <view class='container-line'></view>
 <!--miniprogram/pages/collect/collect.wxml-->
-<block wx:for='{{test}}' wx:for-index="idx">
-  <view class='container' data-topicId='{{item._id}}' data-index='{{idx}}'>
+<block wx:for='{{topics}}' wx:for-index="idx">
+  <view class='container' >
     <view class='container-content'>
     <view class='content'>
-    <text class='day'>{{item.day}}</text>
-    <text class ='month'>{{item.month}}</text>
+    <text class='day'>{{day[idx]}}</text>
+    <text class ='month'>{{month[idx]}}</text>
       </view>
-      <view class='content' bindtap='onItemClick'>
-       <text class='barsname'>{{item.barname}}</text>
+      <view class='content' bindtap='onTopicClick'data-t_id='{{item._id}}'data-_openid='{{item._openid}}' data-index='{{idx}}'
+      data-b_id='{{item.b_id}}'>
+       <text class='barsname'>{{bar[idx][0].b_name}}</text>
     <text class ='titlename'>{{item.title}}</text>
       </view>
       </view>
@@ -20,14 +21,7 @@
                   </block>
            </block>
         </view>
-        <view class='container-content'  bindtap='onItemClick'>
-<image class='icon-up'  src="../../images/分享.png" ></image>
-<view class='icon-text'>40</view>
-<image class='icon-up2'  src="../../images/评论.png" ></image>
-<view class='icon-text'>40</view>
-<image class='icon-up3'  src="../../images/点赞.png"></image>
-<view class='icon-text'>40</view>
-</view>
+
     <view class='fenge-line'></view>
     </view>
 </block>

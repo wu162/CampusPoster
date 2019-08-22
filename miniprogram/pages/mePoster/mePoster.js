@@ -11,26 +11,11 @@ Page({
     page: 0,
     totalCount: 0,
     topics: {},
-    test: [{
-      month:'一月',
-      day:1,
-      barname: '贴吧1',
-      title: '无图贴',
-    },
-    {
-      month: '一月',
-      day: 1,
-      barname: '贴吧2',
-      images: ['../../images/tian/bg.png'],
-      title: '有图贴',
-    },
-    {
-      month: '一月',
-      day: 1,
-      barname: '贴吧3',
-      images: ['../../images/tian/bg.png', '../../images/tian/return.png'],
-      title: '多图贴',
-    }]
+    bar:{},
+    month:{},
+    day:{},
+    openid:'',
+
   },
 
   /**
@@ -38,117 +23,99 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.getData(that.data.page);
+    that.openid=app.globalData.openid;
+    that.getData();
   },
   /**
    * 获取列表数据
    * 
    */
-  getData: function (page) {
-    // 获取总数
-    db.collection('topic').count({
-      success: function (res) {
-        that.data.totalCount = res.total;
-      }
-    })
-    // 获取前十条
-    try {
-      db.collection('topic')
-        .where({
-          _openid: app.globalData.openid, // 填入当前用户 openid
-        })
-        .orderBy('date', 'desc')
-        .get({
-          success: function (res) {
-            that.data.topics = res.data;
-            that.setData({
-              topics: that.data.topics,
-            })
-            wx.hideNavigationBarLoading();//隐藏加载
-            wx.stopPullDownRefresh();
+  getData: function () {
 
-          },
-          fail: function (event) {
-            wx.hideNavigationBarLoading();//隐藏加载
-            wx.stopPullDownRefresh();
-          }
-        })
-    } catch (e) {
-      wx.hideNavigationBarLoading();//隐藏加载
-      wx.stopPullDownRefresh();
-      console.error(e);
-    }
-  },
-  /**
-   * item 点击
-   */
-  onItemClick: function (event) {
-    var id = event.currentTarget.dataset.topicid;
-    wx.navigateTo({
-      url: '../postContent/postContent',
-    })
-  },
- 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    console.log('pulldown');
-    that.getData(that.data.page);
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    var temp = [];
-    // 获取后面十条
-    if (that.data.topics.length < that.data.totalCount) {
-      try {
-        const db = wx.cloud.database();
-        db.collection('topic')
-          .where({
-            _openid: app.globalData.openid, // 填入当前用户 openid
-          })
-          .skip(5)
-          .limit(that.data.pageSize) // 限制返回数量为 10 条
-          .orderBy('date', 'desc')
-          .get({
-            success: function (res) {
-              // res.data 是包含以上定义的两条记录的数组
-              if (res.data.length > 0) {
-                for (var i = 0; i < res.data.length; i++) {
-                  var tempTopic = res.data[i];
-                  console.log(tempTopic);
-                  temp.push(tempTopic);
-                }
-
-                var totalTopic = {};
-                totalTopic = that.data.topics.concat(temp);
-
-                console.log(totalTopic);
-                that.setData({
-                  topics: totalTopic,
-                })
-              } else {
-                wx.showToast({
-                  title: '没有更多数据了',
-                })
-              }
-
-
-            },
-          })
-      } catch (e) {
-        console.error(e);
-      }
-    } else {
-      wx.showToast({
-        title: '没有更多数据了',
+    db.collection('topic')
+      .where({
+        _openid: app.globalData.openid, // 填入当前用户 openid
       })
-    }
+      .orderBy('date', 'desc')
+      .get({
+        success: function (res) {
+          for (var i = 0; i < res.data.length; i++) {
+            var date = res.data[i].date
+          
+            var m = date.getMonth()
+            var d = date.getDate()
+            var month = "month[" + i + "]";
+            var day = "day[" + i + "]";
+            switch(m){
+              case 1: m = "一月"
+                break;
+              case 2: m= "二月"
+                break;
+              case 3: m= "三月"
+                break;
+              case 4: m= "四月"
+                break;
+              case 5: m= "五月"
+                break;
+              case 6: m= "六月"
+                break;
+              case 7: m= "七月"
+                break;
+              case 8: m= "八月"
+                break;
+              case 9: m= "九月"
+                break;
+              case 10:m = "十月"
+                break;
+              case 11:m = "十一月"
+                break;
+              case 12:m = "十二月"
+                break;
+            }
+            that.setData({
+              [month]:m,
+              [day]:d
+            })
 
+          }
+          that.setData({
+            topics: res.data,
+          })
+
+          for (var i = 0; i < res.data.length; i++) {
+            that.getBarInfo(res,i)
+          }
+        }
+      })
   },
+  getBarInfo: function (res, i) {
+    db.collection('bar').where({
+      _id: res.data[i].bar
+    }).get({
+      success: function (res) {
+        var bar = "bar[" + i + "]";
+        that.setData({
+          [bar]: res.data,
+        })
+        console.log(that.data.bar)
+      }
+
+    })
+  },
+  /**
+   * topic 点击
+   */
+  onTopicClick: function (event) {
+    var t_id = event.currentTarget.dataset.t_id;
+    var b_id = event.currentTarget.dataset.b_id;
+    var _openid = event.currentTarget.dataset._openid;
+    console.log(t_id)
+    console.log(_openid)
+    wx.navigateTo({
+      url: '../postContent/postContent?t_id=' + t_id + '&_openid=' + _openid + '&b_id=' + b_id
+    })
+  },
+
+ 
 
 })

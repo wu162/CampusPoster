@@ -64,6 +64,8 @@ Page({
             // 成功回调
             success: res => {
               that.data.images.push(res.fileID)
+
+              console.log(that.data.images)
             },
           })
         }
@@ -103,7 +105,22 @@ Page({
    * 保存到发布集合中
    */
   saveDataToServer: function (event) {
+    db.collection('history').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        title: that.data.title,
+        content: that.data.content,
+        date: new Date(),
+        date2: new Date().getTime(),
+        images: that.data.images,
+        user: that.data.user,
+        isCollect: that.data.isCollect,
+        bar: that.data.bid
+      },
+      success: function (res) {
 
+      },
+    })
     db.collection('topic').add({
       // data 字段表示需新增的 JSON 数据
       data: {
@@ -126,11 +143,9 @@ Page({
           textContent: '',
           images: [],
         })
-
-        that.showTipAndSwitchTab();
-
-      },
+      }
     })
+    that.showTipAndSwitchTab()
   },
   /**
    * 添加成功添加提示，切换页面
@@ -189,10 +204,5 @@ Page({
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

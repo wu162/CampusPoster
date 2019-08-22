@@ -1,7 +1,38 @@
 // pages/me/me.js
+const app = getApp()
+var that
+const db = wx.cloud.database();
 Page({
+  data: {
 
+    openid: '',
+    topicLength:'',
 
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    that = this
+    that.openid = app.globalData.openid;
+    that.getData();
+  },
+getData:function(){
+//获取帖子列表
+  db.collection('topic')
+    .where({
+      _openid: app.globalData.openid, // 填入当前用户 openid
+    })
+    .get({
+      success: function (res) {
+   that.setData({
+     topicLength:res.data.length
+   })
+
+        }
+    })
+},
   /**
    * 关注列表
    */

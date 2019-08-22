@@ -31,6 +31,7 @@
 .month{
   font-size: 26rpx;
   margin-bottom: 10rpx;
+  margin-left: 10rpx
 }
 .barsname{
   margin-top: 25rpx;

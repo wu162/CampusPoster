@@ -47,10 +47,20 @@ Page({
     that.data.b_id=options.b_id;
     // 获取话题信息
     db.collection('topic').doc(that.data.t_id).get({
+      
       success: function (res) {
-        that.topic = res.data;
+        var date = res.data.date
+        var t1 = new Date()
+        var t = new Date(t1 - date + 16 * 3600 * 1000)
+        var d = parseInt(t.getTime() / 1000 / 3600 / 24)
+        var h = t.getHours()
+        var m = t.getMinutes()
+        if (d == 0 && h == 0 && m == 0) { res.data.changeDate = t.getSeconds().toString() + "秒前  "; }
+        else if (d == 0 && h == 0) { res.data.changeDate = m.toString() + "分钟前"; }
+        else if (d == 0) { res.data.changeDate = h.toString() + "小时前"; }
+        else { res.data.changeDate = d.toString() + "天前  "; }
         that.setData({
-          topic: that.topic,
+          topic: res.data,
         })
       }
     })   // 获取话题信息
@@ -294,7 +304,7 @@ getUp_per:function(res,i){
     db.collection('collect').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        _id: that.data.id,
+        _id: that.data.t_id,
       },
       success: function (res) {
         that.refreshLikeIcon(true)
@@ -305,7 +315,7 @@ getUp_per:function(res,i){
    * 从收藏集合中移除
    */
   removeFromCollectServer: function (event) {
-    db.collection('collect').doc(that.data.id).remove({
+    db.collection('collect').doc(that.data.t_id).remove({
 
       success: that.refreshLikeIcon(false),
     });

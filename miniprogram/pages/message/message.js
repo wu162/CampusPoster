@@ -26,7 +26,7 @@ Page({
    */
   data: {
     reply:{},
-    
+    message:{},
     test: [{
       person_link: '../meInfo/meInfo',
       postContent_link: '../postContent/postContent',
@@ -96,15 +96,64 @@ Page({
   },
   // 获取消息
   getMessage: function () {
-    db.collection('message').where({
+    db.collection('message').orderBy('date', 'desc').where({
       u_id: app.globalData.openid
     }).get({
       success: function (res) {
         that.setData({
-          reply: res.data,
+          message: res.data,
         })
-        console.log(res)
+        for (var i = 0; i < res.data.length; i++) {
+          if(res.data.type==1)
+          that.getTopic(res, i)
+          else
+          that.getReply(res, i)
+        }
       }
     })
+  },
+  getTopic: function (res,i) {
+    db.collection('topic').where({
+    _id:res.data[i].t_id
+    }).get({
+      success: function (res) {
+        var reply = "reply[" + i + "]";
+        that.setData({
+          [reply]: res.data,
+        })
+  }
+
+})
+  },
+  getReply: function (res, i) {
+    db.collection('reply').where({
+      _id: res.data[i].r_id
+    }).get({
+      success: function (res) {
+        var reply = "reply[" + i + "]";
+        that.setData({
+          [reply]: res.data,
+        })
+      }
+
+    })
+  },
+  /**
+*message 点击
+*/
+  onMessageClick: function (event) {
+    var r_id = event.currentTarget.dataset.r_id;
+    var openid = event.currentTarget.dataset.openid;
+    var t_id = event.currentTarget.dataset.t_id;
+    var type = event.currentTarget.dataset.type;
+   
+if(type==1)
+    wx.navigateTo({
+      url: "../postContent/postContent?t_id=" + t_id + "&openid=" + openid 
+    })
+    else
+  wx.navigateTo({
+    url: "../reply/reply?r_id=" + r_id + "&openid=" + openid 
+  })
   },
 })

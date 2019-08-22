@@ -15,13 +15,14 @@ Page({
     topics: {},
     content:'',
     inputValue:'',
-    id:'',
+    t_id:'',
     openid: "oDgOl5Bl4zo2lBHrQYrQqgWtm1go",
     reply: {},
     reply_in:{},
     up:{},
     up_per:{},
-    barid:'',
+    b_id:'',
+    bar:{},
     test:
       [{
         head: '../../images/bg.png',
@@ -41,15 +42,22 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.data.id = options.id;
-   // that.data.openid = options.openid;
-    that.data.barid=options.barid;
+    that.data.t_id = options.t_id;
+   that.data._openid = options._openid;
+    that.data.b_id=options.b_id;
     // 获取话题信息
-    db.collection('topic').doc(that.data.id).get({
+    db.collection('topic').doc(that.data.t_id).get({
       success: function (res) {
         that.topic = res.data;
         that.setData({
           topic: that.topic,
+        })
+      }
+    })   // 获取话题信息
+    db.collection('bar').doc(that.data.b_id).get({
+      success: function (res) {
+        that.setData({
+          bar: res.data,
         })
       }
     })
@@ -61,7 +69,9 @@ Page({
     var j = 0
     var k = 0
     // 获取回复信息
-    db.collection('reply').get({
+    db.collection('reply').where({
+      r_id: that.data.t_id
+      }).get({
       success: function (res) {
         for (var i = 0; i < res.data.length; i++) {
           var date = res.data[i].date
@@ -168,7 +178,7 @@ getUp_per:function(res,i){
         date: new Date().getTime(),
         user: that.data.user,
         b_id: that.data.bid,
-        r_id: that.data.id,
+        t_id: that.data.t_id,
         u_id:that.data.reply._openid,
         content: that.data.inputValue,
         type:1
@@ -183,13 +193,13 @@ getUp_per:function(res,i){
         date: new Date(),
         user: that.data.user,
         b_id: that.data.bid,
-        r_id: that.data.id,
+        r_id: that.data.t_id,
         content: that.data.inputValue,
         changeDate: '',
       },
       success: function (res) {
         wx.navigateTo({
-          url: "../postContent/postContent?id=" + that.data.id + "&openid=" + that.data.openid
+          url: "../postContent/postContent?t_id=" + that.data.t_id + "&openid=" + that.data.openid
         })
 
       },
@@ -224,10 +234,10 @@ getUp_per:function(res,i){
   * bar 点击
   */
   onBarClick: function (event) {
-    var id = event.currentTarget.dataset.barid;
+    var b_id = event.currentTarget.dataset.b_id;
     var openid = event.currentTarget.dataset.openid;
     wx.navigateTo({
-      url: "../postIndex/postIndex?id=" + id + "&openid=" + openid
+      url: "../postIndex/postIndex?b_id=" + b_id + "&openid=" + openid
     })
   },
   /**

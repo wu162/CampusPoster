@@ -24,17 +24,13 @@
 <view class='line'></view>
 
 
-<block wx:for='{{test}}'>
-  <messageCard  person_link='{{item.person_link}}'
-                postContent_link='{{item.postContent_link}}'
-                postIndex_link='{{item.postIndex_link}}'
-                reply_link='{{item.reply_link}}'
-                head='{{item.head}}'
-                username='{{item.username}}'
-                time='{{item.time}}'
-                title='{{item.title}}'
-                reply='{{item.reply}}'
-                beReply='{{item.beReply}}'
+<block wx:for='{{message}}'wx:for-index='idx'>
+  <messageCard  bindtap='onMessageClick' data-r_id='{{item.r_id}}'data-t_id='{{item.t_id}}'data-type='{{item.type}}'
+                head='{{item.user.avatarUrl}}'
+                username='{{item.user.nickName}}'
+                time='{{item.date}}'
+                reply='{{item.content}}'
+                beReply='我：{{reply[idx][0].content}}'
                 barname='{{item.barname}}'/>
   <view wx:if="{{index<test.length-1}}" class='line'></view>
 </block>

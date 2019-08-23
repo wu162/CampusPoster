@@ -12,7 +12,7 @@
   margin-top: 25rpx;
 }
 .time {
-  margin-left:570rpx;
+  margin-left:450rpx;
   font-size: 25rpx;
   color: #A9A9A9;
  margin-bottom: 36rpx;

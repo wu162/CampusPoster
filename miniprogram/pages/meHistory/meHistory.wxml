@@ -1,11 +1,12 @@
-<block wx:for='{{test}}' wx:for-index="idx">
-  <view bindtap='onItemClick' data-topicId='{{item._id}}'>
+<block wx:for='{{topics}}' wx:for-index="idx">
+  <view bindtap='onTopicClick'data-t_id='{{item._id}}'data-_openid='{{openid}}' data-index='{{idx}}'
+      data-b_id='{{history.b_id}}'>
       <view class='content'>
          <!-- 显示文本 -->
          <view class='title'>{{item.title}}</view>
         <view class='time-content'>
-       <view class='bar'>{{item.barname}}</view>
-        <view class='time'>{{item.time}}</view>
+       <view class='bar'>{{bar[idx][0].b_name}}</view>
+        <view class='time'>{{history[idx].date}}</view>
         </view>
       </view>
     </view>

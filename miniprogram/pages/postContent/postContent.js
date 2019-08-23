@@ -10,6 +10,8 @@ Page({
   data: {
     isreply:false,
     iscollect:false,
+    isup:false,
+    topicUp:0,
     page: 0,
     totalCount: 0,
     topics: {},
@@ -23,15 +25,6 @@ Page({
     up_per:{},
     b_id:'',
     bar:{},
-    test:
-      [{
-        head: '../../images/bg.png',
-        name: '帖子作者名',
-        date: '两天前',
-        images: ['../../images/bg.png'],
-        title: '标题1',
-        content: '随便加的一些内容'
-      }],
     length:0,
     length2:0,
     comment_length:0,
@@ -45,6 +38,54 @@ Page({
     that.data.t_id = options.t_id;
    that.data._openid = options._openid;
     that.data.b_id=options.b_id;
+    that.saveTobrowseHistory();
+    // 获取收藏情况
+    db.collection('collect')
+      .where({
+        _openid: that.data.openid,
+        _id: that.data.t_id
+
+      })
+      .get({
+        success: function (res) {
+          if (res.data.length > 0) {
+            that.refreshLikeIcon(true)
+          } else {
+            that.refreshLikeIcon(false)
+          }
+        },
+        fail: console.error
+      })
+    // 获取点赞情况
+    db.collection('up')
+      .where({
+        _openid: that.data.openid,
+        _id: that.data.t_id
+
+      })
+      .get({
+        success: function (res) {
+          if (res.data.length > 0) {
+            that.refreshUpIcon(true)
+          } else {
+            that.refreshUpIcon(false)
+          }
+        },
+        fail: console.error
+      })
+    // 获取点赞总数
+    db.collection('up')
+      .where({
+        _id: that.data.t_id
+      })
+      .get({
+        success: function (res) {
+          that.setData({
+            topicUp:res.data.length
+          })
+        },
+        fail: console.error
+      })
     // 获取话题信息
     db.collection('topic').doc(that.data.t_id).get({
       
@@ -74,7 +115,47 @@ Page({
     that.getData();
     that.jugdeUserLogin();
   },
+  saveTobrowseHistory: function () {
+    db.collection('browseHistory').where({
+      _openid: that.data._openid,
+      _id: that.data.t_id
+    }).get({
+      success: function (res) {
+        if (res.data.length == 0)
+          that.addTobrowseHistory();
+        else {
+          that.removeTobrowseHistory();
+        }
+      }
+    })
 
+  },
+
+  addTobrowseHistory: function () {
+    db.collection('browseHistory').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        _id: that.data.t_id,
+        date: new Date().toLocaleTimeString()
+      },
+      success: function (res) {
+      }
+    })
+  },
+  removeTobrowseHistory: function () {
+    db.collection('browseHistory').doc(that.data.t_id).remove({
+    });
+    db.collection('browseHistory').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        _id: that.data.t_id,
+        date: new Date().toLocaleTimeString(),
+        b_id:that.data.b_id
+      },
+      success: function (res) {
+      }
+    })
+  },
   getData: function () {
     var j = 0
     var k = 0
@@ -287,7 +368,15 @@ getUp_per:function(res,i){
       urls: that.data.test[0].images
     })
   },
-
+  //帖子点赞
+  onTopicUpClick: function (event) {
+    if (that.data.isup) {
+      // 需要判断是否存在
+      that.removeFromTopicUpServer();
+    } else {
+      that.saveToTopicUpServer();
+    }
+  },
   //点击收藏
   onCollectClick: function (event) {
     if (that.data.iscollect) {
@@ -311,6 +400,7 @@ getUp_per:function(res,i){
       },
     })
   },
+
   /**
    * 从收藏集合中移除
    */
@@ -328,6 +418,46 @@ getUp_per:function(res,i){
     that.setData({
       iscollect: iscollect,
     })
+  },
+
+  /**
+ * 添加到点赞集合中
+ */
+  saveToTopicUpServer: function (event) {
+    db.collection('up').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        _id: that.data.t_id,
+      },
+      success: function (res) {
+        that.refreshTopicUpIcon(true)
+      },
+    })
+  },
+  /**
+ * 从点赞集合中移除
+ */
+  removeFromTopicUpServer: function (event) {
+    db.collection('up').doc(that.data.t_id).remove({
+      success: that.refreshTopicUpIcon(false),
+    });
+  },
+  /**
+ * 刷新点赞icon
+ */
+  refreshTopicUpIcon(isup) {
+    that.data.isup = isup
+    that.setData({
+      isup: isup,
+    })
+    if(isup)
+    that.setData({
+      topicUp:that.data.topicUp+1
+    })
+    else
+      that.setData({
+        topicUp: that.data.topicUp - 1
+      })
   },
   // 回到顶部
   goTop: function (e) {
@@ -378,6 +508,7 @@ getUp_per:function(res,i){
     }
 
   },
+  
   /**
  * 添加到点赞集合中
  */

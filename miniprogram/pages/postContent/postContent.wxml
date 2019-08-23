@@ -22,8 +22,14 @@
 <view class='icon-text'>40</view>
 <image class='icon-up2'  src="../../images/tian/comment.png" ></image>
 <view class='icon-text'>{{comment_length}}</view>
-<image class='icon-up3'  src="../../images/tian/praise.png"></image>
-<view class='icon-text'>40</view>
+
+<view wx:if='{{isup}}'> 
+                    <image class='icon-up3' bindtap='onTopicUpClick'   src="../../images/tian/is_praise.png" ></image>
+                    </view>
+                     <view wx:else> 
+                    <image class='icon-up3' bindtap='onTopicUpClick'src="../../images/tian/praise.png" ></image>
+                    </view>   
+<view class='icon-text'>{{topicUp}}</view>
 </view>
 <view class='line' ></view>
 

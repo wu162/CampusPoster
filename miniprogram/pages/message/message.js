@@ -69,9 +69,11 @@ Page({
   },
   onLoad: function (options) {
     that = this
+  },
+  onShow: function (options) {
+
     that.jugdeUserLogin();
   },
-
   
 
   /**

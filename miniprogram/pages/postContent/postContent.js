@@ -283,7 +283,7 @@ getUp_per:function(res,i){
         user: that.data.user,
         b_id: that.data.bid,
         t_id: that.data.t_id,
-        u_id:that.data.reply._openid,
+        u_id:that.data.topic._openid,
         content: that.data.inputValue,
         type:1
       },

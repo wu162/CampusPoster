@@ -13,18 +13,18 @@ Page({
     _openid: '',
     barmessage: [],    //放本吧信息
     judge: false,
-    bar:{},
-    post:{
-      thumb:'../../images/bg.png',
-      title:'吧名',
-      desc:'关注 10w    帖子 10w',
-      btn_text:'已关注'
+    bar: {},
+    post: {
+      thumb: '../../images/bg.png',
+      title: '吧名',
+      desc: '关注 10w    帖子 10w',
+      btn_text: '已关注'
     },
-    top: ['帖子标题','帖子标题'],
+    top: ['帖子标题', '帖子标题'],
 
-    icons: ['../../images/wu.png',
+    icons: ['../../images/wu/share.png',
       '../../images/wu/review.png',
-      '../../images/wuke.png'],
+      '../../images/wu/like.png'],
 
     topics: [],
 
@@ -85,7 +85,7 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         _id: that.data.b_id,
-        date:new Date()
+        date: new Date()
       },
       success: function (res) {
       }
@@ -96,43 +96,43 @@ Page({
     });
   },
   //获取本吧信息
-  getBarMessage: function (){
+  getBarMessage: function () {
     db.collection('bar').where({
-      _id : that.data.b_id
+      _id: that.data.b_id
     })
-    .get({
-      success: function (res) {
-        that.data.bar = res.data
-        that.setData({
-          bar: that.data.bar
-        })
-        console.log('that.data.bar', that.data.bar)
-        console.log('that.data.bar.b_name', that.data.bar[0].b_name)
-      }
-    })
+      .get({
+        success: function (res) {
+          that.data.bar = res.data
+          that.setData({
+            bar: that.data.bar
+          })
+          console.log('that.data.bar', that.data.bar)
+          console.log('that.data.bar.b_name', that.data.bar[0].b_name)
+        }
+      })
 
     //判断是否关注本吧
     db.collection('barFollow').where({
       _openid: app.globalData.openid,
       _id: that.data.b_id
     })
-    .get({
-      success: function (res) {
-        console.log(res.data)
-        if (res.data[0] == undefined) {
-          console.log('barFollow无此数据，未关注');
+      .get({
+        success: function (res) {
+          console.log(res.data)
+          if (res.data[0] == undefined) {
+            console.log('barFollow无此数据，未关注');
+          }
+          else {
+            that.data.judge = true
+            that.setData({
+              judge: that.data.judge
+            })
+          }
+        },
+        fail: function (res) {
+          console.log('获取数据失败')
         }
-        else {
-          that.data.judge=true
-          that.setData({
-            judge: that.data.judge
-          })
-        }
-      },
-      fail: function (res) {
-        console.log('获取数据失败')
-      }
-    })
+      })
   },
 
 
@@ -154,12 +154,18 @@ Page({
   },
 
   //去掉关注
-  defollow: function(){
-    that.data.judge=false
+  defollow: function () {
+    that.data.judge = false
     that.setData({
       judge: that.data.judge
     })
-    
+    db.collection('barFollow').doc(that.data.b_id)
+      .remove({
+        success: function (res) {
+          that.onShow()
+        },
+      })
+
   },
 
   //增加关注
@@ -171,9 +177,9 @@ Page({
     db.collection('barFollow').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        b_id: that.data.b_id,
-        b_name: '',
-        b_avatar: '',
+        _id: that.data.b_id,
+        b_name: that.data.bar[0].b_name,
+        b_avatar: that.data.bar[0].b_avatar,
       },
       success: function (res) {
         that.onShow()
@@ -185,7 +191,7 @@ Page({
 
 
   //跳转到发帖页面
-  onpost:function(e){
+  onpost: function (e) {
     wx.navigateTo({
       url: '../post/post?b_id=' + this.data.b_id + '&_openid=' + this.data._openid
     })

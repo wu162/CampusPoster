@@ -75,6 +75,7 @@ Page({
       b_id: that.data.b_id,
       _openid: that.data._openid,
     })
+    that.saveToBarHistory();
   },
 
 
@@ -83,7 +84,38 @@ Page({
     this.getBarMessage();   //获取本吧信息
     this.getTopics();     //获取本吧帖子
   },
+  //存到贴吧访问历史
+  saveToBarHistory: function () {
+    db.collection('barHistory').where({
+      _openid: that.data._openid,
+      _id: that.data.b_id
+    }).get({
+      success: function (res) {
+        if (res.data.length == 0)
+          that.addTobarHistory();
+        else {
+          that.removeTobarHistory();
+          that.addTobarHistory();
+        }
+      }
+    })
 
+  },
+  addTobarHistory: function () {
+    db.collection('barHistory').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        _id: that.data.b_id,
+        date:new Date()
+      },
+      success: function (res) {
+      }
+    })
+  },
+  removeTobarHistory: function () {
+    db.collection('barHistory').doc(that.data.b_id).remove({
+    });
+  },
   //获取本吧信息
   getBarMessage: function (){
     db.collection('bar').where({

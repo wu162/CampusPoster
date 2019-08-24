@@ -7,7 +7,8 @@ Page({
 
     openid: '',
     topicLength:'',
-
+    followLength: '',
+    fanLength: '',
   },
 
   /**
@@ -32,6 +33,33 @@ getData:function(){
 
         }
     })
+  //获取关注列表
+  db.collection('fan')
+    .where({
+      _openid: app.globalData.openid, // 填入当前用户 openid
+    })
+    .get({
+      success: function (res) {
+        that.setData({
+          followLength: res.data.length
+        })
+
+      }
+    })
+  //获取粉丝列表
+  db.collection('fan')
+    .where({
+      _id: app.globalData.openid, // 填入当前用户 openid
+    })
+    .get({
+      success: function (res) {
+        that.setData({
+          fanLength: res.data.length
+        })
+
+      }
+    })
+
 },
   /**
    * 关注列表

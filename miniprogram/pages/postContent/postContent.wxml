@@ -7,7 +7,7 @@
       <view class='name' bindtap='onWriterClick'>{{topic.user.nickName}}</view>
       <view class='date'>{{topic.changeDate}}</view>
       </view>
-      <button class="btn" bindtap='follow'>关注</button>
+      <button class="btn" data-u_id='{{topic._openid}}' bindtap='onFollowClick'>{{isfan}}</button>
       </view>
       <!-- 显示文本 -->
         <text class='title'>{{topic.title}}</text>
@@ -18,8 +18,9 @@
            </block>
 <button class='bar' bindtap='onBarClick'data-b_id='{{bar._id}}' data-openid='{{bar._openid}}'>{{bar.b_name}} </button>
  <view class='container-content'>
-<image class='icon-up'  src="../../images/tian/share.png" ></image>
-<view class='icon-text'>40</view>
+   
+<button class='icon-bup' plain='true' open-type="share"style="background-image:url(../../images/tian/share.png)" > </button>
+<view class='icon-text' >0</view>
 <image class='icon-up2'  src="../../images/tian/comment.png" ></image>
 <view class='icon-text'>{{comment_length}}</view>
 

@@ -76,6 +76,8 @@ Page({
       complete: res => {
         console.log('云函数获取的openid', res.result.openId)
         // console.log('云函数获取的openid,res.result.userInfo.openid', res.result.userInfo.OPENID)
+        app.globalData.openId = res.result.openId;
+        console.log('app.globalData.openId', app.globalData.openId)
         that.data._openid = res.result.openId
         that.setData({
           _openid: that.data._openid

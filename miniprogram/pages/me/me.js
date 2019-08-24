@@ -40,7 +40,7 @@ getData:function(){
 //获取帖子列表
   db.collection('topic')
     .where({
-      _openid: app.globalData.openid, // 填入当前用户 openid
+      _openid: app.globalData.openId, // 填入当前用户 openid
     })
     .get({
       success: function (res) {

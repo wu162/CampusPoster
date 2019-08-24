@@ -5,7 +5,7 @@
     <view class='info'>
       <!-- <view class='title'>{{post.title}}</view> -->
       <view class='title'>{{bar[0].b_name}}</view>
-      <view class='desc'>{{post.desc}}</view>
+      <!-- <view class='desc'>{{post.desc}}</view> -->
     </view>
 
     <view wx:if='{{judge==true}}'>

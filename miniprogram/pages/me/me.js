@@ -16,9 +16,26 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.openid = app.globalData.openid;
+    that.getOpenid();
     that.getData();
   },
+
+  //获取用户的_openid
+  getOpenid() {
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取的openid', res.result.openId)
+        that.data.openid = res.result.openId
+        that.setData({
+          openid: that.data.openid
+        })
+
+      }
+    })
+  },
+
+
 getData:function(){
 //获取帖子列表
   db.collection('topic')
@@ -27,12 +44,14 @@ getData:function(){
     })
     .get({
       success: function (res) {
-   that.setData({
-     topicLength:res.data.length
-   })
-
-        }
+        that.setData({
+          topicLength:res.data.length
+        })
+        console.log('res.data.length', res.data.length)
+      }
     })
+    
+    
   //获取关注列表
   db.collection('fan')
     .where({
@@ -82,7 +101,7 @@ getData:function(){
  */
   onPosterClick: function (event) {
     wx.navigateTo({
-      url: '../mePoster/mePoster',
+      url: '../mePoster/mePoster?openid='+that.data.openid,
     })
   },
   /**

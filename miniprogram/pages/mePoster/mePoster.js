@@ -47,29 +47,29 @@ Page({
             var month = "month[" + i + "]";
             var day = "day[" + i + "]";
             switch(m){
-              case 1: m = "一月"
+              case 0: m = "一月"
                 break;
-              case 2: m= "二月"
+              case 1: m= "二月"
                 break;
-              case 3: m= "三月"
+              case 2: m= "三月"
                 break;
-              case 4: m= "四月"
+              case 3: m= "四月"
                 break;
-              case 5: m= "五月"
+              case 4: m= "五月"
                 break;
-              case 6: m= "六月"
+              case 5: m= "六月"
                 break;
-              case 7: m= "七月"
+              case 6: m= "七月"
                 break;
-              case 8: m= "八月"
+              case 7: m= "八月"
                 break;
-              case 9: m= "九月"
+              case 8: m= "九月"
                 break;
-              case 10:m = "十月"
+              case 9:m = "十月"
                 break;
-              case 11:m = "十一月"
+              case 10:m = "十一月"
                 break;
-              case 12:m = "十二月"
+              case 11:m = "十二月"
                 break;
             }
             that.setData({

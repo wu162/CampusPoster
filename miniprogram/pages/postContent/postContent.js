@@ -28,6 +28,7 @@ Page({
     length:0,
     length2:0,
     comment_length:0,
+    isfan:"关注"
   },
 
   /**
@@ -61,14 +62,13 @@ Page({
       .where({
         _openid: that.data.openid,
         _id: that.data.t_id
-
       })
       .get({
         success: function (res) {
           if (res.data.length > 0) {
-            that.refreshUpIcon(true)
+            that.refreshTopicUpIcon(true)
           } else {
-            that.refreshUpIcon(false)
+            that.refreshTopicUpIcon(false)
           }
         },
         fail: console.error
@@ -103,6 +103,18 @@ Page({
         that.setData({
           topic: res.data,
         })
+        //获取关注信息
+        db.collection('fan').where({
+         _id:res.data._openid,
+         _openid:that.data.openid
+          }).get({
+            success: function (res2) {
+              if(res2.data.length>0)
+              that.refreshFanIcon(true)
+              else
+              that.refreshFanIcon(false)
+            }
+          })
       }
     })   // 获取话题信息
     db.collection('bar').doc(that.data.b_id).get({
@@ -551,6 +563,54 @@ getUp_per:function(res,i){
         [up_per]: ''
       })
     }
+  },
+  //关注
+  onFollowClick:function(event){
+    console.log("?")
+    var u_id = event.currentTarget.dataset.u_id;
+    if (that.data.isfan=="已关注") {
+      // 需要判断是否存在
+      that.removeFromFanServer(u_id);
+      that.refreshFanIcon(false)
+    }
+    else {
+      that.saveToFanServer(u_id);
+      that.refreshFanIcon(true)
+    }
+
+  },
+  /**
+ * 添加到粉丝集合中
+ */
+  saveToFanServer: function (u_id) {
+    db.collection('fan').add({
+      data: {
+        _id: u_id
+      },
+      success: function (res) {
+      },
+    })
+  },
+  /**
+* 从粉丝集合中移除
+*/
+  removeFromFanServer: function (u_id) {
+    db.collection('fan').doc(u_id).remove({
+    });
+  },
+  /**
+ * 刷新关注按钮
+ */
+  refreshFanIcon(isfan) {
+if(isfan)
+that.setData({
+  isfan:"已关注"
+})
+else
+that.setData({
+  isfan:"关注"
+})
+
   },
   /**
     * 判断用户是否登录

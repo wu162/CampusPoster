@@ -66,6 +66,7 @@ Page({
         that.setData({
           _openid: that.data._openid
         })
+        
       }
     })
   },
@@ -95,9 +96,9 @@ Page({
   //获取最近逛的吧
   getBarRec: function () {
     //获取本用户建的吧（暂时用建的吧来代替）
-    db.collection('bar').where({
+    db.collection('barHistory').where({
       _openid: app.globalData.openid,
-    }).get({
+    }).orderBy('date', 'desc').get({
       success: function (res) {
         that.data.posterRec = res.data
         that.setData({

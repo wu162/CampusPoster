@@ -16,8 +16,24 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.openid = app.globalData.openid;
+    that.getOpenid();     //获取用户_openid
     that.getData();
+
+  },
+
+  //获取用户的_openid
+  getOpenid() {
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取的openid', res.result.openId)
+        that.data.openid = res.result.openId
+        that.setData({
+          openid: that.data.openid
+        })
+
+      }
+    })
   },
 getData:function(){
 //获取帖子列表

@@ -11,6 +11,7 @@ Page({
   data: {
     _openid:'',
     see:1,
+    bar:{},
     posterRec:[
       // {
       //   thumb: '../../images/bg.png',
@@ -90,15 +91,19 @@ Page({
 
   //获取最近逛的吧
   getBarRec: function () {
-    //获取本用户建的吧（暂时用建的吧来代替）
+    //获取本用户逛过的吧
     db.collection('barHistory').where({
       _openid: app.globalData.openid,
     }).orderBy('date', 'desc').get({
       success: function (res) {
+        console.log(res.data)
         that.data.posterRec = res.data
         that.setData({
           posterRec: that.data.posterRec
         })
+        for (var i = 0; i < res.data.length; i++) {
+        that.getBarInfo(res,i)
+        }
         console.log('that.data.posterRec', that.data.posterRec)
       }
     })
@@ -107,7 +112,21 @@ Page({
 
 
   },
+  //获取吧信息
+  getBarInfo: function (res,i) {
+db.collection('bar').where({
+  _id:res.data[i]._id
+}).get({
+  success: function (res2) {
+    var bar = "bar[" + i + "]";
+    that.setData({
+      [bar]:res2.data
+    })
+    console.log(that.data.bar)
+  }
+})
 
+  },
 
 
   onEye:function(e){

@@ -1,2 +1,4 @@
 <!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view>
+  <image src='{{pic}}' style="width:100%;height:100%" mode="widthFix"></image>
+</view>

@@ -1,6 +1,4 @@
-<view class='search' bindtap='onSearch'>
-  <wux-search-bar disabled/>
-</view>
+
 <view class='label'>
   <text class='label_title'>最近逛的吧</text>
   <view class='eye_wrap'>

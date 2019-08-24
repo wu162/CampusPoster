@@ -1,27 +1,4 @@
-<view class='hr'></view>
-<view class='itemForm' bindtap='onMentionsClick'>
-  <view class='itemIcon'>
-    <image src='../../images/zhang/@.png' style="width:44rpx;height:44rpx;"></image>
-  </view>
-  <view class='itemText'>
-  @我的
-  </view>
-  <view class='right'>></view>
-</view>
-<view class='hr'></view>
 
-
-<view class='itemForm' bindtap='onLikesClick'>
-  <view class='itemIcon'>
-   <image src='../../images/zhang/dianzan.png' style="width:44rpx;height:44rpx;"></image>
-  </view>
-  <view class='itemText'>
-  点赞
-  </view>
-  <view class='right'>></view>
-</view>
-<view class='hr'></view>
-<view class='line'></view>
 
 
 <block wx:for='{{message}}'wx:for-index='idx'>

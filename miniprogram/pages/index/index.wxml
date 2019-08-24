@@ -17,9 +17,7 @@
 </view>
 
 <view wx:else>
-  <view class='search' bindtap='onSearch'>
-    <wux-search-bar disabled/>
-  </view>
+
 
   <view wx:for="{{topics}}">
     <postCard thumb='{{item.user.avatarUrl}}'

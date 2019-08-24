@@ -114,7 +114,7 @@ Page({
     //判断是否关注本吧
     db.collection('barFollow').where({
       _openid: app.globalData.openid,
-      b_id: that.data.b_id
+      _id: that.data.b_id
     })
     .get({
       success: function (res) {
@@ -171,7 +171,7 @@ Page({
     db.collection('barFollow').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        b_id: b_id,
+        b_id: that.data.b_id,
         b_name: '',
         b_avatar: '',
       },

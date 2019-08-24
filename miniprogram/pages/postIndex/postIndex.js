@@ -114,7 +114,11 @@ Page({
     //判断是否关注本吧
     db.collection('barFollow').where({
       _openid: app.globalData.openid,
+<<<<<<< HEAD
       _id: that.data.b_id
+=======
+      b_id: that.data.b_id
+>>>>>>> master
     })
     .get({
       success: function (res) {
@@ -159,12 +163,15 @@ Page({
     that.setData({
       judge: that.data.judge
     })
+<<<<<<< HEAD
     db.collection('barFollow').doc(that.data.b_id)
     .remove({
       success: function (res) {
         that.onShow()
       },
     })
+=======
+>>>>>>> master
     
   },
 
@@ -177,9 +184,15 @@ Page({
     db.collection('barFollow').add({
       // data 字段表示需新增的 JSON 数据
       data: {
+<<<<<<< HEAD
         _id: that.data.b_id,
         b_name: that.data.bar[0].b_name,
         b_avatar: that.data.bar[0].b_avatar,
+=======
+        b_id: b_id,
+        b_name: '',
+        b_avatar: '',
+>>>>>>> master
       },
       success: function (res) {
         that.onShow()

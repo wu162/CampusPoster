@@ -14,11 +14,11 @@
              desc='{{item.desc}}' 
              link='{{item.link}}'/>
   </view> -->
-  <view wx:for="{{posterRec}}" class='posterRec'>
-    <boxCard thumb='{{item.b_avatar}}'
-             title='{{item.b_name}}' 
-             _openid='{{item._openid}}'
-             b_id='{{item._id}}'/>
+  <view wx:for="{{posterRec}}" class='posterRec'wx:for-index="idx">
+    <boxCard thumb='{{bar[idx][0].b_avatar}}'
+             title='{{bar[idx][0].b_name}}' 
+             _openid='{{bar[idx][0]._openid}}'
+             b_id='{{bar[idx][0]._id}}'/>
   </view>
 </scroll-view>
 

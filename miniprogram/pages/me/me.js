@@ -1,4 +1,4 @@
-// pages/me/me.js
+﻿// pages/me/me.js
 const app = getApp()
 var that
 const db = wx.cloud.database();

@@ -23,7 +23,6 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.openid=options.openid;
     that.getData();
   },
   /**
@@ -34,7 +33,7 @@ Page({
 
     db.collection('topic')
       .where({
-        _openid: app.globalData.openid, // 填入当前用户 openid
+        _openid: app.globalData.openId, // 填入当前用户 openid
       })
       .orderBy('date', 'desc')
       .get({

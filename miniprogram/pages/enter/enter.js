@@ -76,7 +76,7 @@ Page({
   getBarFollows:function() {
     //获取本用户建的吧
     db.collection('barFollow').where({
-      _openid: app.globalData.openid,
+      _openid: app.globalData.openId,
     }).get({
       success: function(res){
         that.data.posterFol=res.data
@@ -93,7 +93,7 @@ Page({
   getBarRec: function () {
     //获取本用户逛过的吧
     db.collection('barHistory').where({
-      _openid: app.globalData.openid,
+      _openid: app.globalData.openId,
     }).orderBy('date', 'desc').get({
       success: function (res) {
         console.log(res.data)

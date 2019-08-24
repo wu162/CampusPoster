@@ -97,7 +97,7 @@ Page({
   // 获取消息
   getMessage: function () {
     db.collection('message').orderBy('date', 'desc').where({
-      u_id: app.globalData.openid
+      u_id: app.globalData.openId
     }).get({
       success: function (res) {
         that.setData({

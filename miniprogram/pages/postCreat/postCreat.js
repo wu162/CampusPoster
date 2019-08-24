@@ -148,7 +148,7 @@ Page({
     db.collection('barFollow').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        b_id: b_id,
+        _id: b_id,
         b_name: that.data.b_name,
         b_avatar: that.data.b_avatar[0],
       },

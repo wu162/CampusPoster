@@ -1,4 +1,4 @@
-const app = getApp()
+﻿const app = getApp()
 var that
 const db = wx.cloud.database();
 
@@ -23,10 +23,6 @@ Page({
    */
   onLoad: function (options) {
     that = this
-<<<<<<< HEAD
-    that.openid=options.openid;
-=======
->>>>>>> master
     that.getData();
   },
   /**

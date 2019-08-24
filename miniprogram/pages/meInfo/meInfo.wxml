@@ -1,12 +1,21 @@
 <image class='bg' src='{{bg}}' mode='aspectFill'></image>
+
+<view style="background-color: #FFFFFF;">
 <view class='line'>
-  <image class='avatar' src='{{avatar}}' mode='aspectFill'></image>
+  <image class='avatar' src='{{user.avatarUrl}}' mode='aspectFill' style="width:130rpx;height:130rpx;border-radius: 50%;"></image>
+  <view wx:if='{{judge}}'>
   <button type='primary' size='mini' class='edit' bindtap='editInfo'>编辑</button>
+  </view>
 </view>
 
 <view class='line line-left'>
-  <text class='font-big'>{{name}}</text>
-  <image class='sex' src='{{sex}}' mode='aspectFit'>{{name}}</image>
+  <text class='font-big'>{{user.nickName}}</text>
+  <view wx:if="{{user.gender==1}}">
+  <image class='sex' src='{{male}}' mode='aspectFit'>{{user.nickName}}</image>
+  </view>
+  <view wx:else>
+  <image class='sex' src='{{female}}' mode='aspectFit'>{{user.nickName}}</image>
+  </view>
 </view>
 
 <view class='line line-left'>
@@ -20,6 +29,8 @@
 <view class='line line-left'>
   <text class='font-medium'>{{sign}}</text>
 </view>
+<view class='blank-line'></view>
+</view>
 
 <view class='blank-line'></view>
 
@@ -27,6 +38,6 @@
 
 <van-cell-group>
   <van-field label="年龄" value="{{age}}" readonly/>
-  <van-field label="出生日期" value="{{birth}}" readonly/>
+  <van-field label="出生日期" value="{{birth.year}}-{{birth.month}}-{{birth.day}}" readonly/>
   <van-field label="所在地区" value="{{region}}" border="{{ false }}" readonly/>
 </van-cell-group>

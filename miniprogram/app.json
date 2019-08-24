@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/start/start",
-    "pages/postCreat/postCreat",
     "pages/index/index",
+    "pages/postCreat/postCreat",
     "pages/me/me",
     "pages/meInfo/meInfo",
     "pages/meInfoEdit/meInfoEdit",

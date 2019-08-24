@@ -12,6 +12,7 @@ Page({
     b_id: '',
     _openid: '',
     barmessage: [],    //放本吧信息
+    judge: false,
     post:{
       thumb:'../../images/bg.png',
       title:'吧名',
@@ -117,6 +118,18 @@ Page({
         }
       })
   },
+
+  //去掉关注
+  defollow: function(){
+
+  },
+
+  //增加关注
+  follow: function () {
+
+  },
+
+
 
 
   //跳转到发帖页面

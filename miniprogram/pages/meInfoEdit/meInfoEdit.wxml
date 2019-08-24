@@ -2,11 +2,18 @@
   <image class='avatar' src='{{avatar}}'></image>
 </view>
 <van-cell-group>
-  <van-field label="用户名" value="{{name}}" bind:input="change" id='name'/>
+  <van-field label="用户名" value="{{name}}" readonly/>
 
-  <picker bindchange="pickerChange" value="{{sex=='女'?0:1}}" range="{{sexList}}" id='sex'>
+  <view wx:if="{{sex==1}}">
+  <van-field label="性别" value="男" readonly/>
+  </view>
+  <view wx:else>
+  <van-field label="性别" value="女" readonly/>
+  </view>
+
+  <!-- <picker bindchange="pickerChange" value="{{sex=='女'?0:1}}" range="{{sexList}}" id='sex'>
   <van-field label="性别" value="{{sex}}" id='sex' readonly/>
-  </picker>
+  </picker> -->
 
   <van-field label="个性签名" value="{{sign}}" border="{{ false }}" bind:input="change" id='sign'/>
 </van-cell-group>
@@ -19,8 +26,8 @@
   <van-field label="年龄" value="{{age}}" readonly id='age'/>
   </picker>
 
-  <picker mode="date" value="{{birth}}" start="1970-01-01" end="{{birthEnd}}" bindchange="pickerChange" id='birth'>
-    <van-field label="出生日期" value="{{birth}}" readonly/>
+  <picker mode="date" value="{{year}}-{{month}}-{{day}}" start="1970-01-01" end="{{birthEnd}}" bindchange="pickerChange" id='birth'>
+    <van-field label="出生日期" value="{{year}}-{{month}}-{{day}}" readonly/>
   </picker>
 
   <picker mode="region" bindchange="pickerChange" value="{{region}}" id='region'>
@@ -29,4 +36,4 @@
 
 </van-cell-group>
 
-<button type='primary' class='save-btn'>保存</button>
+<button type='primary' class='save-btn' bindtap='saveDataToServer'>保存</button>

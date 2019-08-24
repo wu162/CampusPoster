@@ -9,6 +9,7 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    isHide: false,
     image: '',
     user: {},
     name: '新用户',
@@ -22,8 +23,8 @@ Page({
   onLoad: function (options) {
     that = this
     //获得授权
-    if (this.data.canIUse) {
-      console.log('已授权')
+    // if (this.data.canIUse) {
+      // console.log('已授权')
       // 查看是否授权
       wx.getSetting({
         success(res) {
@@ -57,12 +58,18 @@ Page({
               }
             })
           }
+          else {
+            that.data.isHide=true
+            that.setData({
+              isHide: that.data.isHide
+            })
+          }
         }
       })
-    } else {
-      console.log('未授权')
-      this.jugdeUserLogin();
-    }
+    // } else {
+    //   console.log('未授权')
+    //   this.jugdeUserLogin();
+    // }
   },
   
 
@@ -157,10 +164,11 @@ Page({
       // 向user数据库添加新用户，数据为初始数据
       data: {
         name: that.data.name,
+        user: that.data.user,
         avatar: that.data.image,
         birth: { year: 2000, month: 1, day: 1 },
         age: 19,
-        region: that.data.region,
+        region: ['广东省','广州市'],
         sex: that.data.gender,
         sign: '我的个性签名',
       },
@@ -171,48 +179,6 @@ Page({
         console.log('创建用户失败')
       }
 
-    })
-  },
-
-
-  /**
-   * 判断用户是否登录
-   */
-  jugdeUserLogin: function (event) {
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              console.log('judgeUserLogin内')
-              console.log(res.userInfo)
-              that.data.user = res.userInfo;
-              that.data.name = res.userInfo.nickName;
-              that.data.image = res.userInfo.avatarUrl;
-              that.data.gender = res.userInfo.gender ;
-              that.data.region.push(res.userInfo.province);
-              that.data.region.push(res.userInfo.city);
-              //下载头像图片            注：要把thirdwx.qlogo.cn和wx.qlogo.cn添加到downloadFile的合法域名里
-              wx.downloadFile({
-                url: that.data.image,
-                success(res) {
-                  // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-                  that.data.image = res.tempFilePath
-                }
-              })
-              that.setData({
-                user: that.data.user,
-                name: that.data.name,
-                image: that.data.image,
-                gender: that.data.gender,
-                region: that.data.region,
-              })
-            }
-          })
-        }
-      }
     })
   },
 

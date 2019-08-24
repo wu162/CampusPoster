@@ -40,7 +40,7 @@
   <btnCard thumb='{{item.b_avatar}}' 
              title='{{item.b_name}}' 
              _openid='{{item._openid}}'
-             b_id='{{item._id}}'
+             b_id='{{item.b_id}}'
              hidden='true' />
 </view>
 

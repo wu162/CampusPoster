@@ -1,32 +1,38 @@
-<view class='search' bindtap='onSearch'>
-  <wux-search-bar disabled/>
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='header'>
+            <image src='/images/wx_login.png'></image>
+        </view>
+
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
 </view>
-<!-- <view wx:for="{{postList}}">
-  <postCard thumb='{{item.thumb}}'
-            thumb_link='{{item.thumb_link}}'
-            content_link='{{item.content_link}}'
-            name='{{item.name}}'
-            time='{{item.time}}'
-            title='{{item.title}}'
-            content='{{item.content}}'
-            thumbs='{{item.thumbs}}'
-            icon='{{icons}}'
-            desc='{{item.nums}}'/>
-  <view wx:if="{{index<postList.length-1}}" class='br'></view>
-</view> -->
 
+<view wx:else>
+  <view class='search' bindtap='onSearch'>
+    <wux-search-bar disabled/>
+  </view>
 
-<view wx:for="{{topics}}">
-  <postCard thumb='{{item.user.avatarUrl}}'
-            name='{{item.user.nickName}}'
-            time='{{item.date2}}'
-            title='{{item.title}}'
-            content='{{item.content}}'
-            thumbs='{{item.images}}'
-            b_id='{{item.bar}}'
-            t_id='{{item._id}}'
-            _openid='{{_openid}}'
-            icon='{{icons}}'
-            desc='{{item.nums}}'/>
-  <view wx:if="{{index<topics.length-1}}" class='br'></view>
+  <view wx:for="{{topics}}">
+    <postCard thumb='{{item.user.avatarUrl}}'
+              name='{{item.user.nickName}}'
+              time='{{item.date2}}'
+              title='{{item.title}}'
+              content='{{item.content}}'
+              thumbs='{{item.images}}'
+              b_id='{{item.bar}}'
+              t_id='{{item._id}}'
+              _openid='{{_openid}}'
+              icon='{{icons}}'
+              desc='{{item.nums}}'/>
+    <view wx:if="{{index<topics.length-1}}" class='br'></view>
+  </view>
 </view>

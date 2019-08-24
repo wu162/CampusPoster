@@ -131,15 +131,41 @@ Page({
       },
       success: function (res) {
         that.data.b_id=res._id
+        that.addBarFollow(res._id)
         that.setData({
           b_id: that.data.b_id
         })
+      },
+    })
+
+    
+  },
+
+
+
+  //增加吧关注记录
+  addBarFollow: function (b_id){
+    db.collection('barFollow').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        b_id: b_id,
+        b_name: that.data.b_name,
+        b_avatar: that.data.b_avatar[0],
+      },
+      success: function (res) {
         that.showTipAndSwitchTab().then(result => {
           that.jump();
         })
       },
     })
   },
+
+
+
+
+
+
+
   /**
    * 添加成功添加提示，切换页面
    */

@@ -7,9 +7,22 @@
       <view class='title'>{{bar[0].b_name}}</view>
       <view class='desc'>{{post.desc}}</view>
     </view>
-    <view class="{{post.btn_text=='关注'?'btn-unpressed':'btn-pressed'}}">
-      <text class='btn_text'>{{post.btn_text}}</text>
+
+    <view wx:if='{{judge==true}}'>
+      <view class="btn-pressed" bindtap='defollow'>
+      <text class='btn_text'>已关注</text>
+      </view>
     </view>
+    <view wx:else>
+      <view class="btn-unpressed" bindtap='follow'>
+      <text class='btn_text'>关注</text>
+      </view>
+    </view>
+
+    <!-- <view class="{{post.btn_text=='关注'?'btn-unpressed':'btn-pressed'}}">
+      <text class='btn_text'>{{post.btn_text}}</text>
+    </view> -->
+
   </view>
 </view>
 <view class='top_postWrap'>

@@ -61,8 +61,8 @@ Page({
     wx.cloud.callFunction({
       name: 'getOpenid',
       complete: res => {
-        console.log('云函数获取的openid',res.result.openid)
-        that.data._openid = res.result.openid
+        console.log('云函数获取的openid',res.result.openId)
+        that.data._openid = res.result.openId
         that.setData({
           _openid: that.data._openid
         })
@@ -72,8 +72,8 @@ Page({
 
   //获取关注的吧
   getBarFollows:function() {
-    //获取本用户建的吧（暂时用建的吧来代替）
-    db.collection('bar').where({
+    //获取本用户建的吧
+    db.collection('barFollow').where({
       _openid: app.globalData.openid,
     }).get({
       success: function(res){
@@ -84,11 +84,6 @@ Page({
         console.log('that.data.posterFol', that.data.posterFol)
       }
     })
-
-    //获取本用户关注的吧（未施工）
-
-
-
   },
 
 

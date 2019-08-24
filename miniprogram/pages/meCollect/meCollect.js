@@ -22,7 +22,7 @@ Page({
     that = this
     that.getData();
     that.setData({
-      openid:app.globalData.openid
+      openid:app.globalData.openId
     })
   },
   /**
@@ -32,7 +32,7 @@ Page({
   getData:function(){
   db.collection('collect')
       .where({
-        _openid: app.globalData.openid, // 填入当前用户 openid
+        _openid: app.globalData.openId, // 填入当前用户 openid
       })
       .orderBy('date', 'desc')
       .get({

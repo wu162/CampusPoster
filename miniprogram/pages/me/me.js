@@ -1,4 +1,4 @@
-// pages/me/me.js
+﻿// pages/me/me.js
 const app = getApp()
 var that
 const db = wx.cloud.database();
@@ -16,9 +16,8 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.getOpenid();     //获取用户_openid
+    that.getOpenid();
     that.getData();
-
   },
 
   //获取用户的_openid
@@ -35,20 +34,24 @@ Page({
       }
     })
   },
+
+
 getData:function(){
 //获取帖子列表
   db.collection('topic')
     .where({
-      _openid: app.globalData.openid, // 填入当前用户 openid
+      _openid: app.globalData.openId, // 填入当前用户 openid
     })
     .get({
       success: function (res) {
-   that.setData({
-     topicLength:res.data.length
-   })
-
-        }
+        that.setData({
+          topicLength:res.data.length
+        })
+        console.log('res.data.length', res.data.length)
+      }
     })
+    
+    
   //获取关注列表
   db.collection('fan')
     .where({
@@ -98,7 +101,7 @@ getData:function(){
  */
   onPosterClick: function (event) {
     wx.navigateTo({
-      url: '../mePoster/mePoster',
+      url: '../mePoster/mePoster?openid='+that.data.openid,
     })
   },
   /**

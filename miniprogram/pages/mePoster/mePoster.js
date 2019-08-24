@@ -23,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    that.openid=app.globalData.openid;
+    that.openid=options.openid;
     that.getData();
   },
   /**

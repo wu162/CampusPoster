@@ -79,9 +79,9 @@ Page({
       _openid: app.globalData.openId,
     }).get({
       success: function(res){
-        that.data.posterFol=res.data
+       
         that.setData({
-          posterFol: that.data.posterFol
+          posterFol: res.data
         })
         console.log('that.data.posterFol', that.data.posterFol)
       }
@@ -97,9 +97,9 @@ Page({
     }).orderBy('date', 'desc').get({
       success: function (res) {
         console.log(res.data)
-        that.data.posterRec = res.data
+       
         that.setData({
-          posterRec: that.data.posterRec
+          posterRec: res.data
         })
         for (var i = 0; i < res.data.length; i++) {
         that.getBarInfo(res,i)

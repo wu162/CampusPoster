@@ -14,11 +14,11 @@
 
 <view class='hr'></view>
 <view class='userBg2'>
-  <view class="user-item" bindtap='onFollowClick'>
+  <view class="user-item" >
     <text class='num'>{{followLength}}</text>
     <text class='text'>关注</text>
   </view>
-  <view class="user-item" bindtap='onFanClick'>
+  <view class="user-item" >
     <text class='num'>{{fanLength}}</text>
     <text class='text'>粉丝</text>
   </view>
@@ -64,16 +64,6 @@
     <view class='right'>></view>
   </view>
   <view class='hr'></view>
-  <!-- 更多 -->
-  <view class='item' bindtap='onMoreClick'>
-    <view class='icon'>
-      <image src='../../images/tian/more.png'class="icons" ></image>
-    </view>
-    <view class='itemName'>
-      <view class='navigation'>更多</view>
-    </view>
-    <view class='right'>></view>
-  </view>
-  <view class='hr'></view>
+
 
 </view>

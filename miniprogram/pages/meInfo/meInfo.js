@@ -24,6 +24,9 @@ Page({
     user: {},
     judge: false,
     _id: '',
+    topicLength: '',
+    followLength: '',
+    fanLength: '',
   },
 
 
@@ -33,11 +36,16 @@ Page({
    */
   onLoad: function (options) {
     that = this
+ 
     that.getOpenid(options).then(result => {
       console.log('that.data.u_id test', that.data.u_id)
       that.getInfo(that.data.u_id);
+      console.log(that.data.u_id)
     })
+  
+
   },
+
 
   //页面显示时刷新数据
   onShow: function () {
@@ -67,6 +75,7 @@ Page({
             region: that.data.region,
           })
           console.log('that.data.user', that.data.user)
+
         }
       })
   },
@@ -98,6 +107,47 @@ Page({
             u_id: that.data.u_id,
             judge: that.data.judge
           })
+          //获取帖子列表
+          db.collection('topic')
+            .where({
+              _openid: that.data.u_id, // 填入当前用户 openid
+            })
+            .get({
+              success: function (res) {
+                that.setData({
+                  topicLength: res.data.length
+                })
+                console.log('res.data.length', res.data.length)
+              }
+            })
+
+
+          //获取关注列表
+          db.collection('fan')
+            .where({
+              _openid: that.data.u_id, // 填入当前用户 openid
+            })
+            .get({
+              success: function (res) {
+                that.setData({
+                  followLength: res.data.length
+                })
+
+              }
+            })
+          //获取粉丝列表
+          db.collection('fan')
+            .where({
+              _id: that.data.u_id, // 填入当前用户 openid
+            })
+            .get({
+              success: function (res) {
+                that.setData({
+                  fanLength: res.data.length
+                })
+
+              }
+            })
           return resolve();
         }
       })

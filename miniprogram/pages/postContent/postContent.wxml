@@ -2,7 +2,7 @@
 <!--miniprogram/pages/collect/collect.wxml-->
   <view class='container' bindtap='onExitReplyClick'>
     <view class='container-content'>
-    <image class='head' bindtap='onWriterClick' src='{{topic.user.avatarUrl}}'></image>
+    <image class='head' bindtap='onWriterClick'data-openid='{{topic._openid}}' src='{{topic.user.avatarUrl}}'></image>
       <view class='title-content' >
       <view class='name' bindtap='onWriterClick'>{{topic.user.nickName}}</view>
       <view class='date'>{{topic.changeDate}}</view>

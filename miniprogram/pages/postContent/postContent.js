@@ -313,10 +313,10 @@ getUp_per:function(res,i){
    * Writer 点击
    */
   onWriterClick: function (event) {
-    var id = event.currentTarget.dataset.userid;
-    var openid = event.currentTarget.dataset._openid;
+    var u_id = event.currentTarget.dataset.openid;
+    var openid = app.globalData.openId;
     wx.navigateTo({
-      url: "../meInfo/meInfo?id=" + id + "&openid=" + openid,
+      url: "../meInfo/meInfo?u_id=" + u_id + "&openid=" + openid,
     })
   },
   /**

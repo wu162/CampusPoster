@@ -19,11 +19,11 @@
 </view>
 
 <view class='line line-left'>
-  <text class='font-medium'>{{fans_num}}粉丝</text>
+  <text class='font-medium'>{{fanLength}}粉丝</text>
   <text class='sep'>|</text>
-  <text class='font-medium'>{{follow_num}}关注</text>
+  <text class='font-medium'>{{followLength}}关注</text>
   <text class='sep'>|</text>
-  <text class='font-medium'>{{poster_num}}吧</text>
+  <text class='font-medium'>{{topicLength}}帖子</text>
 </view>
 
 <view class='line line-left'>

@@ -1,4 +1,4 @@
-﻿// pages/me/me.js
+// pages/me/me.js
 const app = getApp()
 var that
 const db = wx.cloud.database();
@@ -17,9 +17,11 @@ Page({
   onLoad: function (options) {
     that = this
     that.getOpenid();
+
+  },
+  onShow:function(){
     that.getData();
   },
-
   //获取用户的_openid
   getOpenid() {
     wx.cloud.callFunction({
@@ -138,12 +140,5 @@ getData:function(){
     })
   },
 
-  /**
-  * 更多
-  */
-  onMoreClick: function (event) {
-    wx.navigateTo({
-      url: '../meInfo/meInfo',
-    })
-  },
+  
 })

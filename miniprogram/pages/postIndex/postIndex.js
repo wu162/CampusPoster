@@ -22,9 +22,9 @@ Page({
     },
     top: ['帖子标题','帖子标题'],
 
-    icons: ['../../images/wu/share.png',
+    icons: ['../../images/wu.png',
       '../../images/wu/review.png',
-      '../../images/wu/like.png'],
+      '../../images/wuke.png'],
 
     topics: [],
 

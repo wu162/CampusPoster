@@ -18,7 +18,6 @@ Page({
     content:'',
     inputValue:'',
     t_id:'',
-    openid: "oDgOl5Bl4zo2lBHrQYrQqgWtm1go",
     reply: {},
     reply_in:{},
     up:{},
@@ -28,7 +27,8 @@ Page({
     length:0,
     length2:0,
     comment_length:0,
-    isfan:"关注"
+    isfan:"关注",
+    _openid:''
   },
 
   /**
@@ -37,13 +37,14 @@ Page({
   onLoad: function (options) {
     that = this
     that.data.t_id = options.t_id;
-   that.data._openid = options._openid;
+   that.data._openid = app.globalData.openId
+    console.log(that.data._openid)
     that.data.b_id=options.b_id;
     that.saveTobrowseHistory();
     // 获取收藏情况
     db.collection('collect')
       .where({
-        _openid: that.data.openid,
+        _openid: that.data._openid,
         _id: that.data.t_id
 
       })
@@ -60,7 +61,7 @@ Page({
     // 获取点赞情况
     db.collection('up')
       .where({
-        _openid: that.data.openid,
+        _openid: that.data._openid,
         _id: that.data.t_id
       })
       .get({
@@ -106,7 +107,7 @@ Page({
         //获取关注信息
         db.collection('fan').where({
          _id:res.data._openid,
-         _openid:that.data.openid
+         _openid:that.data._openid
           }).get({
             success: function (res2) {
               if(res2.data.length>0)
@@ -241,7 +242,7 @@ getReply_in:function(res,i,last){
 getUp_per:function(res,i){
   db.collection('up')
     .where({
-      _openid: that.data.openid,
+      _openid: that.data._openid,
       _id: res.data[i]._id
     })
     .get({
@@ -302,7 +303,7 @@ getUp_per:function(res,i){
       },
       success: function (res) {
         wx.navigateTo({
-          url: "../postContent/postContent?t_id=" + that.data.t_id + "&openid=" + that.data.openid
+          url: "../postContent/postContent?t_id=" + that.data.t_id + "&openid=" + that.data._openid
         })
 
       },
@@ -313,7 +314,7 @@ getUp_per:function(res,i){
    */
   onWriterClick: function (event) {
     var id = event.currentTarget.dataset.userid;
-    var openid = event.currentTarget.dataset.openid;
+    var openid = event.currentTarget.dataset._openid;
     wx.navigateTo({
       url: "../meInfo/meInfo?id=" + id + "&openid=" + openid,
     })
@@ -323,7 +324,7 @@ getUp_per:function(res,i){
  */
   onReplyPageClick: function (event) {
     var id = event.currentTarget.dataset.replyid;
-    var openid = event.currentTarget.dataset.openid;
+    var openid = event.currentTarget.dataset._openid;
     var sequence = event.currentTarget.dataset.idx+2;
     var up = event.currentTarget.dataset.up;
     var isup = event.currentTarget.dataset.isup;
@@ -338,7 +339,7 @@ getUp_per:function(res,i){
   */
   onBarClick: function (event) {
     var b_id = event.currentTarget.dataset.b_id;
-    var openid = event.currentTarget.dataset.openid;
+    var openid = event.currentTarget.dataset._openid;
     wx.navigateTo({
       url: "../postIndex/postIndex?b_id=" + b_id + "&openid=" + openid
     })

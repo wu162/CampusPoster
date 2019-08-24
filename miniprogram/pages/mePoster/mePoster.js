@@ -1,4 +1,4 @@
-const app = getApp()
+﻿const app = getApp()
 var that
 const db = wx.cloud.database();
 
